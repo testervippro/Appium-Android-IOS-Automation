@@ -1,0 +1,11 @@
+framework module FormTextField {
+  umbrella header "FormTextField-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module FormTextField.Swift {
+    header "FormTextField-Swift.h"
+    requires objc
+}
