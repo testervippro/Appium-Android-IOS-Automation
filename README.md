@@ -17,7 +17,7 @@ chmod +x ios_appium_config.sh
 ./ios_appium_config.sh
 ```
 
-## Simulator Management IOS
+## Simulator  IOS
 
 ### List Devices
 
@@ -51,3 +51,42 @@ To shut down a specific simulator (e.g., "iPhone 14"):
 xcrun simctl shutdown "iPhone 14"
 ```
 ```
+
+## Simulator  Android
+
+### 1. List Available Emulators
+
+To list all available Android Virtual Devices (AVDs), run:
+
+```bash
+emulator -list-avds
+```
+
+---
+
+### 2. Start an Emulator
+
+To start a specific emulator, use the `emulator` command with the AVD name:
+
+```bash
+emulator -avd Pixel_4_API_30
+```
+
+Replace `Pixel_4_API_30` with the name of your AVD.
+
+---
+
+### 3. Interact with the Emulator
+
+- Use the emulator window to test your app or perform actions.
+
+---
+
+### 4. Stop the Emulator
+
+To stop a running emulator, use the `adb` command with the emulator ID (e.g., `emulator-5554`):
+
+```bash
+adb -s emulator-5554 emu kill
+```
+
