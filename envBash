@@ -1,0 +1,18 @@
+# Java
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)  # Set Java 17 as the default version
+export PATH=$JAVA_HOME/bin:$PATH
+
+# Maven
+export MAVEN_HOME=$(brew --prefix maven)/libexec
+export PATH=$MAVEN_HOME/bin:$PATH
+
+# Android SDK
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
+
+# Dynamically add the latest build-tools version to PATH
+latest_build_tools=$(ls -d $ANDROID_HOME/build-tools/* | sort -V | tail -n 1)
+export PATH=$PATH:$latest_build_tools
+
+# Ruby (using rbenv)
+eval "$(rbenv init -)"
