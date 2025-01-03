@@ -54,5 +54,6 @@ echo "Checking Environment Variables..."
 echo "JAVA_HOME: $JAVA_HOME"
 echo "MAVEN_HOME: $MAVEN_HOME"
 echo "ANDROID_HOME: $ANDROID_HOME"
-echo "PATH: $PATH"
+echo "PATH:"
+echo "$PATH" | tr ':' '\n'
 EOF
