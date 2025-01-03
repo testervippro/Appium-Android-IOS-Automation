@@ -1,6 +1,6 @@
 bash << 'EOF'
 # Check Java
-echo "Checking Java..."
+echo "Checking Java java -version..."
 java -version
 if [ $? -eq 0 ]; then
   echo "Java is configured correctly."
@@ -10,7 +10,7 @@ fi
 echo ""
 
 # Check Maven
-echo "Checking Maven..."
+echo "Checking Maven mvn -v ..."
 mvn -v
 if [ $? -eq 0 ]; then
   echo "Maven is configured correctly."
@@ -20,7 +20,7 @@ fi
 echo ""
 
 # Check Android SDK
-echo "Checking Android SDK..."
+echo "Checking Android SDK adb --version..."
 adb --version
 if [ $? -eq 0 ]; then
   echo "Android SDK tools are configured correctly."
@@ -30,7 +30,7 @@ fi
 echo ""
 
 # Check Android Build Tools
-echo "Checking Android Build Tools..."
+echo "Checking Android Build Tools aapt version ..."
 aapt version
 if [ $? -eq 0 ]; then
   echo "Android Build Tools are configured correctly."
