@@ -14,8 +14,16 @@ chmod +x android_appium_config.sh && ./android_appium_config.sh
 ```bash
 chmod +x ios_appium_config.sh && ./ios_appium_config.sh
 ```
-cd to /Users/mac/.appium/node_modules/appium-xcuitest-driver/node_modules
-xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination id='1C2AD9B1-C90B-448A-AD73-5B39FE753230' test -allowProvisioningUpdates
+# Steps to Run WebDriverAgent and Fix Appium Inspector Errors
+
+## 1. Navigate to the WebDriverAgent Directory
+First, navigate to the directory where `WebDriverAgent` is located:
+
+```bash
+cd /path/to/mac@192/appium-webdriveragent
+
+```bash
+xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner test -allowProvisioningUpdates
 
 ## Simulator  IOS
 
