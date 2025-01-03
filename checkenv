@@ -1,21 +1,33 @@
 bash << 'EOF'
+# Function to check a command and print result
+check_command() {
+  echo "Checking $1..."
+  $2
+  if [ $? -eq 0 ]; then
+    echo "$1 is configured correctly."
+  else
+    echo "$1 is NOT configured correctly."
+  fi
+  echo ""
+}
+
 # Check Java
-echo "Java: $(java -version 2>&1 | head -n 1)" || echo "Java is NOT configured correctly."
+check_command "Java" "java -version"
 
 # Check Maven
-echo "Maven: $(mvn -v 2>&1 | head -n 1)" || echo "Maven is NOT configured correctly."
+check_command "Maven" "mvn -v"
 
 # Check Android SDK
-echo "Android SDK: $(adb --version 2>&1 | head -n 1)" || echo "Android SDK tools are NOT configured correctly."
+check_command "Android SDK tools adb --version " "adb --version"
 
 # Check Android Build Tools
-echo "Android Build Tools: $(aapt version 2>&1)" || echo "Android Build Tools are NOT configured correctly."
+check_command "Android Build Tools aapt version " "aapt version"
 
 # Check Ruby (rbenv)
-echo "Ruby: $(ruby -v 2>&1)" || echo "Ruby (rbenv) is NOT configured correctly."
+check_command "Ruby (rbenv)" "ruby -v"
 
 # Check Environment Variables
-echo -e "\nEnvironment Variables:"
+echo "Checking Environment Variables..."
 echo "JAVA_HOME: $JAVA_HOME"
 echo "MAVEN_HOME: $MAVEN_HOME"
 echo "ANDROID_HOME: $ANDROID_HOME"
