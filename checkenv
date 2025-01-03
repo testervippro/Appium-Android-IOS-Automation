@@ -1,0 +1,58 @@
+bash << 'EOF'
+# Check Java
+echo "Checking Java..."
+java -version
+if [ $? -eq 0 ]; then
+  echo "Java is configured correctly."
+else
+  echo "Java is NOT configured correctly."
+fi
+echo ""
+
+# Check Maven
+echo "Checking Maven..."
+mvn -v
+if [ $? -eq 0 ]; then
+  echo "Maven is configured correctly."
+else
+  echo "Maven is NOT configured correctly."
+fi
+echo ""
+
+# Check Android SDK
+echo "Checking Android SDK..."
+adb --version
+if [ $? -eq 0 ]; then
+  echo "Android SDK tools are configured correctly."
+else
+  echo "Android SDK tools are NOT configured correctly."
+fi
+echo ""
+
+# Check Android Build Tools
+echo "Checking Android Build Tools..."
+aapt version
+if [ $? -eq 0 ]; then
+  echo "Android Build Tools are configured correctly."
+else
+  echo "Android Build Tools are NOT configured correctly."
+fi
+echo ""
+
+# Check Ruby (rbenv)
+echo "Checking Ruby (rbenv)..."
+ruby -v
+if [ $? -eq 0 ]; then
+  echo "Ruby (rbenv) is configured correctly."
+else
+  echo "Ruby (rbenv) is NOT configured correctly."
+fi
+echo ""
+
+# Check Environment Variables
+echo "Checking Environment Variables..."
+echo "JAVA_HOME: $JAVA_HOME"
+echo "MAVEN_HOME: $MAVEN_HOME"
+echo "ANDROID_HOME: $ANDROID_HOME"
+echo "PATH: $PATH"
+EOF
