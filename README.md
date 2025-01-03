@@ -17,7 +17,7 @@ chmod +x ios_appium_config.sh
 ./ios_appium_config.sh
 ```
 
-## Simulator Management
+## Simulator Management IOS
 
 ### List Devices
 
