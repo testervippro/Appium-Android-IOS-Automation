@@ -2,18 +2,15 @@
 ```markdown
 # Appium Configuration and Simulator Commands
 
-## Android Appium Configuration
+##  Appium Configuration
 
-To configure Android Appium, make the script executable and run it:
+Get capaability Android ,IOS run scipt copy , paste to appium inpector
 
 ```bash
 chmod +x android_appium_config.sh
 ./android_appium_config.sh
 ```
 
-## iOS Appium Configuration
-
-To configure iOS Appium, make the script executable and run it:
 
 ```bash
 chmod +x ios_appium_config.sh
