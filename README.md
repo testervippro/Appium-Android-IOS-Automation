@@ -50,7 +50,8 @@ To shut down a specific simulator (e.g., "iPhone 14"):
 ```bash
 xcrun simctl shutdown "iPhone 14"
 ```
-```
+
+
 
 ## Simulator  Android
 
@@ -62,7 +63,7 @@ To list all available Android Virtual Devices (AVDs), run:
 emulator -list-avds
 ```
 
----
+
 
 ### 2. Start an Emulator
 
