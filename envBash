@@ -1,14 +1,31 @@
 # Java
 export JAVA_HOME=$(/usr/libexec/java_home -v 17)  # Set Java 17 as the default version
-export PATH=$JAVA_HOME/bin:$PATH
+export PATH=$JAVA_HOME/bin:$PATH  # Add Java binaries to PATH
 
 # Maven
-export MAVEN_HOME=$(brew --prefix maven)/libexec
-export PATH=$MAVEN_HOME/bin:$PATH
+export MAVEN_HOME=$(brew --prefix maven)/libexec  # Set Maven home directory
+export PATH=$MAVEN_HOME/bin:$PATH  # Add Maven binaries to PATH
 
 # Android SDK
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/35.0.0
+export ANDROID_HOME=$HOME/Library/Android/sdk  # Set Android SDK home directory
+
+# Add Android SDK command-line tools to PATH
+export PATH=$ANDROID_HOME/cmdline-tools/tools/bin:$PATH
+
+# Add Android platform tools (e.g., adb, fastboot) to PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+
+# Add Android emulator tools to PATH
+export PATH=$ANDROID_HOME/emulator:$PATH
+
+# Add Android SDK tools to PATH
+export PATH=$ANDROID_HOME/tools:$PATH
+
+# Add Android SDK tools binaries to PATH
+export PATH=$ANDROID_HOME/tools/bin:$PATH
+
+# Add Android build tools (e.g., aapt) to PATH
+export PATH=$ANDROID_HOME/build-tools/35.0.0:$PATH
 
 # Ruby (using rbenv)
-eval "$(rbenv init -)"
+eval "$(rbenv init -)"  # Initialize rbenv for Ruby version management
