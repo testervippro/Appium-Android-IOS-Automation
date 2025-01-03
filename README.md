@@ -1,10 +1,10 @@
 
-```markdown
 # Appium Configuration and Simulator Commands
 
 ##  Appium Configuration
 
 Get capaability Android ,IOS run scipt copy , paste to appium inpector
+
 
 ```bash
 chmod +x android_appium_config.sh
