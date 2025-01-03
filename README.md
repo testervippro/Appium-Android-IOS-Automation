@@ -30,7 +30,7 @@ xcrun simctl list devices
 To boot a specific simulator (e.g., "iPhone 14"):
 
 ```bash
-xcrun simctl boot "iPhone 14"
+xcrun simctl boot "iPhone 13 mini"
 ```
 
 ### Open Simulator App (Optional)
@@ -46,7 +46,7 @@ open -a Simulator
 To shut down a specific simulator (e.g., "iPhone 14"):
 
 ```bash
-xcrun simctl shutdown "iPhone 14"
+xcrun simctl shutdown "iPhone 13 mini"
 ```
 
 
