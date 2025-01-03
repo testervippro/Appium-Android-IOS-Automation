@@ -1,59 +1,23 @@
 bash << 'EOF'
 # Check Java
-echo "Checking Java java -version..."
-java -version
-if [ $? -eq 0 ]; then
-  echo "Java is configured correctly."
-else
-  echo "Java is NOT configured correctly."
-fi
-echo ""
+echo "Java: $(java -version 2>&1 | head -n 1)" || echo "Java is NOT configured correctly."
 
 # Check Maven
-echo "Checking Maven mvn -v ..."
-mvn -v
-if [ $? -eq 0 ]; then
-  echo "Maven is configured correctly."
-else
-  echo "Maven is NOT configured correctly."
-fi
-echo ""
+echo "Maven: $(mvn -v 2>&1 | head -n 1)" || echo "Maven is NOT configured correctly."
 
 # Check Android SDK
-echo "Checking Android SDK adb --version..."
-adb --version
-if [ $? -eq 0 ]; then
-  echo "Android SDK tools are configured correctly."
-else
-  echo "Android SDK tools are NOT configured correctly."
-fi
-echo ""
+echo "Android SDK: $(adb --version 2>&1 | head -n 1)" || echo "Android SDK tools are NOT configured correctly."
 
 # Check Android Build Tools
-echo "Checking Android Build Tools aapt version ..."
-aapt version
-if [ $? -eq 0 ]; then
-  echo "Android Build Tools are configured correctly."
-else
-  echo "Android Build Tools are NOT configured correctly."
-fi
-echo ""
+echo "Android Build Tools: $(aapt version 2>&1)" || echo "Android Build Tools are NOT configured correctly."
 
 # Check Ruby (rbenv)
-echo "Checking Ruby (rbenv)..."
-ruby -v
-if [ $? -eq 0 ]; then
-  echo "Ruby (rbenv) is configured correctly."
-else
-  echo "Ruby (rbenv) is NOT configured correctly."
-fi
-echo ""
+echo "Ruby: $(ruby -v 2>&1)" || echo "Ruby (rbenv) is NOT configured correctly."
 
 # Check Environment Variables
-echo "Checking Environment Variables..."
+echo -e "\nEnvironment Variables:"
 echo "JAVA_HOME: $JAVA_HOME"
 echo "MAVEN_HOME: $MAVEN_HOME"
 echo "ANDROID_HOME: $ANDROID_HOME"
-echo "PATH:"
-echo "$PATH" | tr ':' '\n'
+echo -e "PATH:\n$(echo "$PATH" | tr ':' '\n')"
 EOF
