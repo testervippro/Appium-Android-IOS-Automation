@@ -11,3 +11,19 @@ Purpose	General-purpose element location.	Mobile-specific element location.
 Supported Platforms	Web and mobile.	Primarily mobile (Android and iOS).
 Locator Strategies	Standard Selenium locators (e.g., id, xpath).	Mobile-specific locators (e.g., accessibilityId, androidUIAutomator).
 Usage	Works for both web and mobile automation.	Optimized for mobile automation.
+
+
+# Key Differences Between Common ExpectedConditions
+
+| **Condition**                              | **Focus**                                                                 | **Key Difference**                                                                 |
+|--------------------------------------------|---------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
+| **`visibilityOfElementLocated`**           | Waits for an element to be **visible**.                                   | Ensures the element is not only present but also visible on the page.             |
+| **`presenceOfElementLocated`**             | Waits for an element to be **present** in the DOM.                        | Does not check visibility; only checks if the element exists in the DOM.          |
+| **`elementToBeClickable`**                 | Waits for an element to be **clickable** (visible and enabled).           | Adds a check for the element's **enabled** state.                                 |
+| **`invisibilityOfElementLocated`**         | Waits for an element to be **invisible** or removed.                      | Opposite of `visibilityOfElementLocated`.                                         |
+| **`textToBePresentInElementLocated`**      | Waits for specific **text** to appear in an element.                      | Focuses on the text content of the element.                                       |
+| **`visibilityOf`**                         | Waits for a specific **WebElement** to be visible.                        | Requires an already located WebElement.                                           |
+| **`alertIsPresent`**                       | Waits for an **alert** to appear.                                         | Specific to handling JavaScript alerts or pop-ups.                                |
+| **`titleIs` / `titleContains`**            | Waits for the page title to match or contain specific text.               | Useful for verifying page navigation or loading.                                  |
+| **`frameToBeAvailableAndSwitchToIt`**      | Waits for a frame to load and switches to it.                             | Used for handling iframes or frames in the page.                                  |
+| **`numberOfWindowsToBe`**                  | Waits for a specific number of windows to open.                           | Useful for handling multi-window scenarios.                                       |
