@@ -1,0 +1,5 @@
+Element Type	Platform	Status	Recommended
+WebElement	Android, iOS	Standard	✅ Yes
+MobileElement	Android, iOS	Deprecated	❌ No
+AndroidElement	Android	Deprecated	❌ No
+IOSElement	iOS	Deprecated	❌ No
