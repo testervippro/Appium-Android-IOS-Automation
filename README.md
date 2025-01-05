@@ -14,6 +14,15 @@ chmod +x android_appium_config.sh && ./android_appium_config.sh
 ```bash
 chmod +x ios_appium_config.sh && ./ios_appium_config.sh
 ```
+Set Bash ENV
+```bash
+nano ~/.zshrc
+```
+Paste content in Bash.txt then Ctrl X -> Y 
+```bash
+source ~/.zshrc
+```
+
 Steps to Run WebDriverAgent and Fix Appium Inspector Errors WebDriverAgent
 
 1. Navigate to the WebDriverAgent Directory
