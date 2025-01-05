@@ -39,7 +39,6 @@ public class LoginTest extends BaseMobileIOS {
         driver.executeScript("mobile:swipe", params1);
         // click on list user to not open keyboard
         driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"bob@example.com\"]")).click();
-        ;
 
         // click login
         var btnLogin = By.xpath("(//XCUIElementTypeStaticText[@name=\"Login\"])[2]");
@@ -55,32 +54,30 @@ public class LoginTest extends BaseMobileIOS {
 
         // card menu
         driver.findElement(AppiumBy.accessibilityId("Cart-tab-item")).click();
+
         // process checkout
         driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"ProceedToCheckout\"]")).click();
 
         // fill out form
         // name
         driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Rebecca Winter\"]")).sendKeys("test01");
-        ;
 
         // address 1
         driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Mandorley 112\"]")).sendKeys("test01");
-        ;
+
         // address 2
         driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Entrance 1\"]")).sendKeys("test");
-        ;
+
 
         // up,down,left,right
-
         // params1.put("element", ((RemoteWebElement)ele).getId());
         driver.executeScript("mobile:swipe", params1);
 
         // city
         driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Truro\"]")).sendKeys("city");
-        ;
+
         // state
         driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Cornwall\"]")).sendKeys("State");
-
         Thread.sleep(1000);
 
         // zipcode
@@ -95,8 +92,7 @@ public class LoginTest extends BaseMobileIOS {
         driver.executeScript("mobile:swipe", params1);
 
         driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"To Payment\"]")).click();
-
-        Thread.sleep(20000);
+        Thread.sleep(30000);
 
         // fill credit car
         // full name
@@ -124,11 +120,11 @@ public class LoginTest extends BaseMobileIOS {
         // place order
         driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"Place Order\"]")).click();
 
-        // check complete
-        var checkCompltet = driver.findElement(By.xpath("\n" + //
+        // verify
+        var checkOutSuccess = driver.findElement(By.xpath("\n" + //
                 "//XCUIElementTypeStaticText[@name=\"Checkout Complete\"]")).getText();
 
-        Assert.assertEquals(checkCompltet, "Checkout Complete");
+        Assert.assertEquals(checkOutSuccess, "Checkout Complete");
 
     }
 }
