@@ -1,0 +1,8 @@
+{
+  "platformVersion": "15",
+  "deviceName": "emulator-5554",
+  "app": "/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/src/test/resources/androidapp/app-android.apk",
+  "appPackage": "com.saucelabs.mydemoapp.android",
+  "appActivity": "com.saucelabs.mydemoapp.android.view.activities.SplashActivity",
+  "automationName": "UiAutomator2"
+}

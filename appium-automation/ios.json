@@ -1,0 +1,9 @@
+{
+    "appium:deviceName": "iPhone 13 mini",
+    "appium:udid": "1C2AD9B1-C90B-448A-AD73-5B39FE753230",
+    "platformName": "iOS",
+    "appium:platformVersion": "15.2",
+    "appium:app": "/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/src/test/resources/iosapp/My Demo App.app",
+    "appium:automationName": "XCUITest",
+    "appium:showXcodeLog": true
+  }

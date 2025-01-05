@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestSuite" time="33.853" tests="4" errors="0" skipped="2" failures="1">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/target/test-classes:/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/target/classes:/Users/mac/.m2/repository/io/appium/java-client/9.3.0/java-client-9.3.0.jar:/Users/mac/.m2/repository/org/seleniumhq/selenium/selenium-api/4.27.0/selenium-api-4.27.0.jar:/Users/mac/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/mac/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.27.0/selenium-remote-driver-4.27.0.jar:/Users/mac/.m2/repository/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.jar:/Users/mac/.m2/repository/com/google/guava/guava/33.3.1-jre/guava-33.3.1-jre.jar:/Users/mac/.m2/repository/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.jar:/Users/mac/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/Users/mac/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/mac/.m2/repository/org/checkerframework/checker-qual/3.43.0/checker-qual-3.43.0.jar:/Users/mac/.m2/repository/com/google/j2objc/j2objc-annotations/3.0.0/j2objc-annotations-3.0.0.jar:/Users/mac/.m2/repository/io/opentelemetry/semconv/opentelemetry-semconv/1.25.0-alpha/opentelemetry-semconv-1.25.0-alpha.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-api/1.44.1/opentelemetry-api-1.44.1.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-context/1.44.1/opentelemetry-context-1.44.1.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-exporter-logging/1.44.1/opentelemetry-exporter-logging-1.44.1.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-sdk-common/1.44.1/opentelemetry-sdk-common-1.44.1.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.44.1/opentelemetry-sdk-extension-autoconfigure-spi-1.44.1.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.44.1/opentelemetry-sdk-extension-autoconfigure-1.44.1.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-api-incubator/1.44.1-alpha/opentelemetry-api-incubator-1.44.1-alpha.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-sdk-trace/1.44.1/opentelemetry-sdk-trace-1.44.1.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-sdk/1.44.1/opentelemetry-sdk-1.44.1.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-sdk-metrics/1.44.1/opentelemetry-sdk-metrics-1.44.1.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-sdk-logs/1.44.1/opentelemetry-sdk-logs-1.44.1.jar:/Users/mac/.m2/repository/net/bytebuddy/byte-buddy/1.15.10/byte-buddy-1.15.10.jar:/Users/mac/.m2/repository/org/seleniumhq/selenium/selenium-http/4.27.0/selenium-http-4.27.0.jar:/Users/mac/.m2/repository/dev/failsafe/failsafe/3.3.2/failsafe-3.3.2.jar:/Users/mac/.m2/repository/org/seleniumhq/selenium/selenium-json/4.27.0/selenium-json-4.27.0.jar:/Users/mac/.m2/repository/org/seleniumhq/selenium/selenium-manager/4.27.0/selenium-manager-4.27.0.jar:/Users/mac/.m2/repository/org/seleniumhq/selenium/selenium-os/4.27.0/selenium-os-4.27.0.jar:/Users/mac/.m2/repository/org/apache/commons/commons-exec/1.4.0/commons-exec-1.4.0.jar:/Users/mac/.m2/repository/org/seleniumhq/selenium/selenium-support/4.27.0/selenium-support-4.27.0.jar:/Users/mac/.m2/repository/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar:/Users/mac/.m2/repository/com/google/errorprone/error_prone_annotations/2.27.0/error_prone_annotations-2.27.0.jar:/Users/mac/.m2/repository/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar:/Users/mac/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.13.1/jackson-databind-2.13.1.jar:/Users/mac/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.13.1/jackson-annotations-2.13.1.jar:/Users/mac/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.13.1/jackson-core-2.13.1.jar:/Users/mac/.m2/repository/org/testng/testng/7.8.0/testng-7.8.0.jar:/Users/mac/.m2/repository/com/beust/jcommander/1.82/jcommander-1.82.jar:/Users/mac/.m2/repository/org/webjars/jquery/3.6.1/jquery-3.6.1.jar:/Users/mac/.m2/repository/com/aventstack/extentreports/4.1.3/extentreports-4.1.3.jar:/Users/mac/.m2/repository/org/freemarker/freemarker/2.3.29/freemarker-2.3.29.jar:/Users/mac/.m2/repository/org/apache/httpcomponents/httpclient/4.5.2/httpclient-4.5.2.jar:/Users/mac/.m2/repository/org/apache/httpcomponents/httpcore/4.4.4/httpcore-4.4.4.jar:/Users/mac/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/Users/mac/.m2/repository/commons-codec/commons-codec/1.9/commons-codec-1.9.jar:/Users/mac/.m2/repository/org/apache/httpcomponents/httpmime/4.5.2/httpmime-4.5.2.jar:/Users/mac/.m2/repository/org/mongodb/mongodb-driver/3.12.0/mongodb-driver-3.12.0.jar:/Users/mac/.m2/repository/org/mongodb/mongodb-driver-core/3.12.0/mongodb-driver-core-3.12.0.jar:/Users/mac/.m2/repository/org/mongodb/bson/3.12.0/bson-3.12.0.jar:"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="user.timezone" value="Asia/Ho_Chi_Minh"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="VN"/>
+    <property name="sun.boot.library.path" value="/Users/mac/Library/Java/JavaVirtualMachines/temurin-17.0.13/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/target/surefire/surefirebooter-20250104165115999_3.jar /Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/target/surefire 2025-01-04T16-51-15_488-jvmRun1 surefire-20250104165115999_1tmp surefire_0-20250104165115999_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/target/test-classes:/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/target/classes:/Users/mac/.m2/repository/io/appium/java-client/9.3.0/java-client-9.3.0.jar:/Users/mac/.m2/repository/org/seleniumhq/selenium/selenium-api/4.27.0/selenium-api-4.27.0.jar:/Users/mac/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/mac/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.27.0/selenium-remote-driver-4.27.0.jar:/Users/mac/.m2/repository/com/google/auto/service/auto-service-annotations/1.1.1/auto-service-annotations-1.1.1.jar:/Users/mac/.m2/repository/com/google/guava/guava/33.3.1-jre/guava-33.3.1-jre.jar:/Users/mac/.m2/repository/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.jar:/Users/mac/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/Users/mac/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/mac/.m2/repository/org/checkerframework/checker-qual/3.43.0/checker-qual-3.43.0.jar:/Users/mac/.m2/repository/com/google/j2objc/j2objc-annotations/3.0.0/j2objc-annotations-3.0.0.jar:/Users/mac/.m2/repository/io/opentelemetry/semconv/opentelemetry-semconv/1.25.0-alpha/opentelemetry-semconv-1.25.0-alpha.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-api/1.44.1/opentelemetry-api-1.44.1.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-context/1.44.1/opentelemetry-context-1.44.1.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-exporter-logging/1.44.1/opentelemetry-exporter-logging-1.44.1.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-sdk-common/1.44.1/opentelemetry-sdk-common-1.44.1.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.44.1/opentelemetry-sdk-extension-autoconfigure-spi-1.44.1.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.44.1/opentelemetry-sdk-extension-autoconfigure-1.44.1.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-api-incubator/1.44.1-alpha/opentelemetry-api-incubator-1.44.1-alpha.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-sdk-trace/1.44.1/opentelemetry-sdk-trace-1.44.1.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-sdk/1.44.1/opentelemetry-sdk-1.44.1.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-sdk-metrics/1.44.1/opentelemetry-sdk-metrics-1.44.1.jar:/Users/mac/.m2/repository/io/opentelemetry/opentelemetry-sdk-logs/1.44.1/opentelemetry-sdk-logs-1.44.1.jar:/Users/mac/.m2/repository/net/bytebuddy/byte-buddy/1.15.10/byte-buddy-1.15.10.jar:/Users/mac/.m2/repository/org/seleniumhq/selenium/selenium-http/4.27.0/selenium-http-4.27.0.jar:/Users/mac/.m2/repository/dev/failsafe/failsafe/3.3.2/failsafe-3.3.2.jar:/Users/mac/.m2/repository/org/seleniumhq/selenium/selenium-json/4.27.0/selenium-json-4.27.0.jar:/Users/mac/.m2/repository/org/seleniumhq/selenium/selenium-manager/4.27.0/selenium-manager-4.27.0.jar:/Users/mac/.m2/repository/org/seleniumhq/selenium/selenium-os/4.27.0/selenium-os-4.27.0.jar:/Users/mac/.m2/repository/org/apache/commons/commons-exec/1.4.0/commons-exec-1.4.0.jar:/Users/mac/.m2/repository/org/seleniumhq/selenium/selenium-support/4.27.0/selenium-support-4.27.0.jar:/Users/mac/.m2/repository/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar:/Users/mac/.m2/repository/com/google/errorprone/error_prone_annotations/2.27.0/error_prone_annotations-2.27.0.jar:/Users/mac/.m2/repository/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar:/Users/mac/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.13.1/jackson-databind-2.13.1.jar:/Users/mac/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.13.1/jackson-annotations-2.13.1.jar:/Users/mac/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.13.1/jackson-core-2.13.1.jar:/Users/mac/.m2/repository/org/testng/testng/7.8.0/testng-7.8.0.jar:/Users/mac/.m2/repository/com/beust/jcommander/1.82/jcommander-1.82.jar:/Users/mac/.m2/repository/org/webjars/jquery/3.6.1/jquery-3.6.1.jar:/Users/mac/.m2/repository/com/aventstack/extentreports/4.1.3/extentreports-4.1.3.jar:/Users/mac/.m2/repository/org/freemarker/freemarker/2.3.29/freemarker-2.3.29.jar:/Users/mac/.m2/repository/org/apache/httpcomponents/httpclient/4.5.2/httpclient-4.5.2.jar:/Users/mac/.m2/repository/org/apache/httpcomponents/httpcore/4.4.4/httpcore-4.4.4.jar:/Users/mac/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/Users/mac/.m2/repository/commons-codec/commons-codec/1.9/commons-codec-1.9.jar:/Users/mac/.m2/repository/org/apache/httpcomponents/httpmime/4.5.2/httpmime-4.5.2.jar:/Users/mac/.m2/repository/org/mongodb/mongodb-driver/3.12.0/mongodb-driver-3.12.0.jar:/Users/mac/.m2/repository/org/mongodb/mongodb-driver-core/3.12.0/mongodb-driver-core-3.12.0.jar:/Users/mac/.m2/repository/org/mongodb/bson/3.12.0/bson-3.12.0.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/mac"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-10-15"/>
+    <property name="java.home" value="/Users/mac/Library/Java/JavaVirtualMachines/temurin-17.0.13/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/target/surefire/surefirebooter-20250104165115999_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="17.0.13+11"/>
+    <property name="user.name" value="mac"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="12.7.4"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Temurin-17.0.13+11"/>
+    <property name="localRepository" value="/Users/mac/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/qh/0br_shq51mg8gjrzbmqrt1c00000gn/T/"/>
+    <property name="java.version" value="17.0.13"/>
+    <property name="user.dir" value="/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/mac/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="java.vm.version" value="17.0.13+11"/>
+    <property name="java.specification.maintenance.version" value="1"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="test01" classname="com.thoaikx.ios.Test01" time="0.008">
+    <system-out><![CDATA[22
+]]></system-out>
+    <system-err><![CDATA[SLF4J(W): No SLF4J providers were found.
+SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+]]></system-err>
+  </testcase>
+  <testcase name="setUp" classname="com.thoaikx.android.Test01" time="29.587">
+    <failure message="Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: &apos;Command &apos;/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell &apos;settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy&apos;&apos; exited with code 20&apos;; Command output: cmd: Can&apos;t find service: settings&#10;cmd: Can&apos;t find service: settings&#10;cmd: Can&apos;t find service: settings&#10; &#10;Host info: host: &apos;192.168.1.248.non-exists.ptr.local&apos;, ip: &apos;2402:800:6d3e:e88d:757a:3cd2:4a5a:e96d%en0&apos;&#10;Build info: version: &apos;4.27.0&apos;, revision: &apos;d6e718d134&apos;&#10;System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;12.7.4&apos;, java.version: &apos;17.0.13&apos;&#10;Driver info: io.appium.java_client.android.AndroidDriver&#10;Command: [null, newSession {capabilities=[Capabilities {appium:app: /Users/mac/Documents/Appium..., appium:appActivity: com.saucelabs.mydemoapp.and..., appium:appPackage: com.saucelabs.mydemoapp.and..., appium:automationName: UiAutomator2, appium:deviceName: emulator-5554, appium:platformVersion: 15, platformName: ANDROID}]}]&#10;Capabilities {appium:app: /Users/mac/Documents/Appium..., appium:appActivity: com.saucelabs.mydemoapp.and..., appium:appPackage: com.saucelabs.mydemoapp.and..., appium:automationName: UiAutomator2, appium:deviceName: emulator-5554, appium:platformVersion: 15, platformName: ANDROID}" type="org.openqa.selenium.SessionNotCreatedException"><![CDATA[org.openqa.selenium.SessionNotCreatedException: 
+Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: 'Command '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell 'settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy'' exited with code 20'; Command output: cmd: Can't find service: settings
+cmd: Can't find service: settings
+cmd: Can't find service: settings
+ 
+Host info: host: '192.168.1.248.non-exists.ptr.local', ip: '2402:800:6d3e:e88d:757a:3cd2:4a5a:e96d%en0'
+Build info: version: '4.27.0', revision: 'd6e718d134'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '12.7.4', java.version: '17.0.13'
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[Capabilities {appium:app: /Users/mac/Documents/Appium..., appium:appActivity: com.saucelabs.mydemoapp.and..., appium:appPackage: com.saucelabs.mydemoapp.and..., appium:automationName: UiAutomator2, appium:deviceName: emulator-5554, appium:platformVersion: 15, platformName: ANDROID}]}]
+Capabilities {appium:app: /Users/mac/Documents/Appium..., appium:appActivity: com.saucelabs.mydemoapp.and..., appium:appPackage: com.saucelabs.mydemoapp.and..., appium:automationName: UiAutomator2, appium:deviceName: emulator-5554, appium:platformVersion: 15, platformName: ANDROID}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:114)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:75)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:61)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:176)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:237)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:270)
+	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:174)
+	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:91)
+	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:103)
+	at io.appium.java_client.android.AndroidDriver.<init>(AndroidDriver.java:109)
+	at com.thoaikx.base.Base.setUp(Base.java:45)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+	at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:180)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:122)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:169)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:88)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]></failure>
+    <system-out><![CDATA[&amp#27;[38;5;112m[Appium]&amp#27;[0m Welcome to Appium v2.13.1
+&amp#27;[38;5;112m[Appium]&amp#27;[0m Non-default server args:
+&amp#27;[38;5;112m[Appium]&amp#27;[0m { address: &amp#27;[32m'127.0.0.1'&amp#27;[39m, basePath: &amp#27;[32m'/wd/hub/'&amp#27;[39m, port: &amp#27;[33m8888&amp#27;[39m }
+&amp#27;[38;5;112m[Appium]&amp#27;[0m The autodetected Appium home path: /Users/mac/.appium
+&amp#27;[38;5;112m[Appium]&amp#27;[0m Attempting to load driver xcuitest...
+&amp#27;[38;5;112m[Appium]&amp#27;[0m Attempting to load driver uiautomator2...
+&amp#27;[38;5;112m[Appium]&amp#27;[0m Requiring driver at /Users/mac/.appium/node_modules/appium-xcuitest-driver/build/index.js
+&amp#27;[38;5;112m[Appium]&amp#27;[0m Requiring driver at /Users/mac/.appium/node_modules/appium-uiautomator2-driver/build/index.js
+&amp#27;[38;5;112m[Appium]&amp#27;[0m XCUITestDriver has been successfully loaded in 9.806s
+&amp#27;[38;5;112m[Appium]&amp#27;[0m AndroidUiautomator2Driver has been successfully loaded in 9.808s
+&amp#27;[38;5;112m[Appium]&amp#27;[0m Appium REST http interface listener started on http://127.0.0.1:8888/wd/hub
+&amp#27;[38;5;112m[Appium]&amp#27;[0m Available drivers:
+&amp#27;[38;5;112m[Appium]&amp#27;[0m   - xcuitest@7.26.4 (automationName 'XCUITest')
+&amp#27;[38;5;112m[Appium]&amp#27;[0m   - uiautomator2@3.8.0 (automationName 'UiAutomator2')
+&amp#27;[38;5;112m[Appium]&amp#27;[0m No plugins have been installed. Use the "appium plugin" command to install the one(s) you want to use.
+&amp#27;[38;5;86m[HTTP]&amp#27;[0m &amp#27;[37m-->&amp#27;[39m &amp#27;[37mGET&amp#27;[39m &amp#27;[37m/wd/hub/status&amp#27;[39m &amp#27;[90m{}&amp#27;[39m
+&amp#27;[38;5;182m[AppiumDriver@af90]&amp#27;[0m Calling AppiumDriver.getStatus() with args: []
+&amp#27;[38;5;182m[AppiumDriver@af90]&amp#27;[0m Responding to client with driver.getStatus() result: {"ready":true,"message":"The server is ready to accept new connections","build":{"version":"2.13.1"}}
+&amp#27;[38;5;86m[HTTP]&amp#27;[0m &amp#27;[37m<-- GET /wd/hub/status &amp#27;[39m&amp#27;[32m200&amp#27;[39m &amp#27;[90m8 ms - 111&amp#27;[39m &amp#27;[90m&amp#27;[39m
+Appium server started on: http://127.0.0.1:8888/wd/hub/
+Capabilities {appium:app: /Users/mac/Documents/Appium..., appium:appActivity: com.saucelabs.mydemoapp.and..., appium:appPackage: com.saucelabs.mydemoapp.and..., appium:automationName: UiAutomator2, appium:deviceName: emulator-5554, appium:platformVersion: 15, platformName: ANDROID}
+&amp#27;[38;5;86m[HTTP]&amp#27;[0m Request idempotency key: 711e1e1c-17f6-4002-9e3b-3e04ce6bf016
+&amp#27;[38;5;86m[HTTP]&amp#27;[0m &amp#27;[37m-->&amp#27;[39m &amp#27;[37mPOST&amp#27;[39m &amp#27;[37m/wd/hub/session&amp#27;[39m &amp#27;[90m{"capabilities":{"firstMatch":[{"appium:appActivity":"com.saucelabs.mydemoapp.android.view.activities.SplashActivity","appium:deviceName":"emulator-5554","platformName":"ANDROID","appium:automationName":"UiAutomator2","appium:app":"/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/src/test/resources/androidapp/app-android.apk","appium:platformVersion":"15","appium:appPackage":"com.saucelabs.mydemoapp.android"}]}}&amp#27;[39m
+&amp#27;[38;5;182m[AppiumDriver@af90]&amp#27;[0m Calling AppiumDriver.createSession() with args: [null,null,{"firstMatch":[{"appium:appActivity":"com.saucelabs.mydemoapp.android.view.activities.SplashActivity","appium:deviceName":"emulator-5554","platformName":"ANDROID","appium:automationName":"UiAutomator2","appium:app":"/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/src/test/resources/androidapp/app-android.apk","appium:platformVersion":"15","appium:appPackage":"com.saucelabs.mydemoapp.android"}]}]
+&amp#27;[38;5;182m[AppiumDriver@af90]&amp#27;[0m Event 'newSessionRequested' logged at 1735984303353 (16:51:43 GMT+0700 (Indochina Time))
+&amp#27;[38;5;112m[Appium]&amp#27;[0m Attempting to find matching driver for automationName 'UiAutomator2' and platformName 'ANDROID'
+&amp#27;[38;5;112m[Appium]&amp#27;[0m The 'uiautomator2' driver was installed and matched caps.
+&amp#27;[38;5;112m[Appium]&amp#27;[0m Will require it at /Users/mac/.appium/node_modules/appium-uiautomator2-driver
+&amp#27;[38;5;112m[Appium]&amp#27;[0m Requiring driver at /Users/mac/.appium/node_modules/appium-uiautomator2-driver/build/index.js
+&amp#27;[38;5;182m[AppiumDriver@af90]&amp#27;[0m Appium v2.13.1 creating new AndroidUiautomator2Driver (v3.8.0) session
+&amp#27;[38;5;182m[AppiumDriver@af90]&amp#27;[0m Checking BaseDriver versions for Appium and AndroidUiautomator2Driver
+&amp#27;[38;5;182m[AppiumDriver@af90]&amp#27;[0m Appium's BaseDriver version is 9.13.1
+&amp#27;[38;5;182m[AppiumDriver@af90]&amp#27;[0m AndroidUiautomator2Driver's BaseDriver version is 9.13.1
+&amp#27;[38;5;-170m[AndroidUiautomator2Driver@5ae0]&amp#27;[0m 
+&amp#27;[38;5;-170m[AndroidUiautomator2Driver@5ae0]&amp#27;[0m Creating session with W3C capabilities: {
+  "alwaysMatch": {
+    "platformName": "ANDROID",
+    "appium:appActivity": "com.saucelabs.mydemoapp.android.view.activities.SplashActivity",
+    "appium:deviceName": "emulator-5554",
+    "appium:automationName": "UiAutomator2",
+    "appium:app": "/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/src/test/resources/androidapp/app-android.apk",
+    "appium:platformVersion": "15",
+    "appium:appPackage": "com.saucelabs.mydemoapp.android"
+  },
+  "firstMatch": [
+    {}
+  ]
+}
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;-170m[AndroidUiautomator2Driver@5ae0]&amp#27;[0m Session created with session id: be13a9ec-6cc3-4963-9926-8f3eb41c831e
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Found 3 'build-tools' folders under '/Users/mac/Library/Android/sdk' (newest first):
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m     /Users/mac/Library/Android/sdk/build-tools/36.0.0-rc3
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m     /Users/mac/Library/Android/sdk/build-tools/35.0.0
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m     /Users/mac/Library/Android/sdk/build-tools/30.0.2
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Using 'adb' from '/Users/mac/Library/Android/sdk/platform-tools/adb'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 start-server'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;-170m[AndroidUiautomator2Driver@5ae0]&amp#27;[0m Retrieving device list
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Trying to find connected Android devices
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Getting connected devices
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Connected devices: [{"udid":"emulator-5554","state":"device"}]
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;-170m[AndroidUiautomator2Driver@5ae0]&amp#27;[0m Looking for a device with Android '15.0.0'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Setting device id to emulator-5554
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Getting device platform version
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell getprop ro.build.version.release'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Current device property 'ro.build.version.release': 15
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;-170m[AndroidUiautomator2Driver@5ae0]&amp#27;[0m Using device: emulator-5554
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Using 'adb' from '/Users/mac/Library/Android/sdk/platform-tools/adb'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 start-server'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Setting device id to emulator-5554
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;123m[BaseDriver]&amp#27;[0m Using local app '/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/src/test/resources/androidapp/app-android.apk'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;-170m[AndroidUiautomator2Driver@5ae0]&amp#27;[0m Checking whether app is actually present
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell getprop ro.build.version.sdk'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Current device property 'ro.build.version.sdk': 35
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Getting device platform version
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell getprop ro.build.version.release'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Current device property 'ro.build.version.release': 15
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Device API level: 35
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;-170m[AndroidUiautomator2Driver@5ae0]&amp#27;[0m Relaxing hidden api policy
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell 'settings put global hidden_api_policy_pre_p_apps 1;settings put global hidden_api_policy_p_apps 1;settings put global hidden_api_policy 1''
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 wait-for-device'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell echo ping'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;-170m[AndroidUiautomator2Driver@5ae0]&amp#27;[0m Pushing settings apk to the device...
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Getting package info for 'io.appium.settings'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell dumpsys package io.appium.settings'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m App '/Users/mac/.appium/node_modules/appium-uiautomator2-driver/node_modules/io.appium.settings/apks/settings_apk-debug.apk' is not installed
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Installing '/Users/mac/.appium/node_modules/appium-uiautomator2-driver/node_modules/io.appium.settings/apks/settings_apk-debug.apk'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 help'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 features'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m The application at '/Users/mac/.appium/node_modules/appium-uiautomator2-driver/node_modules/io.appium.settings/apks/settings_apk-debug.apk' will not be cached, because the device under test has confirmed the support of streamed installs
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 install -g /Users/mac/.appium/node_modules/appium-uiautomator2-driver/node_modules/io.appium.settings/apks/settings_apk-debug.apk'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;-170m[AndroidUiautomator2Driver@5ae0]&amp#27;[0m [
+  `Hidden API policy (https://developer.android.com/guide/app-compatibility/restrictions-non-sdk-interfaces) cannot be enabled. This might be happening because the device under test is not configured properly. Please check https://github.com/appium/appium/issues/13802 for more details. You could also set the "appium:ignoreHiddenApiPolicyError" capability to true in order to ignore this error, which might later lead to unexpected crashes or behavior of the automation server. Original error: Error executing adbExec. Original error: 'Command '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell 'settings put global hidden_api_policy_pre_p_apps 1;settings put global hidden_api_policy_p_apps 1;settings put global hidden_api_policy 1'' exited with code 20'; Command output: cmd: Can't find service: settings\n` +
+    "cmd: Can't find service: settings\n" +
+    "cmd: Can't find service: settings\n"
+]
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;-170m[AndroidUiautomator2Driver@5ae0]&amp#27;[0m Deleting UiAutomator2 session
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell dumpsys activity services io.appium.settings/.recorder.RecorderService'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell am force-stop com.saucelabs.mydemoapp.android'
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;-170m[AndroidUiautomator2Driver@5ae0]&amp#27;[0m Unable to force stop app: Error executing adbExec. Original error: 'Command '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell am force-stop com.saucelabs.mydemoapp.android' exited with code 20'; Command output: cmd: Can't find service: activity
+
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;-170m[AndroidUiautomator2Driver@5ae0]&amp#27;[0m Restoring hidden api policy to the device default configuration
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;229m[ADB]&amp#27;[0m Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell 'settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy''
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;182m[AppiumDriver@af90]&amp#27;[0m Event 'newSessionStarted' logged at 1735984310755 (16:51:50 GMT+0700 (Indochina Time))
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;182m[AppiumDriver@af90]&amp#27;[0m Encountered internal error running command: Error executing adbExec. Original error: 'Command '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell 'settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy'' exited with code 20'; Command output: cmd: Can't find service: settings
+cmd: Can't find service: settings
+cmd: Can't find service: settings
+
+Error: Command '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell 'settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy'' exited with code 20
+    at ChildProcess.<anonymous> (/Users/mac/.appium/node_modules/appium-uiautomator2-driver/node_modules/teen_process/lib/exec.js:110:19)
+    at ChildProcess.emit (node:events:519:28)
+    at maybeClose (node:internal/child_process:1105:16)
+    at Socket.<anonymous> (node:internal/child_process:457:11)
+    at Socket.emit (node:events:519:28)
+    at Pipe.<anonymous> (node:net:339:12)
+    at Pipe.callbackTrampoline (node:internal/async_hooks:130:17)
+&amp#27;[38;5;105m[be13a9ec]&amp#27;[0m&amp#27;[38;5;86m[HTTP]&amp#27;[0m &amp#27;[37m<-- POST /wd/hub/session &amp#27;[39m&amp#27;[31m500&amp#27;[39m &amp#27;[90m7421 ms - 1338&amp#27;[39m &amp#27;[90m&amp#27;[39m
+]]></system-out>
+  </testcase>
+  <testcase name="closeReviewDialog" classname="com.thoaikx.android.Test01" time="0.0">
+    <skipped message="Could not start a new session. Response code 500. Message: An unknown server-side error occurred while processing the command. Original error: Error executing adbExec. Original error: &apos;Command &apos;/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5554 shell &apos;settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy&apos;&apos; exited with code 20&apos;; Command output: cmd: Can&apos;t find service: settings&#10;cmd: Can&apos;t find service: settings&#10;cmd: Can&apos;t find service: settings&#10; &#10;Host info: host: &apos;192.168.1.248.non-exists.ptr.local&apos;, ip: &apos;2402:800:6d3e:e88d:757a:3cd2:4a5a:e96d%en0&apos;&#10;Build info: version: &apos;4.27.0&apos;, revision: &apos;d6e718d134&apos;&#10;System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;12.7.4&apos;, java.version: &apos;17.0.13&apos;&#10;Driver info: io.appium.java_client.android.AndroidDriver&#10;Command: [null, newSession {capabilities=[Capabilities {appium:app: /Users/mac/Documents/Appium..., appium:appActivity: com.saucelabs.mydemoapp.and..., appium:appPackage: com.saucelabs.mydemoapp.and..., appium:automationName: UiAutomator2, appium:deviceName: emulator-5554, appium:platformVersion: 15, platformName: ANDROID}]}]&#10;Capabilities {appium:app: /Users/mac/Documents/Appium..., appium:appActivity: com.saucelabs.mydemoapp.and..., appium:appPackage: com.saucelabs.mydemoapp.and..., appium:automationName: UiAutomator2, appium:deviceName: emulator-5554, appium:platformVersion: 15, platformName: ANDROID}"/>
+  </testcase>
+  <testcase name="tearDown" classname="com.thoaikx.android.Test01" time="0.0">
+    <skipped/>
+  </testcase>
+</testsuite>
