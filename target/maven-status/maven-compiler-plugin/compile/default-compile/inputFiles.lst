@@ -1,4 +1,4 @@
-/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/src/main/java/com/thoaikx/AppiumServerManager.java
-/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/src/main/java/com/thoaikx/main.java
-/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/src/main/java/com/thoaikx/utils/AppiumUtils.java
-/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/src/main/java/com/thoaikx/utils/CapabilitiesLoader.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/thoaikx/utils/AppiumServerManager.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/thoaikx/utils/CapabilitiesLoader.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/thoaikx/utils/Element.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/thoaikx/utils/IOSUtils.java

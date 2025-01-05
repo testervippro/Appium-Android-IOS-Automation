@@ -19,10 +19,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 
 import com.google.common.collect.ImmutableMap;
 import com.thoaikx.utils.AppiumServerManager;
@@ -38,28 +35,28 @@ public class BaseMobileIOS {
     protected AppiumDriver driver;
 
 
-    @BeforeClass
+    @BeforeMethod
     public void setUpIOS() throws Exception {
 
-        AppiumServerManager.startServer();
+       // AppiumServerManager.startServer();
 
         // Load capabilities from JSON file
         XCUITestOptions caps =  CapabilitiesLoader.loadCapabilitiesIOSFromJson("/ios.json");
 
         // Initialize the Appium driver
-        driver = new IOSDriver(new URL("http://127.0.0.1:8888/wd/hub"), caps);
+        driver = new IOSDriver(new URL("http://127.0.0.1:4726"), caps);
              // Initialize WebDriverWait with a default timeout of 60 seconds
         wait = new WebDriverWait(driver, Duration.ofSeconds(60));
     }
 
 
-    @AfterClass
+    @AfterMethod
     public void tearDown() {
         if (driver != null) {
             driver.quit();
         }
 
-        AppiumServerManager.stopServer();
+       // AppiumServerManager.stopServer();
     }
 
        // Reusable method to wait for an element to be visible

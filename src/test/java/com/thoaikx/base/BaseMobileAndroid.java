@@ -29,30 +29,30 @@ public class BaseMobileAndroid {
 
     protected AppiumDriver driver;
 
-    @BeforeClass
+    @BeforeMethod
     public void setUpAndroid() throws Exception {
 
-        AppiumServerManager.startServer();
+        //AppiumServerManager.startServer();
 
         // Load capabilities from JSON file
         UiAutomator2Options caps = CapabilitiesLoader.loadCapabilitiesAndroidFromJson("/android.json");
         System.out.println(caps);
 
         // Initialize the Appium driver
-        driver = new AndroidDriver(new URL("http://127.0.0.1:8888/wd/hub"), caps);
+        driver = new AndroidDriver(new URL("http://127.0.0.1:4724"), caps);
              // Initialize WebDriverWait with a default timeout of 60 seconds
         wait = new WebDriverWait(driver, Duration.ofSeconds(60));
     }
 
 
 
-    @AfterClass
+    @AfterMethod
     public void tearDown() {
         if (driver != null) {
             driver.quit();
         }
 
-        AppiumServerManager.stopServer();
+        //AppiumServerManager.stopServer();
     }
 
        // Reusable method to wait for an element to be visible

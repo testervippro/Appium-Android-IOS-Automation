@@ -1,3 +1,4 @@
-/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/src/test/java/com/thoaikx/android/Test01.java
-/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/src/test/java/com/thoaikx/base/Base.java
-/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/src/test/java/com/thoaikx/ios/Test01.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/test/java/com/thoaikx/android/LoginTest.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/test/java/com/thoaikx/base/BaseMobileAndroid.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/test/java/com/thoaikx/base/BaseMobileIOS.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/test/java/com/thoaikx/ios/LoginTest.java

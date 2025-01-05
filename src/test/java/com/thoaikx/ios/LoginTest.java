@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -62,11 +63,6 @@ public class LoginTest extends BaseMobileIOS {
         // name
         driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Rebecca Winter\"]")).sendKeys("test01");
 
-        // address 1
-        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Mandorley 112\"]")).sendKeys("test01");
-
-        // address 2
-        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Entrance 1\"]")).sendKeys("test");
 
 
         // up,down,left,right
@@ -78,18 +74,45 @@ public class LoginTest extends BaseMobileIOS {
 
         // state
         driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Cornwall\"]")).sendKeys("State");
-        Thread.sleep(1000);
+       // Thread.sleep(1000);
 
         // zipcode
         driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"89750\"]")).sendKeys("123");
+        //Thread.sleep(2000);
 
         // country
-        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"United Kingdom\"]")).sendKeys("HN\n");
+        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"United Kingdom\"]")).sendKeys("HN");
 
+        // address 1
+        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Mandorley 112\"]")).sendKeys("test01");
+
+        // address 2
+        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Entrance 1\"]")).sendKeys("test");
+
+        //word around hiden key
+        // address 2
+        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"test01\"]")).click();
+
+        // Get the screen size
+        Dimension screenSize = driver.manage().window().getSize();
+        int screenWidth = screenSize.getWidth();
+        int screenHeight = screenSize.getHeight();
+
+// Calculate the center coordinates
+        int centerX = screenWidth / 2;
+        int centerY = screenHeight / 2;
+
+// Define the tap parameters for the middle of the screen
+        Map<String, Object> tapParams = new HashMap<>();
+        tapParams.put("x", centerX);
+        tapParams.put("y", centerY);
+
+// Execute the tap action at the center of the screen
+        driver.executeScript("mobile: tap", tapParams);
         // process
-        params1.put("direction", "up");
-        // params1.put("element", ((RemoteWebElement)ele).getId());
-        driver.executeScript("mobile:swipe", params1);
+//        params1.put("direction", "up");
+//        // params1.put("element", ((RemoteWebElement)ele).getId());
+//        driver.executeScript("mobile:swipe", params1);
 
         driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"To Payment\"]")).click();
         Thread.sleep(30000);
