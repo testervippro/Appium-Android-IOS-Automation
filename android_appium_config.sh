@@ -3,11 +3,14 @@
 # Define the APK path
 APK_PATH="/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/src/test/resources/androidapp/app-android.apk"
 
-# Define the full path to aapt
+# Define the full path to aapt 
 AAPT_PATH="/Users/mac/Library/Android/sdk/build-tools/35.0.0/aapt"
 
 # Initialize JSON output
 JSON_OUTPUT="{"
+
+# Add platformName (always "Android" for Android devices)
+JSON_OUTPUT+="\"platformName\": \"Android\", "
 
 # Verify platformVersion
 PLATFORM_VERSION=$(adb shell getprop ro.build.version.release)

@@ -20,11 +20,10 @@ chmod +x ios_appium_config.sh && ./ios_appium_config.sh
 First, navigate to the directory where `WebDriverAgent` is located:
 
 ```bash
-cd /Users/mac/.appium/node_modules/appium-xcuitest-driver/node_modules/appium-webdriveragent
-```
+cd /path/to/mac@192/appium-webdriveragent
 
 ```bash
-xcodebuild clean build-for-testing test-without-building -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination 'id=1C2AD9B1-C90B-448A-AD73-5B39FE753230' -allowProvisioningUpdates
+xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner test -allowProvisioningUpdates
 ```
 
 ## Simulator  IOS
