@@ -40,6 +40,11 @@ xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner clean 
 
 ### List Devices
 
+kill port 
+lsof -i :8888 | awk 'NR>1 {print $2}' | xargs kill -9
+lsof -i :9999 | awk 'NR>1 {print $2}' | xargs kill -9
+
+
 To list all available devices:
 
 ```bash
