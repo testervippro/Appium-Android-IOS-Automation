@@ -25,7 +25,7 @@ cd /path/to/mac@192/appium-webdriveragent
 
 ```bash
 xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner clean && xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination "id=1234567890abcdef1234567890abcdef12345678" test -allowProvisioningUpdates
-```bash
+```
 
 ## Simulator  IOS
 
