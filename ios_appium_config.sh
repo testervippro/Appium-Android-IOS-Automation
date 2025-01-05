@@ -2,7 +2,7 @@
 
 # Automatically retrieve values for desired capabilities
 # Set the app path dynamically
-app="/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/src/test/resources/iosapp/My Demo App.app"
+app="/Users/mac/Documents/Appium-Android-IOS-Automation/src/test/resources/iosapp/My Demo App.app"
 
 
 # Get the device name (for simulators)

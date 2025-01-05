@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the APK path
-APK_PATH="/Users/mac/Documents/Appium-Android-IOS-Automation/appium-automation/src/test/resources/androidapp/app-android.apk"
+APK_PATH="/Users/mac/Documents/Appium-Android-IOS-Automation/src/test/resources/androidapp/app-android.apk"
 
 # Define the full path to aapt 
 AAPT_PATH="/Users/mac/Library/Android/sdk/build-tools/35.0.0/aapt"

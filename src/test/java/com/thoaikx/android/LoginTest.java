@@ -31,6 +31,8 @@ public class LoginTest  extends BaseMobileAndroid{
         //click  login 
         var btnLogin = By.xpath("//android.widget.Button[@content-desc=\"Tap to login with given credentials\"]");
         waitForElementClickable(btnLogin).click();
+
+        
     }
 
 }
