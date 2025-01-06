@@ -19,9 +19,7 @@ public class CapabilitiesLoader {
 
     // Convert the Map to UiAutomator2Options
     UiAutomator2Options optionsAndroid = new UiAutomator2Options();
-    
-    //IOS 
-    XCUITestOptions	 optionsIOS = new XCUITestOptions();	
+    	
     
     capabilitiesMap.forEach(optionsAndroid::setCapability);
 
