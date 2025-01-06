@@ -1,5 +1,6 @@
 package com.thoaikx.base;
 
+import com.thoaikx.utils.ExplicitWait;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -20,10 +21,13 @@ import org.testng.annotations.BeforeMethod;
 import com.thoaikx.utils.AppiumServerManager;
 import com.thoaikx.utils.CapabilitiesLoader;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.Duration;
 
-public class BaseMobileAndroid {
+import static com.thoaikx.config.ConfigurationManager.configuration;
+
+public class BaseMobileAndroid implements ExplicitWait {
 
     protected WebDriverWait wait;
 
@@ -32,14 +36,19 @@ public class BaseMobileAndroid {
     @BeforeMethod
     public void setUpAndroid() throws Exception {
 
-        //AppiumServerManager.startServer();
-
+        if(configuration().target().equals("android-ios")) {
+            AppiumServerManager.startAppiumServer(configuration().portAndroid());
+            Thread.sleep(50000);
+        }
+        else  {
+            AppiumServerManager.startServer();
+        }
         // Load capabilities from JSON file
         UiAutomator2Options caps = CapabilitiesLoader.loadCapabilitiesAndroidFromJson("/android.json");
         System.out.println(caps);
 
         // Initialize the Appium driver
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4724"), caps);
+        driver = new AndroidDriver(new URL("http://127.0.0.1:"+configuration().portAndroid()), caps);
              // Initialize WebDriverWait with a default timeout of 60 seconds
         wait = new WebDriverWait(driver, Duration.ofSeconds(60));
     }
@@ -47,31 +56,20 @@ public class BaseMobileAndroid {
 
 
     @AfterMethod
-    public void tearDown() {
+    public void tearDown() throws IOException, InterruptedException {
         if (driver != null) {
             driver.quit();
         }
 
-        //AppiumServerManager.stopServer();
+
+        if(configuration().target().equals("android-ios")) {
+            AppiumServerManager.killAppiumServer(configuration().portAndroid());
+           // Thread.sleep(50000);
+        }
+        else  {
+            AppiumServerManager.stopServer();
+        }
     }
 
-       // Reusable method to wait for an element to be visible
-    public WebElement waitForElementVisible(By menuIconLocator) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(menuIconLocator));
-    }
-
-    // Reusable method to wait for an element to be clickable
-    public WebElement waitForElementClickable(By locator) {
-        return wait.until(ExpectedConditions.elementToBeClickable(locator));
-    }
-
-    public void waitForTextToBePresentInElement(By locator, String text) {
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(locator, text));
-    }
-
-    // Reusable method to wait for an element to be invisible
-    public void waitForInvisibilityOfElementLocated(By locator) {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
-    }
     }
     

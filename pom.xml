@@ -11,6 +11,7 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <owner.version>1.0.12</owner.version>
     </properties>
 
     <dependencies>
@@ -45,6 +46,11 @@
         </dependency>
 
         <!-- Jackson Databind -->
+        <dependency>
+            <groupId>org.aeonbits.owner</groupId>
+            <artifactId>owner</artifactId>
+            <version>${owner.version}</version>
+        </dependency>
        
     </dependencies>
 </project>

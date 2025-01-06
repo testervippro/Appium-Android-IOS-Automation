@@ -1,5 +1,6 @@
 package com.thoaikx.base;
 
+import com.thoaikx.config.ConfigurationManager;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.PerformsTouchActions;
@@ -25,8 +26,11 @@ import com.google.common.collect.ImmutableMap;
 import com.thoaikx.utils.AppiumServerManager;
 import com.thoaikx.utils.CapabilitiesLoader;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.Duration;
+
+import static com.thoaikx.config.ConfigurationManager.configuration;
 
 public class BaseMobileIOS {
 
@@ -38,70 +42,39 @@ public class BaseMobileIOS {
     @BeforeMethod
     public void setUpIOS() throws Exception {
 
-       // AppiumServerManager.startServer();
+
+        if(configuration().target().equals("android-ios")) {
+            AppiumServerManager.startAppiumServer(configuration().portIOS());
+            Thread.sleep(50000);
+        }
+        else  {
+            AppiumServerManager.startServer();
+        }
 
         // Load capabilities from JSON file
         XCUITestOptions caps =  CapabilitiesLoader.loadCapabilitiesIOSFromJson("/ios.json");
 
         // Initialize the Appium driver
-        driver = new IOSDriver(new URL("http://127.0.0.1:4726"), caps);
+        driver = new IOSDriver(new URL("http://127.0.0.1:1111/wd/hub/"), caps);
              // Initialize WebDriverWait with a default timeout of 60 seconds
         wait = new WebDriverWait(driver, Duration.ofSeconds(60));
     }
 
 
     @AfterMethod
-    public void tearDown() {
+    public void tearDown() throws IOException, InterruptedException {
         if (driver != null) {
             driver.quit();
         }
 
-       // AppiumServerManager.stopServer();
+        if(configuration().target().equals("android-ios")) {
+            AppiumServerManager.killAppiumServer(configuration().portIOS());
+            //Thread.sleep(50000);
+        }
+        else  {
+            AppiumServerManager.stopServer();
+        }
     }
 
-       // Reusable method to wait for an element to be visible
-    public WebElement waitForElementVisible(By menuIconLocator) {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(menuIconLocator));
-    }
-
-    // Reusable method to wait for an element to be clickable
-    public WebElement waitForElementClickable(By locator) {
-        return wait.until(ExpectedConditions.elementToBeClickable(locator));
-    }
-
-    public void waitForTextToBePresentInElement(By locator, String text) {
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(locator, text));
-    }
-
-    // Reusable method to wait for an element to be invisible
-    public void waitForInvisibilityOfElementLocated(By locator) {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
-    }
-
-
-
-    	@SuppressWarnings("deprecation")
-        public static void SwipeScreen(WebElement el, IOSDriver driver) throws InterruptedException {
-		WebElement Panel = el;
-		Dimension dimension = Panel.getSize();
-		
-		int Anchor = Panel.getSize().getHeight()/2; 
-		
-		Double ScreenWidthStart = dimension.getWidth() * 0.8;
-		int scrollStart = ScreenWidthStart.intValue();
-		
-		Double ScreenWidthEnd = dimension.getWidth() * 0.2;
-		int scrollEnd = ScreenWidthEnd.intValue();
-		
-		new TouchAction((PerformsTouchActions) driver)
-		.press(PointOption.point(scrollStart, Anchor))
-		.waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
-		.moveTo(PointOption.point(scrollEnd, Anchor))
-		.release().perform();
-		
-		Thread.sleep(3000);
 	}
 
-    
-    }
-    

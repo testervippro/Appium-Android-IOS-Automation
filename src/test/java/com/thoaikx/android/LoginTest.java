@@ -1,6 +1,7 @@
 package com.thoaikx.android;
 
 
+import com.thoaikx.utils.ExplicitWait;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -104,11 +105,11 @@ public class LoginTest  extends BaseMobileAndroid{
     public   void placeOrder() throws InterruptedException {
 
         var menuIV = By.id("com.saucelabs.mydemoapp.android:id/menuIV");
-        waitForElementVisible( menuIV).click();;
+        ExplicitWait.waitForElementVisible(wait,menuIV).click();;
 
         //login left menu
         var loginLeftMenu = By.xpath("//android.widget.TextView[@content-desc=\"Login Menu Item\"]");
-        waitForElementVisible(loginLeftMenu).click();
+        ExplicitWait.waitForElementVisible(wait,loginLeftMenu).click();
 
         //input name, pass word
         Thread.sleep(1000);
@@ -117,7 +118,7 @@ public class LoginTest  extends BaseMobileAndroid{
 
         //click  login
         var btnLogin = By.xpath("//android.widget.Button[@content-desc=\"Tap to login with given credentials\"]");
-        waitForElementClickable(btnLogin).click();
+        ExplicitWait.waitForElementClickable(wait,btnLogin).click();
 
         Thread.sleep(2000);
         //Click product 1

@@ -1,4 +1,6 @@
 com/thoaikx/android/LoginTest.class
 com/thoaikx/ios/LoginTest.class
+com/thoaikx/config/Configuration.class
 com/thoaikx/base/BaseMobileIOS.class
+com/thoaikx/config/ConfigurationManager.class
 com/thoaikx/base/BaseMobileAndroid.class

@@ -1,19 +1,10 @@
-2025-01-05 16:23:03:658 [Appium] Welcome to Appium v2.13.1
-2025-01-05 16:23:03:662 [Appium] Non-default server args:
-2025-01-05 16:23:03:664 [Appium] { address: '127.0.0.1', basePath: '/wd/hub/', port: 8888 }
-2025-01-05 16:23:03:664 [Appium] The autodetected Appium home path: /Users/mac/.appium
-2025-01-05 16:23:03:665 [Appium] Attempting to load driver xcuitest...
-2025-01-05 16:23:03:666 [Appium] Attempting to load driver uiautomator2...
-2025-01-05 16:23:03:668 [Appium] Requiring driver at /Users/mac/.appium/node_modules/appium-xcuitest-driver/build/index.js
-2025-01-05 16:23:03:674 [Appium] Requiring driver at /Users/mac/.appium/node_modules/appium-uiautomator2-driver/build/index.js
-2025-01-05 16:23:04:861 [Appium] XCUITestDriver has been successfully loaded in 1.196s
-2025-01-05 16:23:04:862 [Appium] AndroidUiautomator2Driver has been successfully loaded in 1.196s
-2025-01-05 16:23:04:890 [Appium] Appium REST http interface listener started on http://127.0.0.1:8888/wd/hub
-2025-01-05 16:23:04:890 [Appium] Available drivers:
-2025-01-05 16:23:04:891 [Appium]   - xcuitest@7.26.4 (automationName 'XCUITest')
-2025-01-05 16:23:04:891 [Appium]   - uiautomator2@3.8.0 (automationName 'UiAutomator2')
-2025-01-05 16:23:04:891 [Appium] No plugins have been installed. Use the "appium plugin" command to install the one(s) you want to use.
-2025-01-05 16:23:04:977 [HTTP] --> GET /wd/hub/status {}
-2025-01-05 16:23:04:978 [AppiumDriver@514a] Calling AppiumDriver.getStatus() with args: []
-2025-01-05 16:23:04:980 [AppiumDriver@514a] Responding to client with driver.getStatus() result: {"ready":true,"message":"The server is ready to accept new connections","build":{"version":"2.13.1"}}
-2025-01-05 16:23:04:985 [HTTP] <-- GET /wd/hub/status 200 6 ms - 111 
+2025-01-06 16:22:18:913 [Appium] Welcome to Appium v2.13.1
+2025-01-06 16:22:18:922 [Appium] Non-default server args:
+2025-01-06 16:22:18:956 [Appium] { address: '127.0.0.1', basePath: '/wd/hub/', port: 1111 }
+2025-01-06 16:22:18:956 [Appium] The autodetected Appium home path: /Users/mac/.appium
+2025-01-06 16:22:18:958 [Appium] Attempting to load driver xcuitest...
+2025-01-06 16:22:18:971 [Appium] Attempting to load driver uiautomator2...
+2025-01-06 16:22:18:981 [Appium] Requiring driver at /Users/mac/.appium/node_modules/appium-xcuitest-driver/build/index.js
+2025-01-06 16:22:19:009 [Appium] Requiring driver at /Users/mac/.appium/node_modules/appium-uiautomator2-driver/build/index.js
+2025-01-06 16:22:28:858 [Appium] XCUITestDriver has been successfully loaded in 9.898s
+2025-01-06 16:22:28:859 [Appium] AndroidUiautomator2Driver has been successfully loaded in 9.885s

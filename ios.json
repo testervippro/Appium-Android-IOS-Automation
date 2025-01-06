@@ -1,8 +1,8 @@
 {
-    "deviceName": "iPhone 13 mini",
-    "udid": "1C2AD9B1-C90B-448A-AD73-5B39FE753230",
+    "deviceName": "iPhone 13 Pro Max",
+    "udid": "38AEB073-1BAF-4158-A7DE-43F5F1132595",
     "platformName": "iOS",
-    "platformVersion": "1C2AD9B1-C90B-448A-AD73-5B39FE753230",
+    "platformVersion": "38AEB073-1BAF-4158-A7DE-43F5F1132595",
     "app": "/Users/mac/Documents/Appium-Android-IOS-Automation/src/test/resources/iosapp/My Demo App.app",
     "automationName": "XCUITest",
     "appium:showXcodeLog": true

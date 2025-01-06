@@ -3,6 +3,7 @@ package com.thoaikx.ios;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.common.collect.ImmutableMap;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.testng.Assert;
@@ -14,6 +15,9 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.offset.PointOption;
 
+import static com.thoaikx.utils.ExplicitWait.waitForElementClickable;
+import static com.thoaikx.utils.ExplicitWait.waitForElementVisible;
+
 //sample  basic flow auto mobileIos 
 public class LoginTest extends BaseMobileIOS {
 
@@ -24,12 +28,12 @@ public class LoginTest extends BaseMobileIOS {
         params1.put("direction", "up");
 
         var menuIV = By.xpath("//XCUIElementTypeButton[@name=\"More-tab-item\"]");
-        waitForElementVisible(menuIV).click();
+        waitForElementVisible(wait,menuIV).click();
         ;
 
         // login menu
         var loginLeftMenu = By.xpath("//XCUIElementTypeOther[@name=\"Login Button\"]");
-        waitForElementVisible(loginLeftMenu).click();
+        waitForElementVisible(wait,loginLeftMenu).click();
 
         // input name, pass word
         // not hiden keyword
@@ -43,11 +47,11 @@ public class LoginTest extends BaseMobileIOS {
 
         // click login
         var btnLogin = By.xpath("(//XCUIElementTypeStaticText[@name=\"Login\"])[2]");
-        waitForElementVisible(btnLogin).click();
+        waitForElementVisible(wait,btnLogin).click();
 
         // add one product to card
         var product1 = By.xpath("(//XCUIElementTypeImage[@name=\"Product Image\"])[1]");
-        waitForElementClickable(product1).click();
+        waitForElementClickable(wait,product1).click();
 
         // click add to card
         Thread.sleep(2000);
@@ -63,52 +67,41 @@ public class LoginTest extends BaseMobileIOS {
         // name
         driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Rebecca Winter\"]")).sendKeys("test01");
 
-
-
-        // up,down,left,right
-        // params1.put("element", ((RemoteWebElement)ele).getId());
-        driver.executeScript("mobile:swipe", params1);
-
-        // city
-        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Truro\"]")).sendKeys("city");
-
-        // state
-        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Cornwall\"]")).sendKeys("State");
-       // Thread.sleep(1000);
-
-        // zipcode
-        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"89750\"]")).sendKeys("123");
-        //Thread.sleep(2000);
-
-        // country
-        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"United Kingdom\"]")).sendKeys("HN");
-
         // address 1
         driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Mandorley 112\"]")).sendKeys("test01");
 
         // address 2
         driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Entrance 1\"]")).sendKeys("test");
 
+
+
+        // city
+        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Truro\"]")).sendKeys("city");
+
+        // state
+        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Cornwall\"]")).sendKeys("State");
+       Thread.sleep(2000);
+
+
+        // zipcode
+        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"89750\"]")).sendKeys("123");
+        Thread.sleep(2000);
+
+        driver.executeScript("mobile:swipe", params1);
+
+        // country
+        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"United Kingdom\"]")).sendKeys("HN"+"\n");
+        Thread.sleep(2000);
+
+        //up,down,left,right
+        ///params1.put("element", ((RemoteWebElement)ele).getId());
+
+
         //word around hiden key
         // address 2
-        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"test01\"]")).click();
+       driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"test01\"]")).click();
 
-        // Get the screen size
-        Dimension screenSize = driver.manage().window().getSize();
-        int screenWidth = screenSize.getWidth();
-        int screenHeight = screenSize.getHeight();
 
-// Calculate the center coordinates
-        int centerX = screenWidth / 2;
-        int centerY = screenHeight / 2;
-
-// Define the tap parameters for the middle of the screen
-        Map<String, Object> tapParams = new HashMap<>();
-        tapParams.put("x", centerX);
-        tapParams.put("y", centerY);
-
-// Execute the tap action at the center of the screen
-        driver.executeScript("mobile: tap", tapParams);
         // process
 //        params1.put("direction", "up");
 //        // params1.put("element", ((RemoteWebElement)ele).getId());
