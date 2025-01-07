@@ -53,7 +53,7 @@ Steps to Run WebDriverAgent and Fix Appium Inspector Errors WebDriverAgent
 First, navigate to the directory where `WebDriverAgent` is located:
 
 ```bash
-cd /path/to/mac@192/appium-webdriveragent
+cd /Users/mac/.appium/node_modules/appium-xcuitest-driver/node_modules/appium-webdriveragent
 ```
 
 ```bash
