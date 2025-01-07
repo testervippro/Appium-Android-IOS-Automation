@@ -57,7 +57,8 @@ cd /Users/mac/.appium/node_modules/appium-xcuitest-driver/node_modules/appium-we
 ```
 
 ```bash
-xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner clean && xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination "id=1234567890abcdef1234567890abcdef12345678" test -allowProvisioningUpdates
+xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner clean && xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination "id=38AEB073-1BAF-4158-A7DE-43F5F1132595" test -allowProvisioningUpdates
+
 ```
 
 ## Simulator  IOS
