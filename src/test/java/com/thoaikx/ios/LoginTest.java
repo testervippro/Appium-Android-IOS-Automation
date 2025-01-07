@@ -6,6 +6,9 @@ import java.util.Map;
 import com.google.common.collect.ImmutableMap;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -71,35 +74,47 @@ public class LoginTest extends BaseMobileIOS {
         driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Mandorley 112\"]")).sendKeys("test01");
 
         // address 2
-        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Entrance 1\"]")).sendKeys("test");
+       var  address2 = driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Entrance 1\"]"));
+       address2.sendKeys("test");
 
 
 
         // city
-        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Truro\"]")).sendKeys("city");
+       var city = driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Truro\"]"));
+       Thread.sleep(2000);
+       city.sendKeys("city");
 
         // state
-        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Cornwall\"]")).sendKeys("State");
-       Thread.sleep(2000);
+       var state =  driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Cornwall\"]"));
+        Thread.sleep(2000);
+       state.sendKeys("State");
 
 
         // zipcode
-        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"89750\"]")).sendKeys("123");
+       var zipCode = driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"89750\"]"));
         Thread.sleep(2000);
+        zipCode.sendKeys("123");
 
-        driver.executeScript("mobile:swipe", params1);
+
 
         // country
-        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"United Kingdom\"]")).sendKeys("HN"+"\n");
-        Thread.sleep(2000);
+        WebElement country = driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"United Kingdom\"]"));
+        //country.click();
+        Thread.sleep(5000);
+        //wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//XCUIElementTypeKeyboard//XCUIElementTypeKey[@name='Return']")));
+        country.sendKeys("HN");
+        //country.sendKeys(Keys.RETURN); // or use Keys.ENTER
+
+        //driver.executeScript("mobile:swipe", params1);
+
 
         //up,down,left,right
         ///params1.put("element", ((RemoteWebElement)ele).getId());
 
 
         //word around hiden key
-        // address 2
-       driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"test01\"]")).click();
+//        // address 2
+   // driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"test01\"]")).click();
 
 
         // process
@@ -111,8 +126,10 @@ public class LoginTest extends BaseMobileIOS {
         Thread.sleep(30000);
 
         // fill credit car
+
         // full name
-        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Maxim Winter\"]")).sendKeys("test01");
+        var fullName = driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Maxim Winter\"]"));
+        fullName.sendKeys("test01");
 
         // card number
         driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"3258 1265 7568 7896\"]"))
@@ -128,7 +145,9 @@ public class LoginTest extends BaseMobileIOS {
         driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"03/25\"]")).sendKeys("12/25");
 
         // code
-        driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"123\"]")).sendKeys("123");
+      WebElement code =  driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"123\"]"));
+      code.sendKeys("123");
+      code.sendKeys(Keys.ENTER);
 
         // reveiver order
         driver.findElement(By.xpath("//XCUIElementTypeButton[@name=\"Review Order\"]")).click();
