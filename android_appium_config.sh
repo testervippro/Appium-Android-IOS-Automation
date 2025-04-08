@@ -1,48 +1,34 @@
 #!/bin/bash
 
-# Define the APK path
+# Define paths
 APK_PATH="/Users/mac/Documents/Appium-Android-IOS-Automation/src/test/resources/androidapp/app-android.apk"
-
-# Define the full path to aapt 
 AAPT_PATH="/Users/mac/Library/Android/sdk/build-tools/35.0.0/aapt"
+OUTPUT_FILE="android.json"
 
-# Initialize JSON output
-JSON_OUTPUT="{"
-
-# Add platformName (always "Android" for Android devices)
-JSON_OUTPUT+="\"platformName\": \"Android\", "
-
-# Verify platformVersion
+# Collect device info
 PLATFORM_VERSION=$(adb shell getprop ro.build.version.release)
-JSON_OUTPUT+="\"platformVersion\": \"$PLATFORM_VERSION\", "
-
-# Verify deviceName
 DEVICE_NAME=$(adb devices | grep -w "device" | awk '{print $1}')
-JSON_OUTPUT+="\"deviceName\": \"$DEVICE_NAME\", "
 
-# Verify app (APK file path)
-if [ -f "$APK_PATH" ]; then
-    JSON_OUTPUT+="\"app\": \"$APK_PATH\", "
-else
-    JSON_OUTPUT+="\"app\": \"File not found\", "
-fi
-
-# Verify appPackage and appActivity using aapt
-if [ -f "$AAPT_PATH" ]; then
+# Get app package and activity
+if [ -f "$AAPT_PATH" ] && [ -f "$APK_PATH" ]; then
     APP_PACKAGE=$("$AAPT_PATH" dump badging "$APK_PATH" | grep "package: name=" | awk -F"'" '{print $2}')
     APP_ACTIVITY=$("$AAPT_PATH" dump badging "$APK_PATH" | grep "launchable-activity: name=" | awk -F"'" '{print $2}')
-    JSON_OUTPUT+="\"appPackage\": \"$APP_PACKAGE\", "
-    JSON_OUTPUT+="\"appActivity\": \"$APP_ACTIVITY\", "
 else
-    JSON_OUTPUT+="\"appPackage\": \"aapt not found\", "
-    JSON_OUTPUT+="\"appActivity\": \"aapt not found\", "
+    APP_PACKAGE="aapt_or_apk_not_found"
+    APP_ACTIVITY="aapt_or_apk_not_found"
 fi
 
-# Verify automationName (always UiAutomator2 for Android)
-JSON_OUTPUT+="\"automationName\": \"UiAutomator2\""
+# Create JSON file with proper formatting
+{
+  echo '{'
+  echo '  "platformName": "Android",'
+  echo '  "platformVersion": "'"$PLATFORM_VERSION"'",'
+  echo '  "deviceName": "'"$DEVICE_NAME"'",'
+  echo '  "app": "'"$APK_PATH"'",'
+  echo '  "appPackage": "'"$APP_PACKAGE"'",'
+  echo '  "appActivity": "'"$APP_ACTIVITY"'",'
+  echo '  "automationName": "UiAutomator2"'
+  echo '}'
+} > "$OUTPUT_FILE"
 
-# Close JSON output
-JSON_OUTPUT+="}"
-
-# Print JSON output
-echo "$JSON_OUTPUT"
+echo "Android capabilities successfully written to $OUTPUT_FILE"
