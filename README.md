@@ -12,8 +12,7 @@ Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/tes
 
 # Install Command line tools only(without Android Studio)  (Run as Admin)
 ```powershell
-Set-ExecutionPolicy RemoteSigned -Scope Process -Force
-Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/testervippro/java-mvn/main/android-cmd-tools.ps1" -UseBasicParsing).Content
+irm https://raw.githubusercontent.com/testervippro/java-mvn/main/android-cmd-tools.ps1 | iex
 ```
 
 
