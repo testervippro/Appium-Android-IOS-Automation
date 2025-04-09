@@ -6,7 +6,7 @@
 
 ```powershell
 # run-java-setup.ps1
-iwr https://raw.githubusercontent.com/testervippro/java-mvn/main/android-cmd-tools.ps1 | iex
+iwr https://raw.githubusercontent.com/testervippro/java-mvn/main/java-base-setup.ps1 | iex
 ```
 
 # Install Command line tools only(without Android Studio)  (Run as Admin)
