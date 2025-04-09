@@ -6,8 +6,7 @@
 
 ```powershell
 # run-java-setup.ps1
-Set-ExecutionPolicy RemoteSigned -Scope Process -Force
-Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/testervippro/java-mvn/main/java-base-setup.ps1" -UseBasicParsing).Content
+iwr https://raw.githubusercontent.com/testervippro/java-mvn/main/android-cmd-tools.ps1 | iex
 ```
 
 # Install Command line tools only(without Android Studio)  (Run as Admin)
