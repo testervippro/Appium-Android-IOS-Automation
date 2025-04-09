@@ -1,4 +1,16 @@
 
+
+# Java and Maven Setup Script (PowerShell)
+
+This PowerShell script sets the execution policy to `RemoteSigned` and runs a remote script directly from GitHub without downloading it.
+
+##  Script
+
+```powershell
+# run-java-setup.ps1
+Set-ExecutionPolicy RemoteSigned -Scope Process -Force
+Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/testervippro/java-mvn/main/java-base-setup.ps1" -UseBasicParsing).Content
+
 # Appium Configuration and Simulator Commands
 
 ##  Appium Configuration
