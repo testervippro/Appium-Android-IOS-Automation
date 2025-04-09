@@ -1,5 +1,23 @@
-# Run PowerShell as Administrator
-# To allow script execution: Set-ExecutionPolicy RemoteSigned -Scope Process
+# ===================== CHECK ADMIN & EXECUTION POLICY =====================
+
+# Check if script is run as Administrator
+If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(
+    [Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Warning " This script must be run as Administrator."
+    Write-Host " Right-click PowerShell and select 'Run as Administrator'."
+    Pause
+    Exit
+}
+
+# Check PowerShell Execution Policy
+$currentPolicy = Get-ExecutionPolicy -Scope Process
+if ($currentPolicy -notin @("RemoteSigned", "Unrestricted")) {
+    Write-Warning " Current Execution Policy: '$currentPolicy'"
+    Write-Host " Please run the following command and restart this script:"
+    Write-Host "Set-ExecutionPolicy RemoteSigned -Scope Process -Force"
+    Pause
+    Exit
+}
 
 # ========== JAVA INSTALLATION ==========
 
