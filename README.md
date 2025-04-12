@@ -6,6 +6,11 @@
 iwr https://raw.githubusercontent.com/testervippro/base_setup/blob/main/setup.ps1 | iex
 ```
 
+### Uninstall 
+```powershell
+iwr https://raw.githubusercontent.com/testervippro/base_setup/blob/main/un-setup.ps1 | iex
+```
+
 
 
 
