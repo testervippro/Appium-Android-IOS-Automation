@@ -3,7 +3,6 @@
 # Java and Maven Nodejs,Appium ,Appim Inpector,Android Cmd Tools (Run as Admin)
 
 ```powershell
-# run-java-setup.ps1
 iwr https://raw.githubusercontent.com/testervippro/base_setup/blob/main/setup.ps1 | iex
 ```
 
