@@ -3,12 +3,12 @@
 # Java and Maven Nodejs,Appium ,Appim Inpector,Android Cmd Tools (Run as Admin)
 
 ```powershell
-iwr https://raw.githubusercontent.com/testervippro/base_setup/blob/main/setup.ps1 | iex
+Invoke-WebRequest https://raw.githubusercontent.com/testervippro/base_setup/main/setup.ps1 | Invoke-Expression
 ```
 
 ### Uninstall 
 ```powershell
-iwr https://raw.githubusercontent.com/testervippro/base_setup/blob/main/un-setup.ps1 | iex
+Invoke-WebRequest https://raw.githubusercontent.com/testervippro/base_setup/main/un-setup.ps1 | Invoke-Expression
 ```
 
 
