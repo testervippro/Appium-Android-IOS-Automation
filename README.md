@@ -1,18 +1,12 @@
 
 
-# Java and Maven Nodejs,Appium ,Appim Inpector (Run as Admin)
-
-##  Script
+# Java and Maven Nodejs,Appium ,Appim Inpector,Android Cmd Tools (Run as Admin)
 
 ```powershell
 # run-java-setup.ps1
-iwr https://raw.githubusercontent.com/testervippro/java-mvn/main/java-base-setup.ps1 | iex
+iwr https://raw.githubusercontent.com/testervippro/base_setup/blob/main/setup.ps1 | iex
 ```
 
-# Install Command line tools only(without Android Studio)  (Run as Admin)
-```powershell
-irm https://raw.githubusercontent.com/testervippro/java-mvn/main/android-cmd-tools.ps1 | iex
-```
 
 
 
