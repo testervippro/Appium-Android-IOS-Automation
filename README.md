@@ -71,6 +71,8 @@ First, navigate to the directory where `WebDriverAgent` is located:
 cd /Users/mac/.appium/node_modules/appium-xcuitest-driver/node_modules/appium-webdriveragent
 ```
 WedDriverAgenRuner : Run app with this option
+<img width="1280" alt="Screen Shot 2025-04-20 at 14 27 11" src="https://github.com/user-attachments/assets/d501d828-6f5e-4ca2-9624-987bccd92eec" />
+
 
 <img width="355" alt="Screen Shot 2025-04-20 at 14 25 00" src="https://github.com/user-attachments/assets/99fff044-5671-46b8-a12c-c44c53b182e7" />
 
