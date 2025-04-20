@@ -83,7 +83,14 @@ xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -desti
 
 ```
 
+
 ## Simulator  IOS
+
+Seting like this 
+<img width="1280" alt="Screen Shot 2025-04-20 at 15 37 59" src="https://github.com/user-attachments/assets/46dc6ff6-ad7e-4b2d-8df2-33911a9eb93a" />
+<img width="1280" alt="Screen Shot 2025-04-20 at 15 39 46" src="https://github.com/user-attachments/assets/831953f1-4bc9-4e2b-b203-e8f3d385bd78" />
+
+
 
 ### List Devices
 
