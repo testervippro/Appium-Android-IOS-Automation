@@ -72,6 +72,9 @@ cd /Users/mac/.appium/node_modules/appium-xcuitest-driver/node_modules/appium-we
 ```
 WedDriverAgenRuner : Run app with this option
 
+<img width="355" alt="Screen Shot 2025-04-20 at 14 25 00" src="https://github.com/user-attachments/assets/99fff044-5671-46b8-a12c-c44c53b182e7" />
+
+
 
 ```bash
 xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination "id=38AEB073-1BAF-4158-A7DE-43F5F1132595" -derivedDataPath /tmp/WebDriverAgentBuild clean test -allowProvisioningUpdates
