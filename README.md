@@ -70,6 +70,8 @@ First, navigate to the directory where `WebDriverAgent` is located:
 ```bash
 cd /Users/mac/.appium/node_modules/appium-xcuitest-driver/node_modules/appium-webdriveragent
 ```
+WedDriverAgenRuner : Run app with this option
+
 
 ```bash
 xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination "id=38AEB073-1BAF-4158-A7DE-43F5F1132595" -derivedDataPath /tmp/WebDriverAgentBuild clean test -allowProvisioningUpdates
