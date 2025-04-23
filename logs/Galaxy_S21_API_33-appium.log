@@ -1,0 +1,102 @@
+2025-04-12 09:54:28:873 [Appium] Welcome to Appium v2.17.1
+2025-04-12 09:54:28:878 [Appium] Non-default server args:
+2025-04-12 09:54:28:880 [Appium] { address: '127.0.0.1', port: 4724, relaxedSecurityEnabled: true }
+2025-04-12 09:54:28:881 [Appium] The autodetected Appium home path: /Users/mac/.appium
+2025-04-12 09:54:28:882 [Appium] Attempting to load driver xcuitest...
+2025-04-12 09:54:28:883 [Appium] Attempting to load driver uiautomator2...
+2025-04-12 09:54:28:886 [Appium] Requiring driver at /Users/mac/.appium/node_modules/appium-xcuitest-driver/build/index.js
+2025-04-12 09:54:28:893 [Appium] Requiring driver at /Users/mac/.appium/node_modules/appium-uiautomator2-driver/build/index.js
+2025-04-12 09:54:31:774 [Appium] XCUITestDriver has been successfully loaded in 2.891s
+2025-04-12 09:54:31:774 [Appium] AndroidUiautomator2Driver has been successfully loaded in 2.891s
+2025-04-12 09:54:31:873 [Appium] Appium REST http interface listener started on http://127.0.0.1:4724
+2025-04-12 09:54:31:874 [Appium] Available drivers:
+2025-04-12 09:54:31:874 [Appium]   - xcuitest@7.26.4 (automationName 'XCUITest')
+2025-04-12 09:54:31:879 [Appium]   - uiautomator2@3.8.0 (automationName 'UiAutomator2')
+2025-04-12 09:54:31:879 [Appium] No plugins have been installed. Use the "appium plugin" command to install the one(s) you want to use.
+2025-04-12 09:54:32:100 [HTTP] --> GET /status {}
+2025-04-12 09:54:32:101 [AppiumDriver@4619] Calling AppiumDriver.getStatus() with args: []
+2025-04-12 09:54:32:103 [AppiumDriver@4619] Responding to client with driver.getStatus() result: {"ready":true,"message":"The server is ready to accept new connections","build":{"version":"2.17.1"}}
+2025-04-12 09:54:32:113 [HTTP] <-- GET /status 200 6 ms - 111 
+2025-04-12 09:54:32:639 [HTTP] Request idempotency key: dbf7b8cd-4b92-47ae-a75c-320b0cc5a04f
+2025-04-12 09:54:32:661 [HTTP] --> POST /session {"capabilities":{"firstMatch":[{"appium:noReset":false,"appium:systemPort":8201,"appium:udid":"emulator-5556","appium:newCommandTimeout":25920000,"appium:appActivity":"com.saucelabs.mydemoapp.android.view.activities.SplashActivity","appium:deviceName":"Galaxy_S21_API_33","platformName":"ANDROID","appium:automationName":"UiAutomator2","appium:fullReset":true,"appium:app":"/path/to/your/app.apk","appium:platformVersion":"12.0","appium:appPackage":"com.saucelabs.mydemoapp.android"}]}}
+2025-04-12 09:54:32:662 [AppiumDriver@4619] Calling AppiumDriver.createSession() with args: [null,null,{"firstMatch":[{"appium:noReset":false,"appium:systemPort":8201,"appium:udid":"emulator-5556","appium:newCommandTimeout":25920000,"appium:appActivity":"com.saucelabs.mydemoapp.android.view.activities.SplashActivity","appium:deviceName":"Galaxy_S21_API_33","platformName":"ANDROID","appium:automationName":"UiAutomator2","appium:fullReset":true,"appium:app":"/path/to/your/app.apk","appium:platformVersion":"12.0","appium:appPackage":"com.saucelabs.mydemoapp.android"}]}]
+2025-04-12 09:54:32:663 [AppiumDriver@4619] Event 'newSessionRequested' logged at 1744451672663 (16:54:32 GMT+0700 (Indochina Time))
+2025-04-12 09:54:32:670 [Appium] Attempting to find matching driver for automationName 'UiAutomator2' and platformName 'ANDROID'
+2025-04-12 09:54:32:671 [Appium] The 'uiautomator2' driver was installed and matched caps.
+2025-04-12 09:54:32:671 [Appium] Will require it at /Users/mac/.appium/node_modules/appium-uiautomator2-driver
+2025-04-12 09:54:32:673 [Appium] Requiring driver at /Users/mac/.appium/node_modules/appium-uiautomator2-driver/build/index.js
+2025-04-12 09:54:32:674 [AppiumDriver@4619] Appium v2.17.1 creating new AndroidUiautomator2Driver (v3.8.0) session
+2025-04-12 09:54:32:674 [AppiumDriver@4619] Checking BaseDriver versions for Appium and AndroidUiautomator2Driver
+2025-04-12 09:54:32:674 [AppiumDriver@4619] Appium's BaseDriver version is 9.16.4
+2025-04-12 09:54:32:674 [AppiumDriver@4619] AndroidUiautomator2Driver's BaseDriver version is 9.16.4
+2025-04-12 09:54:32:681 [AppiumDriver@4619] Applying relaxed security to 'AndroidUiautomator2Driver' as per server command line argument. All insecure features will be enabled unless explicitly disabled by --deny-insecure
+2025-04-12 09:54:32:682 [38;5;-141m[AndroidUiautomator2Driver@4091] 
+2025-04-12 09:54:32:683 [38;5;-141m[AndroidUiautomator2Driver@4091] Creating session with W3C capabilities: {
+  "alwaysMatch": {
+    "platformName": "ANDROID",
+    "appium:noReset": false,
+    "appium:systemPort": 8201,
+    "appium:udid": "emulator-5556",
+    "appium:newCommandTimeout": 25920000,
+    "appium:appActivity": "com.saucelabs.mydemoapp.android.view.activities.SplashActivity",
+    "appium:deviceName": "Galaxy_S21_API_33",
+    "appium:automationName": "UiAutomator2",
+    "appium:fullReset": true,
+    "appium:app": "/path/to/your/app.apk",
+    "appium:platformVersion": "12.0",
+    "appium:appPackage": "com.saucelabs.mydemoapp.android"
+  },
+  "firstMatch": [
+    {}
+  ]
+}
+2025-04-12 09:54:32:701 [103f13b2][38;5;-141m[AndroidUiautomator2Driver@4091] Session created with session id: 103f13b2-175d-44f3-8e3e-126f8acb06e1
+2025-04-12 09:54:32:723 [103f13b2][ADB] Found 6 'build-tools' folders under '/Users/mac/Library/Android/sdk' (newest first):
+2025-04-12 09:54:32:724 [103f13b2][ADB]     /Users/mac/Library/Android/sdk/build-tools/36.0.0
+2025-04-12 09:54:32:725 [103f13b2][ADB]     /Users/mac/Library/Android/sdk/build-tools/36.0.0-rc3
+2025-04-12 09:54:32:725 [103f13b2][ADB]     /Users/mac/Library/Android/sdk/build-tools/35.0.0
+2025-04-12 09:54:32:725 [103f13b2][ADB]     /Users/mac/Library/Android/sdk/build-tools/30.0.3
+2025-04-12 09:54:32:725 [103f13b2][ADB]     /Users/mac/Library/Android/sdk/build-tools/30.0.2
+2025-04-12 09:54:32:726 [103f13b2][ADB]     /Users/mac/Library/Android/sdk/build-tools/29.0.2
+2025-04-12 09:54:32:728 [103f13b2][ADB] Using 'adb' from '/Users/mac/Library/Android/sdk/platform-tools/adb'
+2025-04-12 09:54:32:729 [103f13b2][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 start-server'
+2025-04-12 09:54:32:770 [103f13b2][38;5;-141m[AndroidUiautomator2Driver@4091] Retrieving device list
+2025-04-12 09:54:32:771 [103f13b2][ADB] Trying to find connected Android devices
+2025-04-12 09:54:32:772 [103f13b2][ADB] Getting connected devices
+2025-04-12 09:54:32:799 [103f13b2][ADB] Connected devices: [{"udid":"28111FDH200H8V","state":"device"},{"udid":"emulator-5554","state":"device"},{"udid":"emulator-5556","state":"device"}]
+2025-04-12 09:54:32:801 [103f13b2][38;5;-141m[AndroidUiautomator2Driver@4091] Using device: emulator-5556
+2025-04-12 09:54:32:804 [103f13b2][ADB] Using 'adb' from '/Users/mac/Library/Android/sdk/platform-tools/adb'
+2025-04-12 09:54:32:804 [103f13b2][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 start-server'
+2025-04-12 09:54:32:830 [103f13b2][ADB] Setting device id to emulator-5556
+2025-04-12 09:54:32:835 [103f13b2][38;5;-141m[AndroidUiautomator2Driver@4091] Deleting UiAutomator2 session
+2025-04-12 09:54:32:836 [103f13b2][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5556 shell getprop ro.build.version.sdk'
+2025-04-12 09:54:32:856 [103f13b2][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5556 shell am force-stop com.saucelabs.mydemoapp.android'
+2025-04-12 09:54:32:946 [103f13b2][ADB] Current device property 'ro.build.version.sdk': 35
+2025-04-12 09:54:32:946 [103f13b2][ADB] Getting device platform version
+2025-04-12 09:54:32:947 [103f13b2][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5556 shell getprop ro.build.version.release'
+2025-04-12 09:54:32:985 [103f13b2][38;5;-141m[AndroidUiautomator2Driver@4091] Capability 'fullReset' set to 'true', Uninstalling 'com.saucelabs.mydemoapp.android'
+2025-04-12 09:54:32:985 [103f13b2][ADB] Uninstalling com.saucelabs.mydemoapp.android
+2025-04-12 09:54:32:986 [103f13b2][ADB] Getting install status for com.saucelabs.mydemoapp.android
+2025-04-12 09:54:32:986 [103f13b2][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5556 shell getprop ro.build.version.sdk'
+2025-04-12 09:54:33:049 [103f13b2][ADB] Current device property 'ro.build.version.release': 15
+2025-04-12 09:54:33:050 [103f13b2][ADB] Device API level: 35
+2025-04-12 09:54:33:051 [103f13b2][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5556 shell dumpsys activity services io.appium.settings/.recorder.RecorderService'
+2025-04-12 09:54:33:090 [103f13b2][ADB] Current device property 'ro.build.version.sdk': 35
+2025-04-12 09:54:33:091 [103f13b2][ADB] Getting device platform version
+2025-04-12 09:54:33:091 [103f13b2][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5556 shell getprop ro.build.version.release'
+2025-04-12 09:54:33:188 [103f13b2][ADB] Current device property 'ro.build.version.release': 15
+2025-04-12 09:54:33:189 [103f13b2][ADB] Device API level: 35
+2025-04-12 09:54:33:189 [103f13b2][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5556 shell cmd package list packages'
+2025-04-12 09:54:33:262 [103f13b2][ADB] 'com.saucelabs.mydemoapp.android' is not installed
+2025-04-12 09:54:33:262 [103f13b2][ADB] com.saucelabs.mydemoapp.android was not uninstalled, because it was not present on the device
+2025-04-12 09:54:33:263 [103f13b2][38;5;-141m[AndroidUiautomator2Driver@4091] Restoring hidden api policy to the device default configuration
+2025-04-12 09:54:33:263 [103f13b2][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s emulator-5556 shell 'settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy''
+2025-04-12 09:54:33:414 [103f13b2][AppiumDriver@4619] Event 'newSessionStarted' logged at 1744451673413 (16:54:33 GMT+0700 (Indochina Time))
+2025-04-12 09:54:33:431 [103f13b2][AppiumDriver@4619] Encountered internal error running command: Error: The application at '/path/to/your/app.apk' does not exist or is not accessible
+    at /usr/local/lib/node_modules/appium/node_modules/@appium/base-driver/lib/basedriver/helpers.js:253:13
+2025-04-12 09:54:33:458 [103f13b2][HTTP] <-- POST /session 500 791 ms - 656 
+2025-04-12 09:54:34:479 [HTTP] --> GET /status {}
+2025-04-12 09:54:34:479 [AppiumDriver@4619] Calling AppiumDriver.getStatus() with args: []
+2025-04-12 09:54:34:480 [AppiumDriver@4619] Responding to client with driver.getStatus() result: {"ready":true,"message":"The server is ready to accept new connections","build":{"version":"2.17.1"}}
+2025-04-12 09:54:34:481 [HTTP] <-- GET /status 200 2 ms - 111 
+2025-04-12 09:54:34:486 [Appium] Received SIGTERM - shutting down

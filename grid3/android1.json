@@ -1,0 +1,27 @@
+{
+  "capabilities": [
+    {
+      "platformName": "Android",
+      "platformVersion": "7.1.0",
+      "deviceName": "emulator-5554",
+      "app": "/Users/mac/Documents/Appium-Android-IOS-Automation/src/test/resources/androidapp/app-android.apk",
+      "appPackage": "com.saucelabs.mydemoapp.android",
+      "appActivity": "com.saucelabs.mydemoapp.android.view.activities.SplashActivity",
+      "automationName": "UiAutomator2",
+      "maxInstances": 1
+    }
+  ],
+  "configuration": {
+    "timeout": 20000,
+    "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+    "url": "http://127.0.0.1:4723/wd/hub",
+    "host": "127.0.0.1",
+    "port": 4723,
+    "maxSession": 1,
+    "register": true,
+    "registerCycle": 1000,
+    "hubPort": 4444,
+    "hubHost": "192.168.1.248",
+    "session-override": true
+  }
+}

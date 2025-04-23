@@ -1,0 +1,198 @@
+2025-04-12 09:22:53:504 [Appium] Welcome to Appium v2.17.1
+2025-04-12 09:22:53:508 [Appium] Non-default server args:
+2025-04-12 09:22:53:564 [Appium] { relaxedSecurityEnabled: true }
+2025-04-12 09:22:53:564 [Appium] The autodetected Appium home path: /Users/mac/.appium
+2025-04-12 09:22:53:565 [Appium] Attempting to load driver xcuitest...
+2025-04-12 09:22:53:566 [Appium] Attempting to load driver uiautomator2...
+2025-04-12 09:22:53:574 [Appium] Requiring driver at /Users/mac/.appium/node_modules/appium-xcuitest-driver/build/index.js
+2025-04-12 09:22:53:589 [Appium] Requiring driver at /Users/mac/.appium/node_modules/appium-uiautomator2-driver/build/index.js
+2025-04-12 09:22:58:767 [Appium] XCUITestDriver has been successfully loaded in 5.201s
+2025-04-12 09:22:58:768 [Appium] AndroidUiautomator2Driver has been successfully loaded in 5.201s
+2025-04-12 09:22:59:002 [Appium] Appium REST http interface listener started on http://0.0.0.0:4723
+2025-04-12 09:22:59:004 [Appium] You can provide the following URLs in your client code to connect to this server:
+	http://127.0.0.1:4723/ (only accessible from the same host)
+	http://192.168.1.248:4723/
+2025-04-12 09:22:59:005 [Appium] Available drivers:
+2025-04-12 09:22:59:007 [Appium]   - xcuitest@7.26.4 (automationName 'XCUITest')
+2025-04-12 09:22:59:008 [Appium]   - uiautomator2@3.8.0 (automationName 'UiAutomator2')
+2025-04-12 09:22:59:013 [Appium] No plugins have been installed. Use the "appium plugin" command to install the one(s) you want to use.
+2025-04-12 09:22:59:236 [HTTP] --> GET /status {}
+2025-04-12 09:22:59:239 [AppiumDriver@945d] Calling AppiumDriver.getStatus() with args: []
+2025-04-12 09:22:59:242 [AppiumDriver@945d] Responding to client with driver.getStatus() result: {"ready":true,"message":"The server is ready to accept new connections","build":{"version":"2.17.1"}}
+2025-04-12 09:22:59:287 [HTTP] <-- GET /status 200 16 ms - 111 
+2025-04-12 09:23:00:083 [HTTP] Request idempotency key: c0712c97-c00d-4390-bf49-b894cdbbac1c
+2025-04-12 09:23:00:098 [HTTP] --> POST /session {"capabilities":{"firstMatch":[{"appium:systemPort":8200,"appium:appActivity":"com.saucelabs.mydemoapp.android.view.activities.SplashActivity","appium:deviceName":"adb-28111FDH200H8V-enT7HR._adb-tls-connect._tcp","platformName":"ANDROID","appium:automationName":"UiAutomator2","appium:app":"/Users/mac/Documents/Appium-Android-IOS-Automation/src/test/resources/androidapp/app-android.apk","appium:platformVersion":"15","appium:appPackage":"com.saucelabs.mydemoapp.android"}]}}
+2025-04-12 09:23:00:099 [AppiumDriver@945d] Calling AppiumDriver.createSession() with args: [null,null,{"firstMatch":[{"appium:systemPort":8200,"appium:appActivity":"com.saucelabs.mydemoapp.android.view.activities.SplashActivity","appium:deviceName":"adb-28111FDH200H8V-enT7HR._adb-tls-connect._tcp","platformName":"ANDROID","appium:automationName":"UiAutomator2","appium:app":"/Users/mac/Documents/Appium-Android-IOS-Automation/src/test/resources/androidapp/app-android.apk","appium:platformVersion":"15","appium:appPackage":"com.saucelabs.mydemoapp.android"}]}]
+2025-04-12 09:23:00:099 [AppiumDriver@945d] Event 'newSessionRequested' logged at 1744449780099 (16:23:00 GMT+0700 (Indochina Time))
+2025-04-12 09:23:00:114 [Appium] Attempting to find matching driver for automationName 'UiAutomator2' and platformName 'ANDROID'
+2025-04-12 09:23:00:114 [Appium] The 'uiautomator2' driver was installed and matched caps.
+2025-04-12 09:23:00:115 [Appium] Will require it at /Users/mac/.appium/node_modules/appium-uiautomator2-driver
+2025-04-12 09:23:00:117 [Appium] Requiring driver at /Users/mac/.appium/node_modules/appium-uiautomator2-driver/build/index.js
+2025-04-12 09:23:00:117 [AppiumDriver@945d] Appium v2.17.1 creating new AndroidUiautomator2Driver (v3.8.0) session
+2025-04-12 09:23:00:118 [AppiumDriver@945d] Checking BaseDriver versions for Appium and AndroidUiautomator2Driver
+2025-04-12 09:23:00:118 [AppiumDriver@945d] Appium's BaseDriver version is 9.16.4
+2025-04-12 09:23:00:121 [AppiumDriver@945d] AndroidUiautomator2Driver's BaseDriver version is 9.16.4
+2025-04-12 09:23:00:127 [AppiumDriver@945d] Applying relaxed security to 'AndroidUiautomator2Driver' as per server command line argument. All insecure features will be enabled unless explicitly disabled by --deny-insecure
+2025-04-12 09:23:00:129 [38;5;-138m[AndroidUiautomator2Driver@6784] 
+2025-04-12 09:23:00:129 [38;5;-138m[AndroidUiautomator2Driver@6784] Creating session with W3C capabilities: {
+  "alwaysMatch": {
+    "platformName": "ANDROID",
+    "appium:systemPort": 8200,
+    "appium:appActivity": "com.saucelabs.mydemoapp.android.view.activities.SplashActivity",
+    "appium:deviceName": "adb-28111FDH200H8V-enT7HR._adb-tls-connect._tcp",
+    "appium:automationName": "UiAutomator2",
+    "appium:app": "/Users/mac/Documents/Appium-Android-IOS-Automation/src/test/resources/androidapp/app-android.apk",
+    "appium:platformVersion": "15",
+    "appium:appPackage": "com.saucelabs.mydemoapp.android"
+  },
+  "firstMatch": [
+    {}
+  ]
+}
+2025-04-12 09:23:00:141 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Session created with session id: 5f29f034-ad7b-417b-9e24-c30e16ddf3cb
+2025-04-12 09:23:00:162 [5f29f034][ADB] Found 6 'build-tools' folders under '/Users/mac/Library/Android/sdk' (newest first):
+2025-04-12 09:23:00:164 [5f29f034][ADB]     /Users/mac/Library/Android/sdk/build-tools/36.0.0
+2025-04-12 09:23:00:165 [5f29f034][ADB]     /Users/mac/Library/Android/sdk/build-tools/36.0.0-rc3
+2025-04-12 09:23:00:165 [5f29f034][ADB]     /Users/mac/Library/Android/sdk/build-tools/35.0.0
+2025-04-12 09:23:00:166 [5f29f034][ADB]     /Users/mac/Library/Android/sdk/build-tools/30.0.3
+2025-04-12 09:23:00:166 [5f29f034][ADB]     /Users/mac/Library/Android/sdk/build-tools/30.0.2
+2025-04-12 09:23:00:166 [5f29f034][ADB]     /Users/mac/Library/Android/sdk/build-tools/29.0.2
+2025-04-12 09:23:00:167 [5f29f034][ADB] Using 'adb' from '/Users/mac/Library/Android/sdk/platform-tools/adb'
+2025-04-12 09:23:00:169 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 start-server'
+2025-04-12 09:23:00:207 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Retrieving device list
+2025-04-12 09:23:00:208 [5f29f034][ADB] Trying to find connected Android devices
+2025-04-12 09:23:00:209 [5f29f034][ADB] Getting connected devices
+2025-04-12 09:23:00:278 [5f29f034][ADB] Connected devices: [{"udid":"28111FDH200H8V","state":"device"},{"udid":"emulator-5554","state":"device"},{"udid":"emulator-5556","state":"device"}]
+2025-04-12 09:23:00:279 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Looking for a device with Android '15.0.0'
+2025-04-12 09:23:00:280 [5f29f034][ADB] Setting device id to 28111FDH200H8V
+2025-04-12 09:23:00:280 [5f29f034][ADB] Getting device platform version
+2025-04-12 09:23:00:281 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell getprop ro.build.version.release'
+2025-04-12 09:23:00:394 [5f29f034][ADB] Current device property 'ro.build.version.release': 15
+2025-04-12 09:23:00:396 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Using device: 28111FDH200H8V
+2025-04-12 09:23:00:397 [5f29f034][ADB] Using 'adb' from '/Users/mac/Library/Android/sdk/platform-tools/adb'
+2025-04-12 09:23:00:398 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 start-server'
+2025-04-12 09:23:00:427 [5f29f034][ADB] Setting device id to 28111FDH200H8V
+2025-04-12 09:23:00:430 [5f29f034][BaseDriver] Using local app '/Users/mac/Documents/Appium-Android-IOS-Automation/src/test/resources/androidapp/app-android.apk'
+2025-04-12 09:23:00:717 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Checking whether app is actually present
+2025-04-12 09:23:00:718 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell getprop ro.build.version.sdk'
+2025-04-12 09:23:00:795 [5f29f034][ADB] Current device property 'ro.build.version.sdk': 35
+2025-04-12 09:23:00:795 [5f29f034][ADB] Getting device platform version
+2025-04-12 09:23:00:796 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell getprop ro.build.version.release'
+2025-04-12 09:23:00:866 [5f29f034][ADB] Current device property 'ro.build.version.release': 15
+2025-04-12 09:23:00:867 [5f29f034][ADB] Device API level: 35
+2025-04-12 09:23:00:867 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Relaxing hidden api policy
+2025-04-12 09:23:00:872 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell 'settings put global hidden_api_policy_pre_p_apps 1;settings put global hidden_api_policy_p_apps 1;settings put global hidden_api_policy 1''
+2025-04-12 09:23:00:904 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Pushing settings apk to the device...
+2025-04-12 09:23:00:906 [5f29f034][ADB] Getting package info for 'io.appium.settings'
+2025-04-12 09:23:00:907 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell dumpsys package io.appium.settings'
+2025-04-12 09:23:01:028 [5f29f034][ADB] Using 'aapt2' from '/Users/mac/Library/Android/sdk/build-tools/36.0.0/aapt2'
+2025-04-12 09:23:01:029 [5f29f034][ADB] Reading package manifest: '/Users/mac/Library/Android/sdk/build-tools/36.0.0/aapt2 dump badging /Users/mac/.appium/node_modules/appium-uiautomator2-driver/node_modules/io.appium.settings/apks/settings_apk-debug.apk'
+2025-04-12 09:23:01:143 [5f29f034][ADB] The version name of the installed 'io.appium.settings' is greater or equal to the application version name ('5.12.13' >= '5.12.13')
+2025-04-12 09:23:01:144 [5f29f034][ADB] There is no need to install/upgrade '/Users/mac/.appium/node_modules/appium-uiautomator2-driver/node_modules/io.appium.settings/apks/settings_apk-debug.apk'
+2025-04-12 09:23:01:145 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell dumpsys activity services io.appium.settings'
+2025-04-12 09:23:01:224 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] io.appium.settings is already running. There is no need to reset its permissions.
+2025-04-12 09:23:01:226 [5f29f034][Logcat] Starting logs capture with command: /Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V logcat -v threadtime
+2025-04-12 09:23:01:293 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell appops set io.appium.settings android:mock_location allow'
+2025-04-12 09:23:01:407 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell "[ -e '/data/local/tmp/mock_apps.json' ] && echo __PASS__"'
+2025-04-12 09:23:01:583 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell cat /data/local/tmp/mock_apps.json'
+2025-04-12 09:23:01:642 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Forwarding UiAutomator2 Server port 6790 to local port 8200
+2025-04-12 09:23:01:650 [5f29f034][ADB] Forwarding system: 8200 to device: 6790
+2025-04-12 09:23:01:651 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V forward tcp:8200 tcp:6790'
+2025-04-12 09:23:01:687 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] UIA2Proxy options: {"server":"127.0.0.1","port":8200,"keepAlive":true,"scheme":"http","base":"","reqBasePath":"","sessionId":null,"timeout":240000}
+2025-04-12 09:23:01:688 [5f29f034][ADB] Getting package info for 'io.appium.uiautomator2.server'
+2025-04-12 09:23:01:689 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell dumpsys package io.appium.uiautomator2.server'
+2025-04-12 09:23:01:693 [5f29f034][ADB] Getting install status for io.appium.uiautomator2.server.test
+2025-04-12 09:23:01:694 [5f29f034][ADB] Checking app cert for /Users/mac/Documents/Appium-Android-IOS-Automation/src/test/resources/androidapp/app-android.apk
+2025-04-12 09:23:01:695 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell cmd package list packages'
+2025-04-12 09:23:01:900 [5f29f034][ADB] Reading package manifest: '/Users/mac/Library/Android/sdk/build-tools/36.0.0/aapt2 dump badging /Users/mac/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-uiautomator2-server/apks/appium-uiautomator2-server-v7.0.25.apk'
+2025-04-12 09:23:01:918 [5f29f034][ADB] 'io.appium.uiautomator2.server.test' is installed
+2025-04-12 09:23:02:201 [5f29f034][ADB] The version name of the installed 'io.appium.uiautomator2.server' is greater or equal to the application version name ('7.0.25' >= '7.0.25')
+2025-04-12 09:23:02:201 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Server packages status: [{"installState":"sameVersionInstalled","appPath":"/Users/mac/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-uiautomator2-server/apks/appium-uiautomator2-server-v7.0.25.apk","appId":"io.appium.uiautomator2.server"},{"installState":"sameVersionInstalled","appPath":"/Users/mac/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-uiautomator2-server/apks/appium-uiautomator2-server-debug-androidTest.apk","appId":"io.appium.uiautomator2.server.test"}]
+2025-04-12 09:23:02:202 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Server packages are not going to be (re)installed
+2025-04-12 09:23:02:203 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Waiting up to 30000ms for services to be available
+2025-04-12 09:23:02:203 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell pm list instrumentation'
+2025-04-12 09:23:02:352 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Instrumentation target 'io.appium.uiautomator2.server.test/androidx.test.runner.AndroidJUnitRunner' is available
+2025-04-12 09:23:02:355 [5f29f034][ADB] Adding packages ["io.appium.settings","io.appium.uiautomator2.server","io.appium.uiautomator2.server.test"] to Doze whitelist
+2025-04-12 09:23:02:355 [5f29f034][ADB] Got the following command chunks to execute: [["dumpsys","deviceidle","whitelist","+io.appium.settings",";","dumpsys","deviceidle","whitelist","+io.appium.uiautomator2.server",";","dumpsys","deviceidle","whitelist","+io.appium.uiautomator2.server.test",";"]]
+2025-04-12 09:23:02:356 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell dumpsys deviceidle whitelist +io.appium.settings ; dumpsys deviceidle whitelist +io.appium.uiautomator2.server ; dumpsys deviceidle whitelist +io.appium.uiautomator2.server.test ;'
+2025-04-12 09:23:02:369 [5f29f034][ADB] Using 'apksigner.jar' from '/Users/mac/Library/Android/sdk/build-tools/36.0.0/lib/apksigner.jar'
+2025-04-12 09:23:02:371 [5f29f034][ADB] Starting apksigner: /Users/mac/.sdkman/candidates/java/current/bin/java -Xmx1024M -Xss1m -jar /Users/mac/Library/Android/sdk/build-tools/36.0.0/lib/apksigner.jar verify --print-certs /Users/mac/Documents/Appium-Android-IOS-Automation/src/test/resources/androidapp/app-android.apk
+2025-04-12 09:23:06:454 [5f29f034][ADB] apksigner stdout: Signer #1 certificate DN: EMAILADDRESS=android@android.com, CN=Android, OU=Android, O=Android, L=Mountain View, ST=California, C=US
+Signer #1 certificate SHA-256 digest: a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc
+Signer #1 certificate SHA-1 digest: 61ed377e85d386a8dfee6b864bd85b0bfaa5af81
+Signer #1 certificate MD5 digest: e89b158e4bcf988ebd09eb83f5378e87
+
+2025-04-12 09:23:06:454 [5f29f034][ADB] sha256 hash did match for 'app-android.apk'
+2025-04-12 09:23:06:455 [5f29f034][ADB] '/Users/mac/Documents/Appium-Android-IOS-Automation/src/test/resources/androidapp/app-android.apk' is signed with the default certificate
+2025-04-12 09:23:06:455 [5f29f034][ADB] Getting package info for 'com.saucelabs.mydemoapp.android'
+2025-04-12 09:23:06:455 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell dumpsys package com.saucelabs.mydemoapp.android'
+2025-04-12 09:23:06:560 [5f29f034][ADB] Reading package manifest: '/Users/mac/Library/Android/sdk/build-tools/36.0.0/aapt2 dump badging /Users/mac/Documents/Appium-Android-IOS-Automation/src/test/resources/androidapp/app-android.apk'
+2025-04-12 09:23:06:656 [5f29f034][ADB] The version code of the installed 'com.saucelabs.mydemoapp.android' is greater than the application version code (25 > 1)
+2025-04-12 09:23:06:656 [5f29f034][ADB] There is no need to downgrade 'com.saucelabs.mydemoapp.android'
+2025-04-12 09:23:06:656 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Performing fast reset on 'com.saucelabs.mydemoapp.android'
+2025-04-12 09:23:06:656 [5f29f034][ADB] Getting install status for com.saucelabs.mydemoapp.android
+2025-04-12 09:23:06:657 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell cmd package list packages'
+2025-04-12 09:23:06:755 [5f29f034][ADB] 'com.saucelabs.mydemoapp.android' is installed
+2025-04-12 09:23:06:755 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell am force-stop com.saucelabs.mydemoapp.android'
+2025-04-12 09:23:06:873 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell pm clear com.saucelabs.mydemoapp.android'
+2025-04-12 09:23:07:001 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Performed fast reset on the installed 'com.saucelabs.mydemoapp.android' application (stop and clear)
+2025-04-12 09:23:07:002 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Performing shallow cleanup of automation leftovers
+2025-04-12 09:23:07:217 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] No obsolete sessions have been detected (socket hang up)
+2025-04-12 09:23:07:217 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell am force-stop io.appium.uiautomator2.server'
+2025-04-12 09:23:07:220 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell am force-stop io.appium.uiautomator2.server.test'
+2025-04-12 09:23:07:337 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Starting UIAutomator2 server 7.0.25
+2025-04-12 09:23:07:338 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Using UIAutomator2 server from '/Users/mac/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-uiautomator2-server/apks/appium-uiautomator2-server-v7.0.25.apk' and test from '/Users/mac/.appium/node_modules/appium-uiautomator2-driver/node_modules/appium-uiautomator2-server/apks/appium-uiautomator2-server-debug-androidTest.apk'
+2025-04-12 09:23:07:338 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Waiting up to 30000ms for UiAutomator2 to be online...
+2025-04-12 09:23:07:339 [5f29f034][ADB] Creating ADB subprocess with args: ["-P","5037","-s","28111FDH200H8V","shell","am","instrument","-w","-e","disableAnalytics","true","io.appium.uiautomator2.server.test/androidx.test.runner.AndroidJUnitRunner"]
+2025-04-12 09:23:07:354 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Matched '/status' to command name 'getStatus'
+2025-04-12 09:23:07:358 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Proxying [GET /status] to [GET http://127.0.0.1:8200/status] with no body
+2025-04-12 09:23:07:472 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] socket hang up
+2025-04-12 09:23:07:972 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] [Instrumentation] INSTRUMENTATION_RESULT: shortMsg=Process crashed.
+2025-04-12 09:23:07:973 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] [Instrumentation] INSTRUMENTATION_CODE: 0
+2025-04-12 09:23:07:994 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] [Instrumentation] The process has exited with code 0, signal null
+2025-04-12 09:23:08:474 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] The instrumentation process has been unexpectedly terminated. Retrying UiAutomator2 startup (#1 of 1)
+2025-04-12 09:23:08:474 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Performing strict cleanup of automation leftovers
+2025-04-12 09:23:08:482 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] No obsolete sessions have been detected (socket hang up)
+2025-04-12 09:23:08:483 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell am force-stop io.appium.uiautomator2.server'
+2025-04-12 09:23:08:484 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell am force-stop io.appium.uiautomator2.server.test'
+2025-04-12 09:23:08:579 [5f29f034][ADB] Attempting to kill all uiautomator processes
+2025-04-12 09:23:08:580 [5f29f034][ADB] Getting IDs of all 'uiautomator' processes
+2025-04-12 09:23:08:580 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell 'pgrep --help; echo $?''
+2025-04-12 09:23:08:653 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell pgrep -f \(\[\[:blank:\]\]\|\^\)uiautomator\(\[\[:blank:\]\]\|\$\)'
+2025-04-12 09:23:08:782 [5f29f034][ADB] No 'uiautomator' process has been found
+2025-04-12 09:23:11:791 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Waiting up to 30000ms for UiAutomator2 to be online...
+2025-04-12 09:23:11:792 [5f29f034][ADB] Creating ADB subprocess with args: ["-P","5037","-s","28111FDH200H8V","shell","am","instrument","-w","-e","disableAnalytics","true","io.appium.uiautomator2.server.test/androidx.test.runner.AndroidJUnitRunner"]
+2025-04-12 09:23:11:823 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Matched '/status' to command name 'getStatus'
+2025-04-12 09:23:11:823 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Proxying [GET /status] to [GET http://127.0.0.1:8200/status] with no body
+2025-04-12 09:23:11:839 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] socket hang up
+2025-04-12 09:23:12:349 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] [Instrumentation] INSTRUMENTATION_RESULT: shortMsg=Process crashed.
+2025-04-12 09:23:12:350 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] [Instrumentation] INSTRUMENTATION_CODE: 0
+2025-04-12 09:23:12:376 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] [Instrumentation] The process has exited with code 0, signal null
+2025-04-12 09:23:12:841 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] [
+  'The instrumentation process cannot be initialized. Make sure the application under test does not crash and investigate the logcat output.'
+]
+2025-04-12 09:23:12:842 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Deleting UiAutomator2 session
+2025-04-12 09:23:12:842 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Deleting UiAutomator2 server session
+2025-04-12 09:23:12:843 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Did not get confirmation UiAutomator2 deleteSession worked; Error was: UnknownError: An unknown server-side error occurred while processing the command. Original error: 'DELETE /' cannot be proxied to UiAutomator2 server because the instrumentation process is not running (probably crashed). Check the server log and/or the logcat output for more details
+2025-04-12 09:23:12:844 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell dumpsys activity services io.appium.settings/.recorder.RecorderService'
+2025-04-12 09:23:12:846 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell am force-stop com.saucelabs.mydemoapp.android'
+2025-04-12 09:23:12:977 [5f29f034][ADB] Removing forwarded port socket connection: 8200 
+2025-04-12 09:23:12:978 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V forward --remove tcp:8200'
+2025-04-12 09:23:13:000 [5f29f034][38;5;-138m[AndroidUiautomator2Driver@6784] Restoring hidden api policy to the device default configuration
+2025-04-12 09:23:13:000 [5f29f034][ADB] Running '/Users/mac/Library/Android/sdk/platform-tools/adb -P 5037 -s 28111FDH200H8V shell 'settings delete global hidden_api_policy_pre_p_apps;settings delete global hidden_api_policy_p_apps;settings delete global hidden_api_policy''
+2025-04-12 09:23:13:155 [5f29f034][Logcat] Stopping logcat capture
+2025-04-12 09:23:13:158 [5f29f034][AppiumDriver@945d] Event 'newSessionStarted' logged at 1744449793157 (16:23:13 GMT+0700 (Indochina Time))
+2025-04-12 09:23:13:160 [5f29f034][AppiumDriver@945d] Encountered internal error running command: Error: The instrumentation process cannot be initialized. Make sure the application under test does not crash and investigate the logcat output.
+    at Object.errorWithException (/usr/local/lib/node_modules/appium/node_modules/@appium/support/lib/logging.js:41:45)
+    at Object.errorAndThrow (/usr/local/lib/node_modules/appium/node_modules/@appium/support/lib/logging.js:44:18)
+    at UiAutomator2Server.startSession (/Users/mac/.appium/node_modules/appium-uiautomator2-driver/lib/uiautomator2.js:291:18)
+    at AndroidUiautomator2Driver.performSessionExecution (/Users/mac/.appium/node_modules/appium-uiautomator2-driver/lib/driver.ts:618:5)
+    at AndroidUiautomator2Driver.startUiAutomator2Session (/Users/mac/.appium/node_modules/appium-uiautomator2-driver/lib/driver.ts:674:5)
+    at AndroidUiautomator2Driver.createSession (/Users/mac/.appium/node_modules/appium-uiautomator2-driver/lib/driver.ts:407:22)
+    at AppiumDriver.createSession (/usr/local/lib/node_modules/appium/lib/appium.js:392:35)
+2025-04-12 09:23:13:180 [5f29f034][HTTP] <-- POST /session 500 13081 ms - 774 
+2025-04-12 09:23:13:429 [HTTP] --> GET /status {}
+2025-04-12 09:23:13:429 [AppiumDriver@945d] Calling AppiumDriver.getStatus() with args: []
+2025-04-12 09:23:13:432 [AppiumDriver@945d] Responding to client with driver.getStatus() result: {"ready":true,"message":"The server is ready to accept new connections","build":{"version":"2.17.1"}}
+2025-04-12 09:23:13:436 [HTTP] <-- GET /status 200 4 ms - 111 
+2025-04-12 09:23:13:439 [Appium] Received SIGTERM - shutting down

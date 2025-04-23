@@ -1,4 +1,11 @@
-/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/thoaikx/utils/AppiumServerManager.java
-/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/thoaikx/utils/CapabilitiesLoader.java
-/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/thoaikx/utils/Element.java
-/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/thoaikx/utils/IOSUtils.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/appiumserver/AppiumServerManager.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/config/Configuration.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/config/ConfigurationManager.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/driver/BaseTest.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/driver/DriverFactory.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/driver/DriverManager.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/utils/AppiumServerManager.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/utils/CapabilitiesLoader.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/utils/Element.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/utils/ExplicitWait.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/wait/WaitUtils.java

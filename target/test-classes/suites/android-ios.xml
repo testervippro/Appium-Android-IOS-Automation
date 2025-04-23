@@ -1,13 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<suite name="Parallel Test Suite" parallel="methods" thread-count="99">
-    <test name="Android">
-        <classes>
-            <class name="com.thoaikx.android.LoginTest" />
-        </classes>
-    </test>
-    <test name="IOS">
-        <classes>
-            <class name="com.thoaikx.ios.LoginTest" />
-        </classes>
-    </test>
-</suite>
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<suite name="Parallel Test Suite" parallel="tests" thread-count="2">-->
+<!--    <test name="Android">-->
+<!--        <classes>-->
+<!--            <class name="com.dan.android.LoginTest" />-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="IOS">-->
+<!--        <classes>-->
+<!--            <class name="com.dan.ios.LoginTest" />-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--</suite>-->

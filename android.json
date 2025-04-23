@@ -1,9 +1,9 @@
 {
   "platformName": "Android",
-  "appium:platformVersion": "15",
-  "appium:deviceName": "emulator-5554",
-  "appium:app": "/Users/mac/Documents/Appium-Android-IOS-Automation/src/test/resources/androidapp/app-android.apk",
-  "appium:appPackage": "com.saucelabs.mydemoapp.android",
-  "appium:appActivity": "com.saucelabs.mydemoapp.android.view.activities.SplashActivity",
-  "appium:automationName": "UiAutomator2"
+  "platformVersion": "15",
+  "deviceName": "emulator-5554",
+  "app": "/Users/mac/Documents/Appium-Android-IOS-Automation/src/test/resources/androidapp/app-android.apk",
+  "appPackage": "com.saucelabs.mydemoapp.android",
+  "appActivity": "com.saucelabs.mydemoapp.android.view.activities.SplashActivity",
+  "automationName": "UiAutomator2"
 }
