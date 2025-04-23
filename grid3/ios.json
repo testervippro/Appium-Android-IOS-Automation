@@ -1,27 +1,26 @@
 {
-  "capabilities": [
+  "capabilities":
+  [
     {
-      "deviceName": "iPhone 13",
-      "udid": "91CC769D-8C83-4310-A6EB-9F3471F04082",
-      "platformName": "iOS",
-      "platformVersion": "15.0",
-      "app": "/Users/mac/Documents/Appium-Android-IOS-Automation/src/test/resources/iosapp/My Demo App.app",
-      "automationName": "XCUITest",
-      "appium:showXcodeLog": true,
+      "browserName":"iPhone 13",
+      "version":"15",
+      "platform":"IOS",
       "maxInstances": 1
     }
   ],
-  "configuration": {
-    "timeout": 20000,
+
+  "configuration":
+  {
+    "cleanUpCycle":2000,
+    "timeout":20000,
     "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
-    "url": "http://127.0.0.1:4723/wd/hub",
+    "url": "http://127.0.0.1:4727/wd/hub",
     "host": "127.0.0.1",
-    "port": 4725,
+    "port": 4727,
     "maxSession": 1,
     "register": true,
     "registerCycle": 1000,
     "hubPort": 4444,
     "hubHost": "192.168.1.248",
     "session-override": true
-  }
-}
+  }}

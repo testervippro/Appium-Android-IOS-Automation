@@ -1,6 +1,6 @@
 # appium1.yml
 server:
-  port: 4723
+  port: 4725
   use-drivers:
     - xcuitest
   default-capabilities:
