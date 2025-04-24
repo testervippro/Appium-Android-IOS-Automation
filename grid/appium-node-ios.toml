@@ -1,4 +1,4 @@
-# ios.toml
+# appium-node-ios.toml
 [server]
 port = 5555
 

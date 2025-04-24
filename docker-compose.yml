@@ -1,51 +1,53 @@
-# To execute this docker-compose yml file use `docker-compose -f docker-compose-browsers.yml up`
-# Add the `-d` flag at the end for detached execution
-# To stop the execution, hit Ctrl+C, and then `docker-compose -f docker-compose-browsers.yml down`
-version: "3.9"
+version: '3.8'
+
 services:
-  node-1-android:
-    container_name: node-1-android
-    image: selenium/node-docker:4.8.1-20230306
-    platform: linux/amd64
-    volumes:
-      - .grid4/android.toml:/opt/bin/config.toml
-    depends_on:
-      - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
-      - SE_NODE_MAX_SESSIONS=1
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-
-  node-2-ios:
-    container_name: node-2-ios
-    image: selenium/node-docker:4.8.1-20230306
-    platform: linux/amd64
-    volumes:
-      - .grid4/ios.toml:/opt/bin/config.toml
-    depends_on:
-      - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
-      - SE_NODE_MAX_SESSIONS=1
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-
   selenium-hub:
-    image: selenium/hub:4.8.1-20230306
-    platform: linux/amd64
+    image: selenium/hub:4.12.0
     container_name: selenium-hub
-    environment:
-      - SE_NODE_SESSION_TIMEOUT=300
-      - SE_SESSION_REQUEST_TIMEOUT=30
-      - SE_SESSION_RETRY_INTERVAL=5
     ports:
-      - "4442:4442"
-      - "4443:4443"
       - "4444:4444"
+    environment:
+      GRID_MAX_SESSION: 10
+      GRID_BROWSER_TIMEOUT: 300
+      GRID_TIMEOUT: 300
+
+  appium-android:
+    image: appium/appium
+    container_name: appium-android
+    command: appium server --config /appium/appium-appium-android.yml
+    ports:
+      - "4723:4723"
+    depends_on:
+      - selenium-hub
+
+  appium-ios:
+    image: appium/appium
+    container_name: appium-ios
+    command: appium server --config /appium/appium-appium-ios.yml
+    ports:
+      - "4733:4723"
+    depends_on:
+      - selenium-hub
+
+  node-android:
+    image: selenium/node-docker:4.12.0
+    container_name: node-android
+
+    command: node --config /grid/appium-node-appium-node-android.toml
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+  node-ios:
+    image: selenium/node-docker:4.12.0
+    container_name: node-ios
+    command: node --config /grid/appium-node-appium-node-ios.toml
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
