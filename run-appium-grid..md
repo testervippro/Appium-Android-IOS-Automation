@@ -1,7 +1,4 @@
 
-###  `run-appium-grid.md`
-
-```markdown
 #  Start Appium & Selenium Grid (Android + iOS)
 
 ##  macOS / Linux
