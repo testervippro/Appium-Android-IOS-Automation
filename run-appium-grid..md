@@ -10,7 +10,6 @@ Ensure all required ports are free and each component runs in its **own terminal
 ### Kill Ports Before Starting
 
 ```bash
-#!/bin/bash
 echo "Killing processes on ports 4723, 4733, 4444, 5555, 5556..."
 for port in 4723 4733 4444 5555 5556
 do
