@@ -54,7 +54,7 @@ public final class IOSDriverManager implements IDriver {
 //            if (configuration().target().equalsIgnoreCase("grid")) {
 //                driver = new IOSDriver(new URL("http://127.0.0.1:4444"), caps);
 //            }
-            driver = new IOSDriver(new URL("http://127.0.0.1:4444"), caps);
+            driver = new IOSDriver(new URL("http://localhost:4444/wd/hub"), caps);
 
         } catch (MalformedURLException e) {
             logger.error("Failed to initialize iOS driver for device {}: {}", udid, e.getMessage());

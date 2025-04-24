@@ -1,0 +1,1 @@
+{"uuid":"b6120b22-ad46-42d9-a07d-a567851ac5ea","name":"com.dan.android.LoginTest","children":["74a8ba45-f87e-4b74-a25e-6ff5b791d5b9"],"befores":[{"name":"preCondition","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1745427040963,"stop":1745427064414}],"afters":[],"start":1745427040902,"stop":1745427150262}

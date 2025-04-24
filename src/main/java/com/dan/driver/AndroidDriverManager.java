@@ -31,7 +31,7 @@ public final class AndroidDriverManager implements IDriver {
                     .setAppPackage("com.saucelabs.mydemoapp.android")
                     .setAppActivity("com.saucelabs.mydemoapp.android.view.activities.SplashActivity");
 
-             driver = new AndroidDriver(new URL("http://localhost:4723"), options);
+            driver = new AndroidDriver(new URL("http://localhost:4444/wd/hub"), options);
 
         } catch (Exception e) {
             throw new RuntimeException(e);

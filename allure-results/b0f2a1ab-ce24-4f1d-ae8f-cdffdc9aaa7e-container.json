@@ -1,0 +1,1 @@
+{"uuid":"b0f2a1ab-ce24-4f1d-ae8f-cdffdc9aaa7e","name":"com.dan.ios.LoginTest","children":["00351cfd-f82f-4e48-81ed-8adada796532"],"befores":[{"name":"preCondition","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1745428275046,"stop":1745428289841}],"afters":[],"start":1745428274983,"stop":1745428380340}

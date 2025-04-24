@@ -1,0 +1,1 @@
+{"uuid":"663b225d-fd24-4e16-a061-83e143f15b21","name":"com.dan.base.BaseTest.quit","children":["14f5fa9f-fa45-46b7-b95d-0bf3074936e6"],"description":"","befores":[],"afters":[{"name":"quit","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1745427570102,"stop":1745427571149}],"start":1745427570101,"stop":1745427571150}
