@@ -1,5 +1,4 @@
 
-```markdown
 # 🚀 Docker-Android Quick Start (WSL2 + Ubuntu)
 
 ## ✅ Requirements
