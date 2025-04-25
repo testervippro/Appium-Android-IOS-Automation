@@ -50,11 +50,15 @@ public final class IOSDriverManager implements IDriver {
     @Override
     public AppiumDriver createInstance(String udid, String platformVersion) {
         try {
-            var caps = CapabilitiesLoader.loadCapabilitiesAndroidFromJson("/ios.json");
-//            if (configuration().target().equalsIgnoreCase("grid")) {
-//                driver = new IOSDriver(new URL("http://127.0.0.1:4444"), caps);
-//            }
-            driver = new IOSDriver(new URL("http://localhost:4444/wd/hub"), caps);
+            Path appPath = Path.of(System.getProperty("user.dir"), "app", "My Demo App.app");
+
+            XCUITestOptions options = new XCUITestOptions();
+            options.setDeviceName("iPhone 13");
+
+            options.setUdid("91CC769D-8C83-4310-A6EB-9F3471F04082");
+            options.setPlatformVersion("15.0");
+            options.setApp(appPath.toString());
+            driver = new IOSDriver(new URL("http://localhost:4444/wd/hub"), options);
 
         } catch (MalformedURLException e) {
             logger.error("Failed to initialize iOS driver for device {}: {}", udid, e.getMessage());
