@@ -1,14 +1,15 @@
 
-#  Docker-Android Quick Start (WSL2 + Ubuntu)
+```markdown
+# 🚀 Docker-Android Quick Start (WSL2 + Ubuntu)
 
-## Requirements
+## ✅ Requirements
 - Windows 11 + WSL2 with Ubuntu
-- Docker Desktop with WSL2 integration
+- [Docker Desktop with WSL2 integration](https://www.docker.com/products/docker-desktop/)
 - Virtualization enabled in BIOS/UEFI
 
 ---
 
-##  Check Virtualization
+## 🔍 Check Virtualization
 ```bash
 sudo apt update && sudo apt install cpu-checker
 kvm-ok
@@ -16,13 +17,14 @@ kvm-ok
 
 ---
 
-## ⚙️ Configure WSL2 for KVM
-Edit config:
+## ⚙️ Configure WSL2 for KVM (Required for Hardware Acceleration)
+
+Edit WSL configuration:
 ```bash
 sudo nano /etc/wsl.conf
 ```
 
-Add:
+Add the following:
 ```ini
 [boot]
 command = /bin/bash -c 'chown -v root:kvm /dev/kvm && chmod 660 /dev/kvm'
@@ -31,19 +33,19 @@ command = /bin/bash -c 'chown -v root:kvm /dev/kvm && chmod 660 /dev/kvm'
 nestedVirtualization=true
 ```
 
-Add user to group:
+Add your user to the `kvm` group:
 ```bash
 sudo usermod -a -G kvm $USER
 ```
 
-Restart WSL:
+Then restart WSL:
 ```bash
 wsl --shutdown
 ```
 
 ---
 
-## Run Docker-Android Emulator
+## 📦 Run Docker-Android Emulator
 ```bash
 docker run -d -p 6080:6080 \
   -e EMULATOR_DEVICE="Samsung Galaxy S10" \
@@ -53,24 +55,29 @@ docker run -d -p 6080:6080 \
   budtmo/docker-android:emulator_11.0
 ```
 
-Visit: [http://localhost:6080](http://localhost:6080)
+Then visit: [http://localhost:6080](http://localhost:6080)
 
 ---
 
 ## 🛠 Useful Commands
-Check emulator status:
+
+✅ **Check emulator status**:
 ```bash
 docker exec -it android-container cat device_status
 ```
 
-Persist data:
+💾 **Persist data between sessions**:
 ```bash
 docker run -v android-data:/home/androidusr \
   budtmo/docker-android:emulator_11.0
 ```
 
+---
 
-More info: [GitHub - docker-android](https://github.com/budtmo/docker-android)
+## 🔗 Resources
+- 📦 Docker Desktop: [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
+- 📘 Docker-Android GitHub: [https://github.com/budtmo/docker-android](https://github.com/budtmo/docker-android)
 
-=
-Let me know if you want this saved to a file or need help automating the steps!
+---
+
+```
