@@ -72,10 +72,10 @@ xcrun simctl boot "iPhone 13 mini"
 
 ### Open Simulator App (Optional)
 
-To open the Simulator application:
+To finf the Simulator :
 
 ```bash
-open -a Simulator
+xcrun simctl list | egrep '(Booted)'
 ```
 
 ### Stop the Simulator
