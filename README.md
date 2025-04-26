@@ -35,6 +35,11 @@ xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -desti
 
 ```
 
+OR
+```bash
+appium driver run xcuitest open-wda  
+```
+
 
 ## Simulator  IOS
 
