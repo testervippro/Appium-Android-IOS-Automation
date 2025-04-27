@@ -1,134 +1,111 @@
 
+# 📱 Steps to Run WebDriverAgent and Appium with Selenium Grid 3
 
-# Java and Maven Nodejs,Appium ,Appim Inpector,Android Cmd Tools (Run as Admin)
+---
 
-```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/testervippro/base_setup/main/setup.ps1 | Invoke-Expression
-```
+## 1. Run WebDriverAgent with Appium
 
-### Uninstall 
-```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/testervippro/base_setup/main/un-setup.ps1 | Invoke-Expression
-```
-```bash
-source ~/.zshrc
-```
-
-Steps to Run WebDriverAgent and Fix Appium Inspector Errors WebDriverAgent
-
-1. Navigate to the WebDriverAgent Directory
-First, navigate to the directory where `WebDriverAgent` is located:
+You can run WebDriverAgent using the Appium CLI:
 
 ```bash
-cd /Users/mac/.appium/node_modules/appium-xcuitest-driver/node_modules/appium-webdriveragent
-```
-WedDriverAgenRuner : Run app with this option
-<img width="1280" alt="Screen Shot 2025-04-20 at 14 27 11" src="https://github.com/user-attachments/assets/d501d828-6f5e-4ca2-9624-987bccd92eec" />
-
-
-<img width="355" alt="Screen Shot 2025-04-20 at 14 25 00" src="https://github.com/user-attachments/assets/99fff044-5671-46b8-a12c-c44c53b182e7" />
-
-
-
-```bash
-xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination "id=38AEB073-1BAF-4158-A7DE-43F5F1132595" -derivedDataPath /tmp/WebDriverAgentBuild clean test -allowProvisioningUpdates
-
+appium driver run xcuitest open-wda
 ```
 
-OR
-```bash
-appium driver run xcuitest open-wda  
-```
+---
 
+## 2. Set up Code Signing in Xcode
 
-## Simulator  IOS
+- Open the `WebDriverAgent` project in Xcode.
+- Select `WebDriverAgentRunner` as the target.
+- Go to **Signing & Capabilities** tab.
+- Under **Team**, select your Apple developer team for code signing.
 
-Seting like this 
-<img width="1280" alt="Screen Shot 2025-04-20 at 15 37 59" src="https://github.com/user-attachments/assets/46dc6ff6-ad7e-4b2d-8df2-33911a9eb93a" />
-<img width="1280" alt="Screen Shot 2025-04-20 at 15 39 46" src="https://github.com/user-attachments/assets/831953f1-4bc9-4e2b-b203-e8f3d385bd78" />
+---
 
+## 3. Build the WebDriverAgent Project
 
+In Xcode:
 
-### List Devices
+- Press `Cmd + B` to build the project.
 
-kill port 
-lsof -i :8888 | awk 'NR>1 {print $2}' | xargs kill -9
-lsof -i :9999 | awk 'NR>1 {print $2}' | xargs kill -9
+---
 
+## 4. Start a Simulator
 
-To list all available devices:
-
-```bash
-xcrun simctl list devices
-```
-
-
-### Start a Simulator
-
-To boot a specific simulator (e.g., "iPhone 14"):
-
-```bash
-xcrun simctl boot "iPhone 13 mini"
-```
+To boot and open a specific simulator (e.g., **iPhone 14**), run:
 
 ```bash
 open -a Simulator
 ```
 
+---
 
-### Open Simulator App (Optional)
+## 5. Find the Running Simulator (Optional)
 
-To finf the Simulator :
+To list running (booted) simulators:
 
 ```bash
 xcrun simctl list | egrep '(Booted)'
 ```
 
-### Stop the Simulator
+---
 
-To shut down a specific simulator (e.g., "iPhone 14"):
 
-```bash
-xcrun simctl shutdown "iPhone 13 mini"
+# 🧪 Selenium Grid 3 + Appium Setup
+> (Running on Grid 4 may encounter many issues, Grid 3 is more stable here.)
+
+---
+Look for your active network adapter (e.g., `Wi-Fi`, `en0`) and copy the **IPv4 address**.
+
+Use this IP address in your node JSON config android.json, ios.json:
+
+```json
+"hubHost": "192.168.x.x"
 ```
-
-
-
-## Simulator  Android
-
-### 1. List Available Emulators
-
-To list all available Android Virtual Devices (AVDs), run:
-
-```bash
-emulator -list-avds
-```
-
-
-
-### 2. Start an Emulator
-
-To start a specific emulator, use the `emulator` command with the AVD name:
-
-```bash
-emulator -avd Pixel_4_API_30
-```
-
-Replace `Pixel_4_API_30` with the name of your AVD.
+> Replace `"192.168.x.x"` with your actual local IP address.
 
 ---
 
-### 3. Interact with the Emulator
+## 1. Start Selenium Hub
 
-- Use the emulator window to test your app or perform actions.
+```bash
+java -jar grid3/selenium.jar -role hub -hubConfig grid3/grid.json
+```
 
 ---
 
-### 4. Stop the Emulator
-
-To stop a running emulator, use the `adb` command with the emulator ID (e.g., `emulator-5554`):
+## 2. Register Android Node
 
 ```bash
-adb -s emulator-5554 emu kill
+appium --nodeconfig grid3/android.json --base-path=/wd/hub --port 4723
 ```
 
+---
+
+## 3. Register iOS Node
+
+```bash
+appium --nodeconfig grid3/ios.json --base-path=/wd/hub --port 4727
+```
+
+---
+
+# 🔍 How to Get `hubHost` (Local IP)
+
+Run this command in your terminal to get your local IP address:
+
+```bash
+ipconfig    # Windows
+ifconfig    # macOS/Linux
+``
+
+# 🚀 Run Your Tests
+
+After setting everything up, run your tests using Maven:
+
+```bash
+mvn clean test -Dsuites=android-ios
+```
+## 🎥 Video Demo
+
+Watch the video demo [here](https://www.youtube.com/watch?v=HCDSs9ilyXA).
