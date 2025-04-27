@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.thoaikx</groupId>
@@ -9,45 +10,89 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Versions -->
         <owner.version>1.0.12</owner.version>
+        <maven.surefire.plugin.version>3.5.2</maven.surefire.plugin.version>
+        <allure.maven.version>2.12.0</allure.maven.version>
+        <allure.report.version>2.30.0</allure.report.version>
+        <appium.java.client.version>9.3.0</appium.java.client.version>
+        <jackson.databind.version>2.13.1</jackson.databind.version>
+        <testng.version>7.8.0</testng.version>
+        <selenium.utils.version>1.4</selenium.utils.version>
+
+        <!-- Suite -->
+        <suite>android-ios</suite>
     </properties>
 
     <dependencies>
+
         <!-- Appium Java Client -->
-        <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
-<dependency>
-    <groupId>io.appium</groupId>
-    <artifactId>java-client</artifactId>
-    <version>9.3.0</version>
-</dependency>
-
-
         <dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
-    <artifactId>jackson-databind</artifactId>
-    <version>2.13.1</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/org.testng/testng -->
-<dependency>
-    <groupId>org.testng</groupId>
-    <artifactId>testng</artifactId>
-    <version>7.8.0</version> <!-- Use the latest version -->
-</dependency>
-
-        <dependency>
-            <groupId>io.github.testervippro</groupId>
-            <artifactId>selenium-utils</artifactId>
-            <version>1.4</version>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>${appium.java.client.version}</version>
         </dependency>
 
         <!-- Jackson Databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.databind.version}</version>
+        </dependency>
+
+        <!-- TestNG -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+        </dependency>
+
+        <!-- Selenium Utils -->
+        <dependency>
+            <groupId>io.github.testervippro</groupId>
+            <artifactId>selenium-utils</artifactId>
+            <version>${selenium.utils.version}</version>
+        </dependency>
+
+        <!-- Owner Configuration -->
         <dependency>
             <groupId>org.aeonbits.owner</groupId>
             <artifactId>owner</artifactId>
             <version>${owner.version}</version>
         </dependency>
-       
+
     </dependencies>
+
+    <build>
+        <plugins>
+
+            <!-- Allure Report Plugin -->
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure.maven.version}</version>
+                <configuration>
+                    <reportVersion>${allure.report.version}</reportVersion>
+                </configuration>
+            </plugin>
+
+            <!-- Surefire Plugin for TestNG -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin.version}</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/suites/${suite}.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
 </project>
