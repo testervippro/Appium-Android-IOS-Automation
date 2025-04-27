@@ -1,7 +1,6 @@
 
 # 📱 Steps to Run WebDriverAgent and Appium with Selenium Grid 3
 
----
 
 ## 1. Run WebDriverAgent with Appium
 
@@ -57,6 +56,17 @@ xcrun simctl list | egrep '(Booted)'
 ---
 Look for your active network adapter (e.g., `Wi-Fi`, `en0`) and copy the **IPv4 address**.
 
+Run this command in your terminal to get your local IP address:
+# Windows
+```bash
+ipconfig    
+```
+
+ # macOS/Linux
+```bash
+ifconfig
+```
+
 Use this IP address in your node JSON config android.json, ios.json:
 
 ```json
@@ -87,17 +97,6 @@ appium --nodeconfig grid3/android.json --base-path=/wd/hub --port 4723
 ```bash
 appium --nodeconfig grid3/ios.json --base-path=/wd/hub --port 4727
 ```
-
----
-
-# 🔍 How to Get `hubHost` (Local IP)
-
-Run this command in your terminal to get your local IP address:
-
-```bash
-ipconfig    # Windows
-ifconfig    # macOS/Linux
-``
 
 # 🚀 Run Your Tests
 
