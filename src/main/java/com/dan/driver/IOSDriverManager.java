@@ -13,6 +13,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Path;
 
+import static com.dan.config.ConfigurationManager.configuration;
+
 public final class IOSDriverManager implements IDriver {
 
     private static final Logger logger = LogManager.getLogger(IOSDriverManager.class);
@@ -20,9 +22,10 @@ public final class IOSDriverManager implements IDriver {
 
     @Override
     public AppiumDriver createInstance(String udid, String platformVersion) {
-        IOSSimulatorUltis.DeviceInfo deviceInfo = IOSSimulatorUltis.getDeviceInfoByName("Iphone 13");
+        IOSSimulatorUltis.DeviceInfo deviceInfo = IOSSimulatorUltis.getDeviceInfoByName(configuration().deviceName());
 
         try {
+
             Path appPath = Path.of(System.getProperty("user.dir"), "app", "My Demo App.app");
 
             XCUITestOptions options = new XCUITestOptions();
@@ -33,14 +36,14 @@ public final class IOSDriverManager implements IDriver {
             options.setApp(appPath.toString());
 
             options.doesFullReset();
-            options.doesConnectHardwareKeyboard();
+            //options.doesConnectHardwareKeyboard();
             options.connectHardwareKeyboard();
-            options.doesForceSimulatorSoftwareKeyboardPresence();
-            options.forceSimulatorSoftwareKeyboardPresence();
+            //options.doesForceSimulatorSoftwareKeyboardPresence();
+            //options.forceSimulatorSoftwareKeyboardPresence();
 
             // Adding timeouts
             // Base on this issue https://github.com/appium/appium/issues/15377
-            options.setCapability("wdaLaunchTimeout", 40000); // Set the timeout for WDA to launch
+            options.setCapability("wdaLaunchTimeout", 60000); // Set the timeout for WDA to launch
             options.setCapability("wdaStartupRetries", 3); // Retry 3 times
             options.setCapability("wdaStartupRetryInterval", 5000); // Retry interval of 5 seconds
 
