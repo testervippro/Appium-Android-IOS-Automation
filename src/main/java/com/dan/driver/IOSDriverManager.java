@@ -2,6 +2,7 @@
 package com.dan.driver;
 
 
+import com.dan.utils.IOSSimulatorHelper;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
@@ -19,17 +20,30 @@ public final class IOSDriverManager implements IDriver {
 
     @Override
     public AppiumDriver createInstance(String udid, String platformVersion) {
+        IOSSimulatorHelper.DeviceInfo deviceInfo = IOSSimulatorHelper.getDeviceInfoByName("Iphone 13");
+
         try {
             Path appPath = Path.of(System.getProperty("user.dir"), "app", "My Demo App.app");
 
             XCUITestOptions options = new XCUITestOptions();
-            options.setDeviceName("iPhone 13");
-
-            options.setUdid("91CC769D-8C83-4310-A6EB-9F3471F04082");
-            options.setPlatformVersion("15.0");
+            options.usePrebuiltWda();
+            options.setDeviceName(deviceInfo.getDeviceName());
+            options.setUdid(deviceInfo.getUdid());
+            options.setPlatformVersion(deviceInfo.getPlatformVersion());
             options.setApp(appPath.toString());
             options.doesConnectHardwareKeyboard();
+            options.connectHardwareKeyboard();
             options.doesForceSimulatorSoftwareKeyboardPresence();
+
+            // Adding timeouts
+            // Base on this issue https://github.com/appium/appium/issues/15377
+            options.setCapability("wdaLaunchTimeout", 40000); // Set the timeout for WDA to launch
+            options.setCapability("wdaStartupRetries", 3); // Retry 3 times
+            options.setCapability("wdaStartupRetryInterval", 5000); // Retry interval of 5 seconds
+
+            // Connection and implicit wait timeout
+            options.setCapability("appium:connectTimeout", 60000); // Set connection timeout (60 seconds)
+            options.setCapability("appium:newCommandTimeout", 1800); // Timeout for no new command (30 minutes)
 
             driver = new IOSDriver(new URL("http://localhost:4444/wd/hub"), options);
 
