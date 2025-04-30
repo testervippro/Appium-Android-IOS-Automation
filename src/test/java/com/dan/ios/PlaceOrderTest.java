@@ -1,8 +1,5 @@
 package com.dan.ios;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.dan.base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -12,18 +9,16 @@ import org.testng.annotations.Test;
 
 import io.appium.java_client.AppiumBy;
 
-import static com.dan.config.ConfigurationManager.configuration;
 import static com.dan.utils.ExplicitWait.waitForElementClickable;
 import static com.dan.utils.ExplicitWait.waitForElementVisible;
 
 // Sample basic flow for mobile iOS login and order placement
-public class LoginTest extends BaseTest {
+public class PlaceOrderTest extends BaseTest {
 
     @Test
     public void placeOrder() throws InterruptedException {
 
-        Map<String, Object> params1 = new HashMap<String, Object>();
-        params1.put("direction", "up");
+
 
         // Using driver to retrieve the Appium driver instance
         var menuIV = By.xpath("//XCUIElementTypeButton[@name=\"More-tab-item\"]");
@@ -33,8 +28,7 @@ public class LoginTest extends BaseTest {
         var loginLeftMenu = By.xpath("//XCUIElementTypeOther[@name=\"Login Button\"]");
         waitForElementVisible(wait, loginLeftMenu).click();
 
-        // Swipe to hide keyboard and select user
-        //driver.executeScript("mobile:swipe", params1);
+
         driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"bob@example.com\"]")).click();
 
         // Click login button
@@ -76,22 +70,23 @@ public class LoginTest extends BaseTest {
         Thread.sleep(2000);
         state.sendKeys("State");
 
-        // Swipe to continue
-        params1.put("direction", "up");
-       // driver.executeScript("mobile:swipe", params1);
+        address2.click();
+
 
         // Zip Code
         var zipCode = driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"89750\"]"));
         zipCode.sendKeys("123");
+
+        address2.click();
 
         // Country
         WebElement country = driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"United Kingdom\"]"));
         Thread.sleep(5000);
         country.sendKeys("HN");
 
-        // Swipe to process
-        params1.put("direction", "up");
-        //driver.executeScript("mobile:swipe", params1);
+        Thread.sleep(2000);
+        address2.click();
+
         Thread.sleep(2000);
         driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"To Payment\"]")).click();
         Thread.sleep(3000);
@@ -103,8 +98,6 @@ public class LoginTest extends BaseTest {
         driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"3258 1265 7568 7896\"]"))
                 .sendKeys("258 1265 7568 7896");
 
-        // Swipe again
-        //driver.executeScript("mobile:swipe", params1);
 
         // Expiry Date
         driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"03/25\"]")).sendKeys("12/25");
