@@ -7,13 +7,15 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Iterator;
 
-public class IOSSimulatorUtils {
+public class IOSSimulatorUltis {
 
+    // Nested class to hold device information
     public static class DeviceInfo {
         private String udid;
         private String platformVersion;
         private String deviceName;
 
+        // Getter and Setter methods for UDID, Platform Version, and Device Name
         public String getUdid() {
             return udid;
         }
@@ -39,6 +41,7 @@ public class IOSSimulatorUtils {
         }
     }
 
+    // Method to find device by its name and return its information
     public static DeviceInfo getDeviceInfoByName(String deviceName) {
         DeviceInfo info = new DeviceInfo();
         try {
@@ -96,15 +99,17 @@ public class IOSSimulatorUtils {
 
         return null;
     }
-
+    // Method to get a list of all available device names
     public static String[] getAvailableDeviceNames() {
         try {
+            // Running the xcrun command to list all devices
             Process process = new ProcessBuilder("xcrun", "simctl", "list", "-j", "devices").start();
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readTree(reader);
             JsonNode devicesNode = root.path("devices");
 
+            // Create a list to hold available device names
             Iterator<String> versions = devicesNode.fieldNames();
             while (versions.hasNext()) {
                 String version = versions.next();
@@ -122,3 +127,4 @@ public class IOSSimulatorUtils {
         return new String[0];
     }
 }
+
