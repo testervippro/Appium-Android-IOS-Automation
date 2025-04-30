@@ -30,9 +30,9 @@ import org.aeonbits.owner.Config.LoadType;
 @LoadPolicy(LoadType.MERGE)
 @Config.Sources({
         "system:properties",
-        "classpath:conf/general.properties",
-        "classpath:conf/android.properties",
-        "classpath:conf/ios.properties"})
+        "classpath:general.properties",
+        "classpath:android.properties",
+        "classpath:ios.properties"})
 public interface Configuration extends Config {
 
     @Key("install.app")
@@ -47,6 +47,10 @@ public interface Configuration extends Config {
 
     @Key("app.ios.appName")
     String iosAppName();
+
+    @Key("device.name")
+    String deviceName();
+
 
     @Key("app.android.path")
     String androidAppPath();
