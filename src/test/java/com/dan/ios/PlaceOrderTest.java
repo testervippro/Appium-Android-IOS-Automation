@@ -62,12 +62,12 @@ public class PlaceOrderTest extends BaseTest {
 
         // City
         var city = driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Truro\"]"));
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         city.sendKeys("city");
 
         // State
         var state = driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Cornwall\"]"));
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         state.sendKeys("State");
 
         address2.click();
@@ -81,15 +81,15 @@ public class PlaceOrderTest extends BaseTest {
 
         // Country
         WebElement country = driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"United Kingdom\"]"));
-        Thread.sleep(5000);
+        Thread.sleep(1000);
         country.sendKeys("HN");
 
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         address2.click();
 
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"To Payment\"]")).click();
-        Thread.sleep(3000);
+        Thread.sleep(1000);
 
         // Fill out credit card information
         var fullName = driver.findElement(By.xpath("//XCUIElementTypeTextField[@value=\"Maxim Winter\"]"));
