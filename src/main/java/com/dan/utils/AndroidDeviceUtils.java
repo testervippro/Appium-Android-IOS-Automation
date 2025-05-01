@@ -1,7 +1,5 @@
 package com.dan.utils;
 
-package com.dan.utils;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;

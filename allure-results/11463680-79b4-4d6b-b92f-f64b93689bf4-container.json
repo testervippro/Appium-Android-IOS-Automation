@@ -1,1 +1,0 @@
-{"uuid":"11463680-79b4-4d6b-b92f-f64b93689bf4","name":"com.thoaikx.android.LoginTest","children":["7d48be8c-917a-4a20-b269-a6bf666d4df4"],"befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1744464401564,"stop":1744464401577}],"afters":[],"start":1744464401501,"stop":1744464427153}
