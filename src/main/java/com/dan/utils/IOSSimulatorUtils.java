@@ -7,7 +7,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Iterator;
 
-public class IOSSimulatorUltis {
+public class IOSSimulatorUtils {
 
     // Nested class to hold device information
     public static class DeviceInfo {
