@@ -41,6 +41,13 @@ public interface Configuration extends Config {
     @Key("target")
     String target();
 
+    @Key("grid.url")
+    String gridUrl();
+
+
+    @Key("appium.docker.realdevice")
+    Boolean isDockerRealDevice();
+
 
     @Key("app.ios.path")
     String iosAppPath();
