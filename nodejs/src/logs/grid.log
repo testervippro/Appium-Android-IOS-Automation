@@ -1,5 +1,10 @@
-17:11:20.004 INFO [GridLauncherV3.parse] - Selenium server version: 3.141.59, revision: e82be7d358
-17:11:20.166 INFO [GridLauncherV3.lambda$buildLaunchers$5] - Launching Selenium Grid hub on port 4444
-2025-05-02 17:11:20.625:INFO::main: Logging initialized @1030ms to org.seleniumhq.jetty9.util.log.StdErrLog
-17:11:20.848 INFO [DefaultGridRegistry.assignRequestToProxy] - Shutting down registry.
-17:11:20.885 ERROR [Hub.start] - Port 4444 is busy, please choose a free port for the hub and specify it using -port option
+18:41:27.860 INFO [GridLauncherV3.parse] - Selenium server version: 3.141.59, revision: e82be7d358
+18:41:28.003 INFO [GridLauncherV3.lambda$buildLaunchers$5] - Launching Selenium Grid hub on port 4444
+2025-05-02 18:41:28.465:INFO::main: Logging initialized @957ms to org.seleniumhq.jetty9.util.log.StdErrLog
+18:41:28.653 INFO [Hub.start] - Selenium Grid hub is up and running
+18:41:28.655 INFO [Hub.start] - Nodes should register to http://192.168.1.248:4444/grid/register/
+18:41:28.655 INFO [Hub.start] - Clients should connect to http://192.168.1.248:4444/wd/hub
+18:41:35.867 INFO [DefaultGridRegistry.add] - Registered a node http://localhost:4723
+18:41:38.196 INFO [DefaultGridRegistry.add] - Registered a node http://127.0.0.1:4727
+18:41:39.243 INFO [RequestHandler.process] - Got a request to create a new session: Capabilities {appium:app: /Users/mac/Documents/Appium..., appium:automationName: XCuiTest, appium:connectHardwareKeyboard: true, appium:connectTimeout: 60000, appium:deviceName: iPhone 13, appium:newCommandTimeout: 1800, appium:platformVersion: com.apple.CoreSimulator.Sim..., appium:udid: 91CC769D-8C83-4310-A6EB-9F3..., appium:usePrebuiltWDA: true, appium:wdaLaunchTimeout: 60000, appium:wdaStartupRetries: 3, appium:wdaStartupRetryInterval: 5000, platformName: ios}
+18:41:39.248 INFO [TestSlot.getNewSession] - Trying to create a new session on test slot {server:CONFIG_UUID=c4e765cc-00e3-4f6f-8aee-9710dd2f83cc, seleniumProtocol=WebDriver, browserName=iPhone 13, maxInstances=1, platformName=IOS, version=15, platform=IOS}

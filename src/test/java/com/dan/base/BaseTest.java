@@ -29,10 +29,12 @@ public class BaseTest {
 
         // Update hubHost IP
         CommandLine updateIP = CommandLine.parse("node nodejs/src/update-Ip.js");
+        CommandLine killPort = CommandLine.parse("node nodejs/src/kill-port.js");
 
         DefaultExecutor executorUpdateIP = new DefaultExecutor();
         executorUpdateIP.setStreamHandler(new PumpStreamHandler(System.out)); // Optional: to log output
         executorUpdateIP.execute(updateIP);
+        executorUpdateIP.execute(killPort);
 
         Thread thread = new Thread(() -> {
             try {

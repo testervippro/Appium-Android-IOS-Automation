@@ -1,13 +1,12 @@
-
-# ✅ Appium Java Setup Guide (macOS & Windows)
+# Appium Java Setup Guide (macOS & Windows)
 
 For Mobile Automation (Android & iOS)
 
 ---
 
-## 🔧 Pre-Requisites
+## Pre-Requisites
 
-### 🔹 macOS Setup
+### macOS Setup
 
 ```bash
 # 1. Install JDK 17
@@ -28,7 +27,7 @@ echo $JAVA_HOME
 
 ---
 
-### 🔹 Windows Setup
+### Windows Setup
 
 ```powershell
 # 1. Download & Install Temurin JDK 17
@@ -50,16 +49,16 @@ $env:JAVA_HOME
 
 ---
 
-## 💡 Recommended IDE
+## Recommended IDE
 
-* **IntelliJ IDEA**
+* IntelliJ IDEA
   Download: [https://www.jetbrains.com/idea/download](https://www.jetbrains.com/idea/download)
 
 ---
 
-## ⚙️ Node.js & Appium Setup
+## Node.js & Appium Setup
 
-### 🔹 macOS
+### macOS
 
 ```bash
 brew install node@20
@@ -69,7 +68,7 @@ node -v
 npm -v
 ```
 
-### 🔹 Windows
+### Windows
 
 ```powershell
 Invoke-WebRequest -Uri "https://nodejs.org/dist/v20.11.1/node-v20.11.1-x64.msi" -OutFile "nodejs.msi"
@@ -78,7 +77,7 @@ node -v
 npm -v
 ```
 
-### 🔹 Install Appium
+### Install Appium
 
 ```bash
 npm install -g appium
@@ -88,15 +87,15 @@ appium -v
 
 ---
 
-## 📱 Android Setup
+## Android Setup
 
-### 🔹 Install Android Studio
+### Install Android Studio
 
 Download: [https://developer.android.com/studio](https://developer.android.com/studio)
 
 ---
 
-### 🔹 Set Environment Variables
+### Set Environment Variables
 
 #### Android SDK Paths:
 
@@ -131,7 +130,7 @@ setx PATH "%PATH%;%ANDROID_HOME%\platform-tools"
 
 ---
 
-### 🔹 Create Android Virtual Device (AVD)
+### Create Android Virtual Device (AVD)
 
 1. Open **Android Studio > Device Manager**
 2. Create a new device (e.g., Pixel 6)
@@ -147,32 +146,32 @@ adb devices
 
 ---
 
-### 🔹 UI Inspector Tools
+### UI Inspector Tools
 
 * Appium Inspector: [https://github.com/appium/appium-inspector/releases](https://github.com/appium/appium-inspector/releases)
 * UIAutomatorViewer: `$ANDROID_HOME/tools/bin/uiautomatorviewer`
 
 ---
 
-## 🍏 iOS Setup (macOS Only)
+## iOS Setup (macOS Only)
 
-### 🔹 Install Xcode
+### Install Xcode
 
 Download: [https://xcodereleases.com/](https://xcodereleases.com/)
 
-### 🔹 Command Line Tools
+### Command Line Tools
 
 ```bash
 xcode-select --install
 ```
 
-### 🔹 Install Appium iOS Driver
+### Install Appium iOS Driver
 
 ```bash
 npm install -g appium-xcuitest-driver
 ```
 
-### 🔹 Launch Simulator
+### Launch Simulator
 
 1. Xcode → Open Developer Tool → Simulator
 2. Choose/Create iOS device (e.g., iPhone 14)
@@ -185,9 +184,9 @@ xcrun simctl list | egrep '(Booted)'
 
 ---
 
-## 🧪 Selenium Grid 3 + Appium
+## Selenium Grid 3 + Appium
 
-### 🔹 Update Local IP in JSON (Auto)
+### Update Local IP in JSON (Auto)
 
 ```bash
 node nodejs/src/setup.js
@@ -205,7 +204,7 @@ This updates `hubHost` in `android.json` / `ios.json`.
 
 ---
 
-### 🔹 Start Grid via Java
+### Start Grid via Java
 
 ```bash
 java -jar grid3/selenium.jar -role hub -hubConfig grid3/grid.json
@@ -213,13 +212,13 @@ java -jar grid3/selenium.jar -role hub -hubConfig grid3/grid.json
 
 ---
 
-### 🔹 Register Android Node
+### Register Android Node
 
 ```bash
 appium --nodeconfig grid3/android.json --base-path=/wd/hub --port 4723
 ```
 
-### 🔹 Register iOS Node
+### Register iOS Node
 
 ```bash
 appium --nodeconfig grid3/ios.json --base-path=/wd/hub --port 4727
@@ -227,60 +226,66 @@ appium --nodeconfig grid3/ios.json --base-path=/wd/hub --port 4727
 
 ---
 
-### 🔹 Auto Start Grid from Java (TestNG)
+### Auto Start Grid from Java (TestNG)
 
 Ensure npm install is run inside the nodejs folder:
 Move to folder
+
 ```bash
 cd nodejs
 ```
+
 Then run cmd
+
 ```bash
 npm install
 ```
 
-Add this to BaseTest 
+Add this to BaseTest
 
-It will update configuration.hubHost IP file android.json ,ios.json  in grid3 folder
-Start grid with port 4444 ,Appium android 4723, Ios 4727 and express server to see real-time log is free port in host
+It will update configuration.hubHost IP file android.json, ios.json in grid3 folder
+Start grid with port 4444, Appium android 4723, iOS 4727, and express server to see real-time log on port 9999.
 
 ```java
-@BeforeSuite
+ @BeforeSuite
 public void startGrid() throws IOException {
 
-    // Update hubHost IP file android.json ,ios.json grid3 folder 
-    CommandLine updateIP = CommandLine.parse("node nodejs/src/update-Ip.js");
-    DefaultExecutor executorUpdateIP = new DefaultExecutor();
-    executorUpdateIP.setStreamHandler(new PumpStreamHandler(System.out));
-    executorUpdateIP.execute(updateIP);
+  // Update hubHost IP
+  CommandLine updateIP = CommandLine.parse("node nodejs/src/update-Ip.js");
+  CommandLine killPort = CommandLine.parse("node nodejs/src/kill-port.js");
 
-    // Start Selenium Grid + Appium
-    Thread thread = new Thread(() -> {
-        try {
-            CommandLine runGrid = CommandLine.parse("node nodejs/src/run-grid.js");
-            DefaultExecutor executorRunGrid = new DefaultExecutor();
-            executorRunGrid.setStreamHandler(new PumpStreamHandler(System.out));
-            executorRunGrid.execute(runGrid);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    });
+  DefaultExecutor executorUpdateIP = new DefaultExecutor();
+  executorUpdateIP.setStreamHandler(new PumpStreamHandler(System.out)); // Optional: to log output
+  executorUpdateIP.execute(updateIP);
+  executorUpdateIP.execute(killPort);
 
-    thread.setDaemon(true);
-    thread.start();
-
-    // Optional delay for grid startup
+  Thread thread = new Thread(() -> {
     try {
-        Thread.sleep(10000);
-    } catch (InterruptedException e) {
-        Thread.currentThread().interrupt();
+      CommandLine runGrid = CommandLine.parse("node nodejs/src/run-grid.js");
+
+      DefaultExecutor executorRunGrid = new DefaultExecutor();
+      executorRunGrid.setStreamHandler(new PumpStreamHandler(System.out)); // Optional: to log output
+      executorRunGrid.execute(runGrid);
+    } catch (IOException e) {
+      e.printStackTrace();
     }
+  });
+
+  thread.setDaemon(true);
+  thread.start();
+
+  // Optional wait to let the grid boot up before tests start
+  try {
+    Thread.sleep(10000);
+  } catch (InterruptedException e) {
+    Thread.currentThread().interrupt();
+  }
 }
 ```
 
 ---
 
-## 🚀 Run Your Tests
+## Run Your Tests
 
 ```bash
 mvn clean test -Dsuites=android-ios
@@ -288,8 +293,7 @@ mvn clean test -Dsuites=android-ios
 
 ---
 
-## 🎥 Demo Video
+## Demo Video
 
 Watch the full guide:
-📺 [https://www.youtube.com/watch?v=HCDSs9ilyXA](https://www.youtube.com/watch?v=HCDSs9ilyXA)
-
+[https://www.youtube.com/watch?v=HCDSs9ilyXA](https://www.youtube.com/watch?v=HCDSs9ilyXA)

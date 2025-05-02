@@ -162,7 +162,7 @@ const html = `
 fs.writeFileSync(path.join(publicDir, 'index.html'), html);
 
 // WebSocket server
-const server = app.listen(0, () => {
+const server = app.listen(9999, () => {
   const { port } = server.address();
   console.log(`Web interface: http://localhost:${port}`);
 });
@@ -193,9 +193,13 @@ function broadcastLog(processName, message, color) {
   }
 }
 
+// Start a process and add to process array
 function startProcess({ cmd, args, name, color }) {
-  const logFile = fs.createWriteStream(path.join(logDir, `${name}.log`), { flags: 'a',encoding: 'utf-8' });
+  const logFile = fs.createWriteStream(path.join(logDir, `${name}.log`), { flags: 'a', encoding: 'utf-8' });
   const proc = spawn(cmd, args, { shell: true });
+
+  // Add the process to the array
+  processes.push(proc);
 
   proc.stdout.on('data', (data) => {
     const msg = data.toString();
@@ -205,29 +209,30 @@ function startProcess({ cmd, args, name, color }) {
   });
 
   proc.stderr.on('data', (data) => {
-    const msg = `${data}`;
+    const msg = data.toString();
     logFile.write(msg);
     console.error(`[${name}] ${msg}`);
     broadcastLog(name, msg, color);
   });
 
   proc.on('close', () => logFile.end());
-
-  processes.push({ name, pid: proc.pid });
 }
 
+// Function to kill all running processes
 function killAll() {
   return Promise.all(processes.map(p =>
     new Promise(resolve => kill(p.pid, 'SIGKILL', () => resolve()))
   ));
 }
 
+// Handle process termination on SIGINT
 process.on('SIGINT', async () => {
   console.log('\nShutting down...');
   await killAll();
   process.exit();
 });
 
+// Start all the processes
 (async () => {
   await killAll();
   for (const cfg of commands) {
