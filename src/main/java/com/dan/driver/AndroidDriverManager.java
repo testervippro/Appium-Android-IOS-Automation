@@ -1,8 +1,6 @@
 package com.dan.driver;
 
-import com.dan.config.Configuration;
-import com.dan.config.ConfigurationManager;
-import com.dan.utils.AndroidDeviceUtils;
+import com.dan.utils.AdbUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
@@ -24,14 +22,13 @@ public final class AndroidDriverManager implements IDriver {
     @Override
     public AppiumDriver createInstance(String udid, String platformVersion) {
 
-        AndroidDeviceUtils.DeviceInfo device = AndroidDeviceUtils.getDeviceInfoByName("emulator-5554");
         try {
             Path appPath = Path.of(System.getProperty("user.dir"), configuration().androidAppPath());
 
             UiAutomator2Options options = new UiAutomator2Options()
                     .setPlatformName("Android")
-                    .setUdid(device.getDeviceId())
-                    .setPlatformVersion(device.getPlatformVersion())
+                    .setUdid(udid)
+                    .setPlatformVersion(platformVersion)
                     .setAppPackage(configuration().androidAppPackage())
                     .setAppActivity(configuration().androidAppActivity());
 

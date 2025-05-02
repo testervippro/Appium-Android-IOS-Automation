@@ -1,0 +1,5 @@
+17:11:20.004 INFO [GridLauncherV3.parse] - Selenium server version: 3.141.59, revision: e82be7d358
+17:11:20.166 INFO [GridLauncherV3.lambda$buildLaunchers$5] - Launching Selenium Grid hub on port 4444
+2025-05-02 17:11:20.625:INFO::main: Logging initialized @1030ms to org.seleniumhq.jetty9.util.log.StdErrLog
+17:11:20.848 INFO [DefaultGridRegistry.assignRequestToProxy] - Shutting down registry.
+17:11:20.885 ERROR [Hub.start] - Port 4444 is busy, please choose a free port for the hub and specify it using -port option

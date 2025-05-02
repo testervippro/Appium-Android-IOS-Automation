@@ -1,47 +1,183 @@
 
-# 📱 Steps to Run WebDriverAgent and Appium with Selenium Grid 3
+# ✅ Appium Java Setup Guide (macOS & Windows)
 
+For Mobile Automation (Android & iOS)
 
-## 1. Run WebDriverAgent with Appium
+---
 
-You can run WebDriverAgent using the Appium CLI:
+## 🔧 Pre-Requisites
+
+### 🔹 macOS Setup
 
 ```bash
-appium driver run xcuitest open-wda
+# 1. Install JDK 17
+brew install openjdk@17
+
+# 2. Set JAVA_HOME (temporary session)
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+
+# 3. Make permanent (add to ~/.zshrc or ~/.bashrc)
+echo 'export JAVA_HOME=$(/usr/libexec/java_home -v 17)' >> ~/.zshrc
+echo 'export PATH="$JAVA_HOME/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+
+# 4. Verify installation
+java -version
+echo $JAVA_HOME
 ```
 
 ---
 
-## 2. Set up Code Signing in Xcode
+### 🔹 Windows Setup
 
-- Open the `WebDriverAgent` project in Xcode.
-- Select `WebDriverAgentRunner` as the target.
-- Go to **Signing & Capabilities** tab.
-- Under **Team**, select your Apple developer team for code signing.
+```powershell
+# 1. Download & Install Temurin JDK 17
+Invoke-WebRequest -Uri "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8%2B7/OpenJDK17U-jdk_x64_windows_hotspot_17.0.8_7.msi" -OutFile jdk17.msi
+Start-Process msiexec.exe -ArgumentList '/i jdk17.msi /quiet' -Wait
 
----
+# 2. Set JAVA_HOME for current session
+$env:JAVA_HOME = "C:\Program Files\Eclipse Adoptium\jdk-17.0.8.7-hotspot"
+$env:Path += ";$env:JAVA_HOME\bin"
 
-## 3. Build the WebDriverAgent Project
+# 3. Make environment variables permanent
+[System.Environment]::SetEnvironmentVariable('JAVA_HOME', $env:JAVA_HOME, 'User')
+[System.Environment]::SetEnvironmentVariable('Path', "$([System.Environment]::GetEnvironmentVariable('Path','User'));$env:JAVA_HOME\bin", 'User')
 
-In Xcode:
-
-- Press `Cmd + B` to build the project.
-
----
-
-## 4. Start a Simulator
-
-To boot and open a specific simulator (e.g., **iPhone 14**), run:
-
-```bash
-open -a Simulator
+# 4. Verify
+java -version
+$env:JAVA_HOME
 ```
 
 ---
 
-## 5. Find the Running Simulator (Optional)
+## 💡 Recommended IDE
 
-To list running (booted) simulators:
+* **IntelliJ IDEA**
+  Download: [https://www.jetbrains.com/idea/download](https://www.jetbrains.com/idea/download)
+
+---
+
+## ⚙️ Node.js & Appium Setup
+
+### 🔹 macOS
+
+```bash
+brew install node@20
+echo 'export PATH="/opt/homebrew/opt/node@20/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+node -v
+npm -v
+```
+
+### 🔹 Windows
+
+```powershell
+Invoke-WebRequest -Uri "https://nodejs.org/dist/v20.11.1/node-v20.11.1-x64.msi" -OutFile "nodejs.msi"
+Start-Process msiexec.exe -ArgumentList "/i nodejs.msi /quiet" -Wait
+node -v
+npm -v
+```
+
+### 🔹 Install Appium
+
+```bash
+npm install -g appium
+npm install -g appium-doctor
+appium -v
+```
+
+---
+
+## 📱 Android Setup
+
+### 🔹 Install Android Studio
+
+Download: [https://developer.android.com/studio](https://developer.android.com/studio)
+
+---
+
+### 🔹 Set Environment Variables
+
+#### Android SDK Paths:
+
+* macOS: `/Users/<your-username>/Library/Android/sdk`
+* Windows: `%LOCALAPPDATA%\Android\Sdk`
+
+#### Auto-Setup via Node Script:
+
+```bash
+node nodejs/src/setup.js
+```
+
+This script:
+
+* Detects OS
+* Sets `ANDROID_HOME`
+* Adds `platform-tools` to `PATH`
+
+#### Manual Setup (macOS/Linux):
+
+```bash
+export ANDROID_HOME=~/Library/Android/sdk
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+```
+
+#### Manual Setup (Windows):
+
+```powershell
+setx ANDROID_HOME "%LOCALAPPDATA%\Android\Sdk"
+setx PATH "%PATH%;%ANDROID_HOME%\platform-tools"
+```
+
+---
+
+### 🔹 Create Android Virtual Device (AVD)
+
+1. Open **Android Studio > Device Manager**
+2. Create a new device (e.g., Pixel 6)
+3. Download system image (e.g., Android 14)
+4. Click **Finish**
+5. Start emulator using play icon
+
+#### Verify:
+
+```bash
+adb devices
+```
+
+---
+
+### 🔹 UI Inspector Tools
+
+* Appium Inspector: [https://github.com/appium/appium-inspector/releases](https://github.com/appium/appium-inspector/releases)
+* UIAutomatorViewer: `$ANDROID_HOME/tools/bin/uiautomatorviewer`
+
+---
+
+## 🍏 iOS Setup (macOS Only)
+
+### 🔹 Install Xcode
+
+Download: [https://xcodereleases.com/](https://xcodereleases.com/)
+
+### 🔹 Command Line Tools
+
+```bash
+xcode-select --install
+```
+
+### 🔹 Install Appium iOS Driver
+
+```bash
+npm install -g appium-xcuitest-driver
+```
+
+### 🔹 Launch Simulator
+
+1. Xcode → Open Developer Tool → Simulator
+2. Choose/Create iOS device (e.g., iPhone 14)
+
+#### Check Booted Devices:
 
 ```bash
 xcrun simctl list | egrep '(Booted)'
@@ -49,34 +185,27 @@ xcrun simctl list | egrep '(Booted)'
 
 ---
 
+## 🧪 Selenium Grid 3 + Appium
 
-# 🧪 Selenium Grid 3 + Appium Setup
-> (Running on Grid 4 may encounter many issues, Grid 3 is more stable here.)
+### 🔹 Update Local IP in JSON (Auto)
 
----
-Look for your active network adapter (e.g., `Wi-Fi`, `en0`) and copy the **IPv4 address**.
-
-Run this command in your terminal to get your local IP address:
-# Windows
 ```bash
-ipconfig    
+node nodejs/src/setup.js
 ```
 
- # macOS/Linux
-```bash
-ifconfig
-```
+This updates `hubHost` in `android.json` / `ios.json`.
 
-Use this IP address in your node JSON config android.json, ios.json:
+#### Or manually edit:
 
 ```json
-"hubHost": "192.168.x.x"
+{
+  "hubHost": "192.168.x.x"
+}
 ```
-> Replace `"192.168.x.x"` with your actual local IP address.
 
 ---
 
-## 1. Start Selenium Hub
+### 🔹 Start Grid via Java
 
 ```bash
 java -jar grid3/selenium.jar -role hub -hubConfig grid3/grid.json
@@ -84,27 +213,83 @@ java -jar grid3/selenium.jar -role hub -hubConfig grid3/grid.json
 
 ---
 
-## 2. Register Android Node
+### 🔹 Register Android Node
 
 ```bash
 appium --nodeconfig grid3/android.json --base-path=/wd/hub --port 4723
 ```
 
----
-
-## 3. Register iOS Node
+### 🔹 Register iOS Node
 
 ```bash
 appium --nodeconfig grid3/ios.json --base-path=/wd/hub --port 4727
 ```
 
-# 🚀 Run Your Tests
+---
 
-After setting everything up, run your tests using Maven:
+### 🔹 Auto Start Grid from Java (TestNG)
+
+Ensure npm install is run inside the nodejs folder:
+Move to folder
+```bash
+cd nodejs
+```
+Then run cmd
+```bash
+npm install
+```
+
+Add this to BaseTest 
+
+It will update configuration.hubHost IP file android.json ,ios.json  in grid3 folder
+Start grid with port 4444 ,Appium android 4723, Ios 4727 and express server to see real-time log is free port in host
+
+```java
+@BeforeSuite
+public void startGrid() throws IOException {
+
+    // Update hubHost IP file android.json ,ios.json grid3 folder 
+    CommandLine updateIP = CommandLine.parse("node nodejs/src/update-Ip.js");
+    DefaultExecutor executorUpdateIP = new DefaultExecutor();
+    executorUpdateIP.setStreamHandler(new PumpStreamHandler(System.out));
+    executorUpdateIP.execute(updateIP);
+
+    // Start Selenium Grid + Appium
+    Thread thread = new Thread(() -> {
+        try {
+            CommandLine runGrid = CommandLine.parse("node nodejs/src/run-grid.js");
+            DefaultExecutor executorRunGrid = new DefaultExecutor();
+            executorRunGrid.setStreamHandler(new PumpStreamHandler(System.out));
+            executorRunGrid.execute(runGrid);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    });
+
+    thread.setDaemon(true);
+    thread.start();
+
+    // Optional delay for grid startup
+    try {
+        Thread.sleep(10000);
+    } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
+    }
+}
+```
+
+---
+
+## 🚀 Run Your Tests
 
 ```bash
 mvn clean test -Dsuites=android-ios
 ```
-## 🎥 Video Demo
 
-Watch the video demo [here](https://www.youtube.com/watch?v=HCDSs9ilyXA).
+---
+
+## 🎥 Demo Video
+
+Watch the full guide:
+📺 [https://www.youtube.com/watch?v=HCDSs9ilyXA](https://www.youtube.com/watch?v=HCDSs9ilyXA)
+

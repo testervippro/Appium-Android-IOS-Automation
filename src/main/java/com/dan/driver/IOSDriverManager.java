@@ -1,8 +1,7 @@
 
 package com.dan.driver;
 
-
-import com.dan.utils.IOSSimulatorUltis;
+import com.dan.utils.IOSSimulatorUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
@@ -22,7 +21,7 @@ public final class IOSDriverManager implements IDriver {
 
     @Override
     public AppiumDriver createInstance(String udid, String platformVersion) {
-        IOSSimulatorUltis.DeviceInfo deviceInfo = IOSSimulatorUltis.getDeviceInfoByName(configuration().deviceName());
+        IOSSimulatorUtils.DeviceInfo deviceInfo = IOSSimulatorUtils.getDeviceInfoByName(configuration().deviceName());
 
         try {
 
@@ -36,10 +35,9 @@ public final class IOSDriverManager implements IDriver {
             options.setApp(appPath.toString());
 
             options.doesFullReset();
-            //options.doesConnectHardwareKeyboard();
+            // Add to hide keyboard after input
             options.connectHardwareKeyboard();
-            //options.doesForceSimulatorSoftwareKeyboardPresence();
-            //options.forceSimulatorSoftwareKeyboardPresence();
+
 
             // Adding timeouts
             // Base on this issue https://github.com/appium/appium/issues/15377

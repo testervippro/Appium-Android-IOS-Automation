@@ -1,18 +1,15 @@
 {
-  "capabilities":
-  [
+  "capabilities": [
     {
-      "browserName":"iPhone 13",
-      "version":"15",
-      "platform":"IOS",
+      "browserName": "iPhone 13",
+      "version": "15",
+      "platform": "IOS",
       "maxInstances": 1
     }
   ],
-
-  "configuration":
-  {
-    "cleanUpCycle":2000,
-    "timeout":20000,
+  "configuration": {
+    "cleanUpCycle": 2000,
+    "timeout": 20000,
     "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
     "url": "http://127.0.0.1:4727/wd/hub",
     "host": "127.0.0.1",
@@ -23,4 +20,5 @@
     "hubPort": 4444,
     "hubHost": "192.168.1.248",
     "session-override": true
-  }}
+  }
+}

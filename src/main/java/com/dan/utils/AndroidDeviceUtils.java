@@ -1,96 +1,79 @@
 package com.dan.utils;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AndroidDeviceUtils {
 
-    public static class DeviceInfo {
-        private String deviceId;
-        private String deviceName;
-        private String platformVersion;
+    public static void main(String[] args) {
+        String targetDevice = "emulator-5554";  // Replace with your target device
 
-        public String getDeviceId() {
-            return deviceId;
+        // Step 1: Check connected devices
+        List<String> devices = getConnectedDevices();
+
+        if (devices == null || !devices.contains(targetDevice)) {
+            System.out.println("Device " + targetDevice + " not found.");
+            return;
         }
 
-        public void setDeviceId(String deviceId) {
-            this.deviceId = deviceId;
-        }
-
-        public String getDeviceName() {
-            return deviceName;
-        }
-
-        public void setDeviceName(String deviceName) {
-            this.deviceName = deviceName;
-        }
-
-        public String getPlatformVersion() {
-            return platformVersion;
-        }
-
-        public void setPlatformVersion(String platformVersion) {
-            this.platformVersion = platformVersion;
+        // Step 2: Get Android version for that device
+        String version = getAndroidVersion(targetDevice);
+        if (version != null) {
+            System.out.println("Device " + targetDevice + " is running Android version: " + version);
+        } else {
+            System.out.println("Error fetching Android version for device " + targetDevice);
         }
     }
 
-    // Get all connected Android devices or emulators
-    public static List<DeviceInfo> getConnectedDevices() {
-        List<DeviceInfo> devices = new ArrayList<>();
+    // Get a list of connected devices
+    public static List<String> getConnectedDevices() {
+        List<String> devices = new ArrayList<>();
         try {
-            Process process = new ProcessBuilder("adb", "devices", "-l").start();
+            ProcessBuilder processBuilder = new ProcessBuilder("adb", "devices");
+            Process process = processBuilder.start();
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
 
             while ((line = reader.readLine()) != null) {
-                if (line.contains("device") && !line.startsWith("List")) {
-                    String[] parts = line.split("\\s+");
-                    String deviceId = parts[0];
-                    String model = "";
-                    for (String part : parts) {
-                        if (part.startsWith("model:")) {
-                            model = part.replace("model:", "");
-                            break;
-                        }
-                    }
-
-                    // Get Android version
-                    Process versionProc = new ProcessBuilder("adb", "-s", deviceId, "shell", "getprop", "ro.build.version.release").start();
-                    BufferedReader versionReader = new BufferedReader(new InputStreamReader(versionProc.getInputStream()));
-                    String version = versionReader.readLine();
-
-                    DeviceInfo info = new DeviceInfo();
-                    info.setDeviceId(deviceId);
-                    info.setDeviceName(model);
-                    info.setPlatformVersion(version);
-                    devices.add(info);
+                if (line.trim().endsWith("device")) {
+                    devices.add(line.split("\t")[0].trim());
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
+            int exitCode = process.waitFor();
+            if (exitCode != 0) {
+                System.err.println("Error executing adb devices command.");
+                return null;
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        }
         return devices;
     }
 
-    // Get device info by name
-    public static DeviceInfo getDeviceInfoByName(String deviceName) {
-        List<DeviceInfo> devices = getConnectedDevices();
-        for (DeviceInfo device : devices) {
-            if (device.getDeviceName().equalsIgnoreCase(deviceName)) {
-                return device;
-            }
-        }
-        return null;
-    }
+    // Get Android version of the device
+    public static String getAndroidVersion(String device) {
+        try {
+            ProcessBuilder processBuilder = new ProcessBuilder("adb", "-s", device, "shell", "getprop", "ro.build.version.release");
+            Process process = processBuilder.start();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String version = reader.readLine().trim();
 
-    // List all available device names
-    public static String[] getAvailableDeviceNames() {
-        List<DeviceInfo> devices = getConnectedDevices();
-        return devices.stream().map(DeviceInfo::getDeviceName).toArray(String[]::new);
+            int exitCode = process.waitFor();
+            if (exitCode != 0) {
+                System.err.println("Error executing adb shell getprop command.");
+                return null;
+            }
+
+            return version;
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
 
