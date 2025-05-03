@@ -1,0 +1,24 @@
+{
+  "capabilities": [
+    {
+      "browserName": "Android",
+      "platform": "ANDROID",
+      "version": "15",
+      "maxInstances": 1
+    }
+  ],
+  "configuration": {
+    "url": "http://localhost:4723/wd/hub",
+    "host": "localhost",
+    "port": 4723,
+    "hubHost": "192.168.1.248",
+    "hubPort": 4444,
+    "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+    "maxSession": 1,
+    "register": true,
+    "registerCycle": 1000,
+    "cleanUpCycle": 2000,
+    "timeout": 20000,
+    "session-override": true
+  }
+}

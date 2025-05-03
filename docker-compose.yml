@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  selenium-hub:
+    image: selenium/hub:4.12.0
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+    environment:
+      GRID_MAX_SESSION: 10
+      GRID_BROWSER_TIMEOUT: 300
+      GRID_TIMEOUT: 300
+
+  appium-android:
+    image: appium/appium
+    container_name: appium-android
+    command: appium server --config /appium/appium-appium1.yml
+    ports:
+      - "4723:4723"
+    depends_on:
+      - selenium-hub
+
+  appium-ios:
+    image: appium/appium
+    container_name: appium-ios
+    command: appium server --config /appium/appium-appium2.yml
+    ports:
+      - "4733:4723"
+    depends_on:
+      - selenium-hub
+
+  node-android:
+    image: selenium/node-docker:4.12.0
+    container_name: node-android
+
+    command: node --config /grid/appium-node-node1.toml
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+  node-ios:
+    image: selenium/node-docker:4.12.0
+    container_name: node-ios
+    command: node --config /grid/appium-node-node2.toml
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443

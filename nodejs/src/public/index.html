@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Logs</title>
+  <style>
+    body { background: #111; color: #eee; font-family: monospace; padding: 20px; }
+    .tab { cursor: pointer; padding: 10px; display: inline-block; border: 1px solid #444; margin-right: 5px; }
+    .tab.active { background: #444; }
+    pre { display: none; white-space: pre-wrap; word-break: break-word; border: 1px solid #444; padding: 10px; margin-top: 10px; }
+    pre.active { display: block; }
+    .cyan { color: cyan; }
+    .green { color: green; }
+    .purple { color: purple; }
+  </style>
+</head>
+<body>
+  <h1>Live Logs</h1>
+  <div id="tabs">
+    
+      <div class="tab active" data-log="grid">grid</div>
+    
+      <div class="tab " data-log="android">android</div>
+    
+      <div class="tab " data-log="ios">ios</div>
+    
+  </div>
+  <div id="logs">
+    
+      <pre id="grid" class="active"></pre>
+    
+      <pre id="android" class=""></pre>
+    
+      <pre id="ios" class=""></pre>
+    
+  </div>
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const logs = document.querySelectorAll('pre');
+
+    function scrollToBottom(logElement) {
+      logElement.scrollTop = logElement.scrollHeight;
+    }
+
+    tabs.forEach(tab => {
+      tab.onclick = () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        logs.forEach(l => l.classList.remove('active'));
+
+        tab.classList.add('active');
+        const target = tab.getAttribute('data-log');
+        const logElement = document.getElementById(target);
+        logElement.classList.add('active');
+
+        scrollToBottom(logElement);
+      };
+    });
+
+    const ws = new WebSocket('ws://' + location.host);
+    ws.onmessage = e => {
+      const { processName, message, color } = JSON.parse(e.data);
+      const div = document.getElementById(processName);
+      if (div) {
+        const span = document.createElement('span');
+        span.classList.add(color);
+        span.textContent = message;
+        div.appendChild(span);
+        scrollToBottom(div);
+      }
+    };
+  </script>
+</body>
+</html>
