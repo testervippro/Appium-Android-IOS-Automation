@@ -1,8 +1,0 @@
-13:05:11.566 INFO [GridLauncherV3.parse] - Selenium server version: 3.141.59, revision: e82be7d358
-13:05:11.709 INFO [GridLauncherV3.lambda$buildLaunchers$5] - Launching Selenium Grid hub on port 4444
-2025-05-03 13:05:12.168:INFO::main: Logging initialized @900ms to org.seleniumhq.jetty9.util.log.StdErrLog
-13:05:12.376 INFO [Hub.start] - Selenium Grid hub is up and running
-13:05:12.378 INFO [Hub.start] - Nodes should register to http://192.168.1.248:4444/grid/register/
-13:05:12.379 INFO [Hub.start] - Clients should connect to http://192.168.1.248:4444/wd/hub
-13:05:17.527 INFO [DefaultGridRegistry.add] - Registered a node http://localhost:4723
-13:05:21.203 INFO [DefaultGridRegistry.add] - Registered a node http://127.0.0.1:4727

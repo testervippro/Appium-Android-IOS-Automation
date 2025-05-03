@@ -3,12 +3,15 @@ package com.dan.driver;
 import com.dan.utils.AdbUtils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidStartScreenRecordingOptions;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.screenrecording.CanRecordScreen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.nio.file.Path;
+import java.time.Duration;
 
 import static com.dan.config.ConfigurationManager.configuration;
 import static com.sun.jna.Platform.isWindows;
@@ -50,6 +53,12 @@ public final class AndroidDriverManager implements IDriver {
 
 
             driver = new AndroidDriver(new URL(configuration().gridUrl()), options);
+
+            // Record video
+            ((CanRecordScreen) driver).startRecordingScreen(
+                    new AndroidStartScreenRecordingOptions()
+                            .withTimeLimit(Duration.ofMinutes(5))
+            );
 
         } catch (Exception e) {
             throw new RuntimeException(e);

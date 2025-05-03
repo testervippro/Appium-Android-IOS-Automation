@@ -53,7 +53,6 @@ public final class IOSDriverManager implements IDriver {
           driver = new IOSDriver(new URL(configuration().gridUrl()), options);
 
 
-
         } catch (MalformedURLException e) {
             logger.error("Failed to initialize iOS driver for device {}: {}", udid, e.getMessage());
             throw new RuntimeException("Failed to create iOS driver instance", e);
