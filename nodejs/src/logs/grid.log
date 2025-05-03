@@ -1,0 +1,10 @@
+18:16:47.154 INFO [GridLauncherV3.parse] - Selenium server version: 3.141.59, revision: e82be7d358
+18:16:47.306 INFO [GridLauncherV3.lambda$buildLaunchers$5] - Launching Selenium Grid hub on port 4444
+2025-05-03 18:16:47.750:INFO::main: Logging initialized @917ms to org.seleniumhq.jetty9.util.log.StdErrLog
+18:16:47.954 INFO [Hub.start] - Selenium Grid hub is up and running
+18:16:47.957 INFO [Hub.start] - Nodes should register to http://192.168.1.248:4444/grid/register/
+18:16:47.958 INFO [Hub.start] - Clients should connect to http://192.168.1.248:4444/wd/hub
+18:16:54.858 INFO [DefaultGridRegistry.add] - Registered a node http://localhost:4723
+18:16:56.457 INFO [DefaultGridRegistry.add] - Registered a node http://127.0.0.1:4727
+18:16:57.837 INFO [RequestHandler.process] - Got a request to create a new session: Capabilities {appium:app: /Users/mac/Documents/Appium..., appium:automationName: XCuiTest, appium:connectHardwareKeyboard: true, appium:connectTimeout: 60000, appium:deviceName: iPhone 13, appium:newCommandTimeout: 1800, appium:platformVersion: com.apple.CoreSimulator.Sim..., appium:udid: 91CC769D-8C83-4310-A6EB-9F3..., appium:usePrebuiltWDA: true, appium:wdaLaunchTimeout: 60000, appium:wdaStartupRetries: 3, appium:wdaStartupRetryInterval: 5000, platformName: ios}
+18:16:57.845 INFO [TestSlot.getNewSession] - Trying to create a new session on test slot {server:CONFIG_UUID=2bd9af68-dbf3-4fa1-98c5-628a8628afdf, seleniumProtocol=WebDriver, browserName=iPhone 13, maxInstances=1, platformName=IOS, version=15, platform=IOS}

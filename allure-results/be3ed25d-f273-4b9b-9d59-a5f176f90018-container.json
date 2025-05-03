@@ -1,1 +1,0 @@
-{"uuid":"be3ed25d-f273-4b9b-9d59-a5f176f90018","name":" Test Suite","children":["6e72160c-5ac1-4c8c-985b-d037b5e605c7"],"befores":[{"name":"startGrid","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1746185254137,"stop":1746185264332}],"afters":[],"start":1746185254097,"stop":1746185385765}

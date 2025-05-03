@@ -1,0 +1,17 @@
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/config/Configuration.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/config/ConfigurationManager.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/driver/AndroidDriverManager.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/driver/DriverFactory.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/driver/IDriver.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/driver/IOSDriverManager.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/driver/Platform.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/report/AllureTestLifecycleListener.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/utils/AdbUtils.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/utils/AndroidDeviceUtils.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/utils/CapabilitiesLoader.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/utils/Element.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/utils/ExplicitWait.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/utils/GridUtils.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/utils/IOSSimulatorUtils.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/video/RecorderManager.java
+/Users/mac/Documents/Appium-Android-IOS-Automation/src/main/java/com/dan/wait/WaitUtils.java

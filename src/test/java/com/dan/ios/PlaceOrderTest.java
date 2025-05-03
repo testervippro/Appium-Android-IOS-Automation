@@ -1,19 +1,27 @@
 package com.dan.ios;
 
 import com.dan.base.BaseTest;
+import io.qameta.allure.Allure;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import io.appium.java_client.AppiumBy;
+
+import java.io.File;
+import java.io.IOException;
 
 import static com.dan.utils.ExplicitWait.waitForElementClickable;
 import static com.dan.utils.ExplicitWait.waitForElementVisible;
 
 // Sample basic flow for mobile iOS login and order placement
 public class PlaceOrderTest extends BaseTest {
+
+
 
     @Test
     public void placeOrder() throws InterruptedException {

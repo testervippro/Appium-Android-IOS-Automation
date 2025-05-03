@@ -6,7 +6,8 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidStartScreenRecordingOptions;
 import io.appium.java_client.ios.IOSStartScreenRecordingOptions;
 import io.appium.java_client.screenrecording.CanRecordScreen;
-import io.qameta.allure.Step;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Attachment;
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.PumpStreamHandler;
@@ -14,10 +15,9 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.time.Duration;
 import java.util.Base64;
 
@@ -25,11 +25,11 @@ public class BaseTest {
 
     protected AppiumDriver driver;
     protected WebDriverWait wait;
+    protected String recordedFilePath;
+    protected  String nameVideo;
 
     @BeforeSuite
     public void startGrid() throws Exception {
-
-        // Start Grid and kill previous port
         CommandLine updateIP = CommandLine.parse("node nodejs/src/update-Ip.js");
         CommandLine killPort = CommandLine.parse("node nodejs/src/kill-port.js");
 
@@ -38,7 +38,6 @@ public class BaseTest {
         exec.execute(updateIP);
         exec.execute(killPort);
 
-        // Start grid in a separate thread
         Thread gridThread = new Thread(() -> {
             try {
                 CommandLine runGrid = CommandLine.parse("node nodejs/src/run-grid.js");
@@ -50,19 +49,17 @@ public class BaseTest {
         gridThread.setDaemon(true);
         gridThread.start();
 
-        // Wait for grid to initialize
         Thread.sleep(10000);
     }
 
-
     @BeforeTest(alwaysRun = true)
     public void startVideo() throws Exception {
-        // Stop video recording after tests
-        RecorderManager.startVideoRecording(RecorderManager.RECORDTYPE.MONTE,"Video01" );
+        // Optional: Monte screen recorder
+        RecorderManager.startVideoRecording(RecorderManager.RECORDTYPE.MONTE, "Video01");
     }
+
     @AfterSuite(alwaysRun = true)
     public void stopVideo() throws Exception {
-        // Stop video recording after tests
         RecorderManager.stopVideoRecording(RecorderManager.RECORDTYPE.MONTE, true);
     }
 
@@ -72,10 +69,8 @@ public class BaseTest {
                              @Optional("emulator-5554") String udid,
                              @Optional("") String platformVersion) throws IOException {
 
-        // Create driver instance based on platform
         driver = new DriverFactory().createInstance(platform, udid, platformVersion);
 
-        // Start screen recording for supported platforms
         if (driver instanceof CanRecordScreen screenRecorder) {
             if (platform.equalsIgnoreCase("android")) {
                 screenRecorder.startRecordingScreen(
@@ -88,43 +83,47 @@ public class BaseTest {
             }
         }
 
-        // Wait for elements
         wait = new WebDriverWait(driver, Duration.ofSeconds(60));
     }
 
+
     @AfterTest(alwaysRun = true)
     public void tearDown() throws IOException {
-        // Stop screen recording and save the video file
         if (driver != null && driver instanceof CanRecordScreen screenRecorder) {
             String video = screenRecorder.stopRecordingScreen();
             saveRecording(video);
+
+                // Attach video
+//                Allure.addAttachment("Video", "video/mp4",
+//                        com.google.common.io.Files.asByteSource(new File(nameVideo)).openStream(), "mp4");
+
+
         }
 
-        // Quit driver
         if (driver != null) {
             driver.quit();
         }
     }
 
-    private void saveRecording(String video) {
+    private void saveRecording(String base64Video) {
         try {
-            // Decode the video from Base64 and write it to a file
-            byte[] decoded = Base64.getDecoder().decode(video);
+            byte[] decoded = Base64.getDecoder().decode(base64Video);
 
-            // Ensure the video folder exists
-            Path videoDir = Paths.get("videos");
+            String platform = ((RemoteWebDriver) driver).getCapabilities().getPlatformName().toString().toLowerCase();
+            Path videoDir = Paths.get( "videos");
             if (!Files.exists(videoDir)) {
                 Files.createDirectories(videoDir);
             }
 
-            // Save video file with platform-specific name
-            String platform = ((RemoteWebDriver) driver).getCapabilities().getPlatformName().toString();
-            Files.write(videoDir.resolve("recording_" + platform + ".mp4"), decoded);
+            recordedFilePath = videoDir.resolve("recording_" + platform + ".mp4").toString();
+            nameVideo = videoDir.resolve("recording_" + platform).toString();
+            Files.write(Paths.get(recordedFilePath), decoded);
 
-        } catch (IllegalArgumentException e) {
-            System.err.println("Failed to decode video: " + e.getMessage());
-        } catch (IOException e) {
-            System.err.println("Error saving the video file: " + e.getMessage());
+
+
+        } catch (Exception e) {
+            System.err.println("Error while saving/attaching screen recording: " + e.getMessage());
         }
     }
+
 }
