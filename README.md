@@ -27,25 +27,31 @@ echo $JAVA_HOME
 
 ---
 
-### Windows Setup
+### Windows Setup Before Running: Make Sure to Remove Old Java Version ( Run by admin)
+You can check the location of your existing Java version by running the `where` command in Command Prompt.
 
 ```powershell
 # 1. Download & Install Temurin JDK 17
 Invoke-WebRequest -Uri "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8%2B7/OpenJDK17U-jdk_x64_windows_hotspot_17.0.8_7.msi" -OutFile jdk17.msi
 Start-Process msiexec.exe -ArgumentList '/i jdk17.msi /quiet' -Wait
 
-# 2. Set JAVA_HOME for current session
+# 2. Set JAVA_HOME for Current Session (TEMPORARY)
 $env:JAVA_HOME = "C:\Program Files\Eclipse Adoptium\jdk-17.0.8.7-hotspot"
 $env:Path += ";$env:JAVA_HOME\bin"
 
-# 3. Make environment variables permanent
+# 3. Make Environment Variables Permanent (PERSISTENT)
 [System.Environment]::SetEnvironmentVariable('JAVA_HOME', $env:JAVA_HOME, 'User')
 [System.Environment]::SetEnvironmentVariable('Path', "$([System.Environment]::GetEnvironmentVariable('Path','User'));$env:JAVA_HOME\bin", 'User')
 
-# 4. Verify
+# 4. Verify That the Correct JAVA_HOME is Set
+$javaHome = [System.Environment]::GetEnvironmentVariable('JAVA_HOME', 'User')
+$path = [System.Environment]::GetEnvironmentVariable('Path', 'User')
+Write-Host "JAVA_HOME is set to: $javaHome"
+Write-Host "Path contains: $path"
+
+# 5. Verify Java Version
 java -version
-$env:JAVA_HOME
-```
+
 
 ---
 
