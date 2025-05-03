@@ -241,55 +241,63 @@ Then run cmd
 npm install
 ```
 
-Add this to BaseTest
 
-It will update configuration.hubHost IP file android.json, ios.json in grid3 folder
-Start grid with port 4444, Appium android 4723, iOS 4727, and express server to see real-time log on port 9999.
+
+## Add `BaseTest` to Start Grid and Update Configuration
+
+This update to `BaseTest` will perform the following:
+
+* Update `configuration.hubHost` in the following JSON files inside the `grid3` folder:
+
+  * `android.json`
+  * `ios.json`
+* Start Grid with the following ports:
+
+  * **Grid Hub**: `4444`
+  * **Appium Android Node**: `4723`
+  * **Appium iOS Node**: `4727`
+  * **Express Server**: `9999` (for real-time logs)
+
+###  Example: BaseTest.java Snippet
 
 ```java
- @BeforeSuite
+@BeforeSuite
 public void startGrid() throws IOException {
-
-  // Update hubHost IP
-  CommandLine updateIP = CommandLine.parse("node nodejs/src/update-Ip.js");
-  CommandLine killPort = CommandLine.parse("node nodejs/src/kill-port.js");
-
-  DefaultExecutor executorUpdateIP = new DefaultExecutor();
-  executorUpdateIP.setStreamHandler(new PumpStreamHandler(System.out)); // Optional: to log output
-  executorUpdateIP.execute(updateIP);
-  executorUpdateIP.execute(killPort);
-
-  Thread thread = new Thread(() -> {
-    try {
-      CommandLine runGrid = CommandLine.parse("node nodejs/src/run-grid.js");
-
-      DefaultExecutor executorRunGrid = new DefaultExecutor();
-      executorRunGrid.setStreamHandler(new PumpStreamHandler(System.out)); // Optional: to log output
-      executorRunGrid.execute(runGrid);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  });
-
-  thread.setDaemon(true);
-  thread.start();
-
-  // Optional wait to let the grid boot up before tests start
-  try {
-    Thread.sleep(10000);
-  } catch (InterruptedException e) {
-    Thread.currentThread().interrupt();
-  }
+    // Logic to update configuration.hubHost in android.json and ios.json
+    // Kill All port 4444,9999,4723,4727
+    // Start Grid on port 4444
+    // Start Appium Android node on port 4723
+    // Start Appium iOS node on port 4727
+    // Start Express server on port 9999 for real-time logs
 }
 ```
 
----
+### 📷 Screenshot
+
+<img width="1280" alt="Screen Shot 2025-05-03 at 13 22 07" src="https://github.com/user-attachments/assets/9ea099a0-6063-4d7a-8de9-9ad26ecf8227" />
+
+
+
 
 ## Run Your Tests
 
+### Windows
+
 ```bash
-mvn clean test -Dsuites=android-ios
+./mvnw.cmd clean test -Dsuites=android
+````
+
+### macOS / Linux
+
+```bash
+./mvnw clean test -Dsuites=android-ios
 ```
+
+```bash
+./mvnw clean test -Dsuites=android
+```
+
+
 
 ---
 
