@@ -8,44 +8,10 @@ const kill = require('tree-kill');
 const app = express();
 const logDir = path.join(__dirname, 'logs');
 const publicDir = path.join(__dirname, 'public');
-
-function deleteLogFiles() {
-    fs.readdir(logDir, (err, files) => {
-        if (err) {
-            console.error('Error reading log directory:', err);
-            return;
-        }
-        files.forEach(file => {
-            const filePath = path.join(logDir, file);
-            fs.unlink(filePath, (err) => {
-                if (err) {
-                    console.error(`Error deleting file ${file}:`, err);
-                } else {
-                    console.log(`Deleted log file: ${file}`);
-                }
-            });
-        });
-    });
-}
-
-// Delete log files before setting up static routes
-deleteLogFiles();
-if (!fs.existsSync(logDir)) fs.mkdirSync(logDir);
-if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir);
-
-const clients = new Set();
-const processes = [];
-
-// Store logs for persistence across refreshes
-const logsHistory = {
-  grid: [],
-  android: [],
-  ios: []
-};
-
 const folder = path.join(__dirname, '../../grid3');
 
-// Process definitions
+
+// Commands for each process
 const commands = [
   {
     name: 'grid',
@@ -80,11 +46,47 @@ const commands = [
   }
 ];
 
-// Serve logs and static HTML
+
+const logHistory = commands.reduce((history, command) => {
+  history[command.name] = [];
+  return history;
+}, {});
+
+const clients = new Set();
+const processes = [];
+
+// Directory setup
+if (!fs.existsSync(logDir)) fs.mkdirSync(logDir);
+if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir);
+
+// Delete old log files
+function deleteLogFiles() {
+  fs.readdir(logDir, (err, files) => {
+    if (err) {
+      console.error('Error reading log directory:', err);
+      return;
+    }
+    files.forEach(file => {
+      const filePath = path.join(logDir, file);
+      fs.unlink(filePath, (err) => {
+        if (err) {
+          console.error(`Error deleting file ${file}:`, err);
+        } else {
+          console.log(`Deleted log file: ${file}`);
+        }
+      });
+    });
+  });
+}
+
+// Delete log files before setting up static routes
+deleteLogFiles();
+
+// Serve static files and logs
 app.use(express.static(publicDir));
 app.use('/logs', express.static(logDir));
 
-// HTML content
+// Generate the HTML content dynamically based on the commands
 const html = `
 <!DOCTYPE html>
 <html>
@@ -104,25 +106,23 @@ const html = `
 <body>
   <h1>Live Logs</h1>
   <div id="tabs">
-    <div class="tab active" data-log="grid">Grid</div>
-    <div class="tab" data-log="android">Android</div>
-    <div class="tab" data-log="ios">iOS</div>
+    ${commands.map((command, index) => `
+      <div class="tab ${index === 0 ? 'active' : ''}" data-log="${command.name}">${command.name}</div>
+    `).join('')}
   </div>
   <div id="logs">
-    <pre id="grid" class="active"></pre>
-    <pre id="android"></pre>
-    <pre id="ios"></pre>
+    ${commands.map((command, index) => `
+      <pre id="${command.name}" class="${index === 0 ? 'active' : ''}"></pre>
+    `).join('')}
   </div>
   <script>
     const tabs = document.querySelectorAll('.tab');
     const logs = document.querySelectorAll('pre');
 
-    // Function to scroll to the bottom of the active log
     function scrollToBottom(logElement) {
       logElement.scrollTop = logElement.scrollHeight;
     }
 
-    // Switch between tabs
     tabs.forEach(tab => {
       tab.onclick = () => {
         tabs.forEach(t => t.classList.remove('active'));
@@ -133,12 +133,10 @@ const html = `
         const logElement = document.getElementById(target);
         logElement.classList.add('active');
 
-        // Scroll to bottom whenever switching to a tab
         scrollToBottom(logElement);
       };
     });
 
-    // Open WebSocket connection to receive logs
     const ws = new WebSocket('ws://' + location.host);
     ws.onmessage = e => {
       const { processName, message, color } = JSON.parse(e.data);
@@ -148,8 +146,6 @@ const html = `
         span.classList.add(color);
         span.textContent = message;
         div.appendChild(span);
-
-        // Auto-scroll to bottom whenever a new message is added
         scrollToBottom(div);
       }
     };
@@ -158,7 +154,7 @@ const html = `
 </html>
 `;
 
-// Write HTML content to file
+// Write the HTML content to a file
 fs.writeFileSync(path.join(publicDir, 'index.html'), html);
 
 // WebSocket server
@@ -170,35 +166,36 @@ const server = app.listen(9999, () => {
 const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   // Send existing log history to client on connection
-  ws.send(JSON.stringify({ processName: 'grid', message: logsHistory.grid.join(''), color: 'green' }));
-  ws.send(JSON.stringify({ processName: 'android', message: logsHistory.android.join(''), color: 'green' }));
-  ws.send(JSON.stringify({ processName: 'ios', message: logsHistory.ios.join(''), color: 'green' }));
+  Object.keys(logHistory).forEach(processName => {
+    ws.send(JSON.stringify({ processName, message: logHistory[processName].join(''), color: 'green' }));
+  });
 
   clients.add(ws);
   ws.on('close', () => clients.delete(ws));
 });
 
+// Function to broadcast log messages to all clients
 function broadcastLog(processName, message, color) {
   const payload = JSON.stringify({ processName, message, color });
 
-  // Store the logs to persist on client reconnect
-  if (logsHistory[processName]) {
-    logsHistory[processName].push(message);
+  // Store the log in history for that process
+  if (logHistory[processName]) {
+    logHistory[processName].push(message);
   }
 
-  for (const ws of clients) {
+  // Broadcast the log to all clients
+  clients.forEach(ws => {
     if (ws.readyState === WebSocket.OPEN) {
       ws.send(payload);
     }
-  }
+  });
 }
 
-// Start a process and add to process array
+// Function to start a new process and monitor its output
 function startProcess({ cmd, args, name, color }) {
   const logFile = fs.createWriteStream(path.join(logDir, `${name}.log`), { flags: 'a', encoding: 'utf-8' });
   const proc = spawn(cmd, args, { shell: true });
 
-  // Add the process to the array
   processes.push(proc);
 
   proc.stdout.on('data', (data) => {
@@ -237,6 +234,6 @@ process.on('SIGINT', async () => {
   await killAll();
   for (const cfg of commands) {
     startProcess(cfg);
-    await new Promise(res => setTimeout(res, 3000));
+    await new Promise(res => setTimeout(res, 3000)); // Wait 3 seconds before starting the next process
   }
 })();
