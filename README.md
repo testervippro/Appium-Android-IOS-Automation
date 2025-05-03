@@ -51,9 +51,7 @@ Write-Host "Path contains: $path"
 
 # 5. Verify Java Version
 java -version
-
-
----
+```
 
 ## Recommended IDE
 
