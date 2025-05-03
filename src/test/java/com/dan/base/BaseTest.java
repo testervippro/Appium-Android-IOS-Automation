@@ -88,15 +88,11 @@ public class BaseTest {
 
 
     @AfterTest(alwaysRun = true)
-    public void tearDown() throws IOException {
+    public void tearDown() throws IOException, InterruptedException {
         if (driver != null && driver instanceof CanRecordScreen screenRecorder) {
             String video = screenRecorder.stopRecordingScreen();
             saveRecording(video);
-
-                // Attach video
-//                Allure.addAttachment("Video", "video/mp4",
-//                        com.google.common.io.Files.asByteSource(new File(nameVideo)).openStream(), "mp4");
-
+            attachVideo();
 
         }
 
@@ -109,7 +105,7 @@ public class BaseTest {
         try {
             byte[] decoded = Base64.getDecoder().decode(base64Video);
 
-            String platform = ((RemoteWebDriver) driver).getCapabilities().getPlatformName().toString().toLowerCase();
+            String platform = driver.getCapabilities().getPlatformName().toString().toLowerCase();
             Path videoDir = Paths.get( "videos");
             if (!Files.exists(videoDir)) {
                 Files.createDirectories(videoDir);
@@ -120,10 +116,17 @@ public class BaseTest {
             Files.write(Paths.get(recordedFilePath), decoded);
 
 
-
         } catch (Exception e) {
             System.err.println("Error while saving/attaching screen recording: " + e.getMessage());
         }
     }
 
+    void  attachVideo() throws IOException, InterruptedException {
+
+        RecorderManager.VideoRecord.compressVideo(recordedFilePath);
+        //Attach video
+        Allure.addAttachment("Video", "video/mp4",
+                com.google.common.io.Files.asByteSource(new File(recordedFilePath)).openStream(), "mp4");
+
+    }
 }

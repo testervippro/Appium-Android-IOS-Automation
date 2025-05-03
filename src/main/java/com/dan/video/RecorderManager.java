@@ -31,6 +31,10 @@ public class RecorderManager {
         FFMPEG
     }
 
+    public static void main(String[] args) throws IOException, InterruptedException {
+       // RecorderManager.VideoRecord.compressVideo("videos/recording_ios.mp4");
+    }
+
 
     private static final String USER_DIR = System.getProperty("user.dir");
     private static final String DOWNLOADED_FILES_FOLDER = "videos";
@@ -216,7 +220,7 @@ public class RecorderManager {
 
 
     // Set up record use Monte
-    static class VideoRecord {
+    public static class VideoRecord {
 
         public static void _startRecording(String nameVideo) throws Exception {
             File file = new File(USER_DIR, DOWNLOADED_FILES_FOLDER);
@@ -318,6 +322,58 @@ public class RecorderManager {
                 deleteFile(inputFileName);  // Ensure input file deletion only if conversion succeeds
             } else {
                 log.severe("Conversion failed with exit code: " + ffmpegExitCode);
+            }
+        }
+
+        public static void compressVideo(String inputFileName) throws IOException, InterruptedException {
+            ffmpegPath = getFfmpegPath();
+            if (!Files.exists(ffmpegPath)) {
+                throw new IOException("FFmpeg executable not found at: " + ffmpegPath);
+            }
+
+            if (!os.contains("win")) {
+                setExecutablePermission(ffmpegPath);
+            }
+
+            Path inputPath = Paths.get(inputFileName);
+            String compressedFileName = inputFileName + ".tmp.mp4";
+
+            ProcessBuilder ffmpegBuilder = new ProcessBuilder(
+                    ffmpegPath.toString(),
+                    "-i", inputFileName,
+                    "-vcodec", "libx264",
+                    "-crf", "28",
+                    "-preset", "slow",
+                    "-c:a", "aac",
+                    "-b:a", "128k",
+                    "-movflags", "+faststart",
+                    "-y", compressedFileName
+            );
+
+            ffmpegBuilder.redirectErrorStream(true);
+            Process ffmpegProcess = ffmpegBuilder.start();
+
+            ExecutorService executorService = Executors.newFixedThreadPool(2);
+            executorService.submit(() -> readStream(ffmpegProcess.getInputStream()));
+            executorService.submit(() -> readStream(ffmpegProcess.getErrorStream()));
+
+            int ffmpegExitCode = ffmpegProcess.waitFor();
+            executorService.shutdown();
+
+            if (!executorService.awaitTermination(10L, TimeUnit.SECONDS)) {
+                executorService.shutdownNow();
+            }
+
+            if (ffmpegExitCode == 0) {
+                log.info("Compression successful, replacing original file.");
+
+                // Replace original file with compressed one
+                Files.move(Paths.get(compressedFileName), inputPath, StandardCopyOption.REPLACE_EXISTING);
+                log.info("Original file replaced: " + inputFileName);
+            } else {
+                log.severe("Compression failed with exit code: " + ffmpegExitCode);
+                // Clean up temp file if it exists
+                Files.deleteIfExists(Paths.get(compressedFileName));
             }
         }
 
