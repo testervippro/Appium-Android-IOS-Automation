@@ -40,12 +40,12 @@ $env:JAVA_HOME = "C:\Program Files\Eclipse Adoptium\jdk-17.0.8.7-hotspot"
 $env:Path += ";$env:JAVA_HOME\bin"
 
 # 3. Make Environment Variables Permanent (PERSISTENT)
-[System.Environment]::SetEnvironmentVariable('JAVA_HOME', $env:JAVA_HOME, 'User')
-[System.Environment]::SetEnvironmentVariable('Path', "$([System.Environment]::GetEnvironmentVariable('Path','User'));$env:JAVA_HOME\bin", 'User')
+[System.Environment]::SetEnvironmentVariable('JAVA_HOME', $env:JAVA_HOME, 'Machine')
+[System.Environment]::SetEnvironmentVariable('Path', "$([System.Environment]::GetEnvironmentVariable('Path','Machine'));$env:JAVA_HOME\bin", 'Machine')
 
 # 4. Verify That the Correct JAVA_HOME is Set
-$javaHome = [System.Environment]::GetEnvironmentVariable('JAVA_HOME', 'User')
-$path = [System.Environment]::GetEnvironmentVariable('Path', 'User')
+$javaHome = [System.Environment]::GetEnvironmentVariable('JAVA_HOME', 'Machine')
+$path = [System.Environment]::GetEnvironmentVariable('Path', 'Machine')
 Write-Host "JAVA_HOME is set to: $javaHome"
 Write-Host "Path contains: $path"
 
