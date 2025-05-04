@@ -1,6 +1,4 @@
-Here’s your setup instructions formatted for both **macOS** and **Windows** in clean and readable **Markdown (MD)**:
 
----
 
 ## 📦 Install Android SDK for Appium
 
@@ -93,6 +91,4 @@ avdmanager create avd -n iphone --device "pixel" \
 emulator @iphone
 ```
 
----
 
-Let me know if you need this setup in a downloadable `.md` file.
