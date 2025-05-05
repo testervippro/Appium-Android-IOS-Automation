@@ -5,7 +5,7 @@
 
 Download the Android SDK zip file from the following link:
 
-👉 [Download Android SDK]([https://drive.google.com/drive/folders/15B1XddQjp-4yb7GavEm6NPFxZNuK6ovD?usp=sharing](https://drive.google.com/drive/folders/1ViOmVKTGx-jSaqUDhmZN6aA8CfRYv_u5?usp=sharing))
+👉 [Download Android SDK](https://drive.google.com/drive/folders/15B1XddQjp-4yb7GavEm6NPFxZNuK6ovD?usp=sharing](https://drive.google.com/drive/folders/1ViOmVKTGx-jSaqUDhmZN6aA8CfRYv_u5?usp=sharing)
 
 After downloading, **move the `android_sdk.zip` file to your project directory**, then run the following commands:
 
