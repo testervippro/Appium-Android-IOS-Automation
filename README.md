@@ -206,27 +206,10 @@ This updates `hubHost` in `android.json` / `ios.json`.
 
 ---
 
-### Start Grid via Java
+### Start Grid via Java (Manual)
+Refer in folder
+grid3/run-grid3.md
 
-```bash
-java -jar grid3/selenium.jar -role hub -hubConfig grid3/grid.json
-```
-
----
-
-### Register Android Node
-
-```bash
-appium --nodeconfig grid3/android.json --base-path=/wd/hub --port 4723
-```
-
-### Register iOS Node
-
-```bash
-appium --nodeconfig grid3/ios.json --base-path=/wd/hub --port 4727
-```
-
----
 
 ### Auto Start Grid from Java (TestNG)
 
@@ -243,49 +226,35 @@ Then run cmd
 npm install
 ```
 
-Add this to BaseTest
+## Add `BaseTest` to Start Grid and Update Configuration
 
-It will update configuration.hubHost IP file android.json, ios.json in grid3 folder
-Start grid with port 4444, Appium android 4723, iOS 4727, and express server to see real-time log on port 9999.
+This update to `BaseTest` will perform the following:
+
+* Update `configuration.hubHost` in the following JSON files inside the `grid3` folder:
+
+  * `android.json`
+  * `ios.json`
+* Start Grid with the following ports:
+
+  * **Grid Hub**: `4444`
+  * **Appium Android Node**: `4723`
+  * **Appium iOS Node**: `4727`
+  * **Express Server**: `9999` (for real-time logs)
+
+###  Example: BaseTest.java Snippet
 
 ```java
- @BeforeSuite
+@BeforeSuite
 public void startGrid() throws IOException {
-
-  // Update hubHost IP
-  CommandLine updateIP = CommandLine.parse("node nodejs/src/update-Ip.js");
-  CommandLine killPort = CommandLine.parse("node nodejs/src/kill-port.js");
-
-  DefaultExecutor executorUpdateIP = new DefaultExecutor();
-  executorUpdateIP.setStreamHandler(new PumpStreamHandler(System.out)); // Optional: to log output
-  executorUpdateIP.execute(updateIP);
-  executorUpdateIP.execute(killPort);
-
-  Thread thread = new Thread(() -> {
-    try {
-      CommandLine runGrid = CommandLine.parse("node nodejs/src/run-grid.js");
-
-      DefaultExecutor executorRunGrid = new DefaultExecutor();
-      executorRunGrid.setStreamHandler(new PumpStreamHandler(System.out)); // Optional: to log output
-      executorRunGrid.execute(runGrid);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  });
-
-  thread.setDaemon(true);
-  thread.start();
-
-  // Optional wait to let the grid boot up before tests start
-  try {
-    Thread.sleep(10000);
-  } catch (InterruptedException e) {
-    Thread.currentThread().interrupt();
-  }
+    // Logic to update configuration.hubHost in android.json and ios.json
+    // Kill All port 4444,9999,4723,4727
+    // Start Grid on port 4444
+    // Start Appium Android node on port 4723
+    // Start Appium iOS node on port 4727
+    // Start Express server on port 9999 for real-time logs
 }
 ```
 
----
 
 ## Run Your Tests
 
