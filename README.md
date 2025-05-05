@@ -262,9 +262,8 @@ public void startGrid() throws IOException {
 mvn clean test -Dsuites=android-ios
 ```
 
----
 
 ## Demo Video
 
-Watch the full guide:
-[https://www.youtube.com/watch?v=HCDSs9ilyXA](https://www.youtube.com/watch?v=HCDSs9ilyXA)
+https://www.youtube.com/watch?v=HCDSs9ilyXA
+https://www.youtube.com/watch?v=iLbGyufSC-A
