@@ -11,24 +11,47 @@ if (Test-Path $existingSdkRoot) {
     Remove-Item -Recurse -Force $existingSdkRoot
 }
 
-# Remove existing Android SDK directory if it exists
+# Remove existing AVD directory if it exists
 if (Test-Path $existingAdv) {
-    Write-Host "Removing existing Android SDK directory..."
+    Write-Host "Removing existing Android AVD directory..."
     Remove-Item -Recurse -Force $existingAdv
 }
 
 # Create a new directory for the SDK
+Write-Host "Creating new SDK directory..."
 New-Item -ItemType Directory -Force -Path $existingSdkRoot
 
+# Unzip Android SDK
 Write-Host "Unzipping Android SDK..."
 $zipPath = "android_sdk.zip"  # Assuming the zip file is in the current directory
-Expand-Archive -Path $zipPath -DestinationPath $existingSdkRoot -Force
+if (Test-Path $zipPath) {
+    Expand-Archive -Path $zipPath -DestinationPath $existingSdkRoot -Force
+} else {
+    Write-Host "Error: android_sdk.zip file not found in the current directory."
+    exit
+}
 
+# Set Environment Variables
 Write-Host "Setting environment variables..."
 
 # Remove existing environment variables if they exist
 [System.Environment]::SetEnvironmentVariable("ANDROID_SDK_ROOT", $null, [System.EnvironmentVariableTarget]::User)
 [System.Environment]::SetEnvironmentVariable("ANDROID_HOME", $null, [System.EnvironmentVariableTarget]::User)
+
+# Remove existing SDK paths from system PATH if they exist
+$currentPath = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User)
+$androidPaths = @(
+    "$env:ANDROID_HOME\cmdline-tools\latest\bin",
+    "$env:ANDROID_HOME\platform-tools",
+    "$env:ANDROID_HOME\emulator"
+)
+
+foreach ($path in $androidPaths) {
+    if ($currentPath -contains $path) {
+        Write-Host "Removing old SDK path: $path"
+        $currentPath = $currentPath -replace [regex]::Escape($path), ""
+    }
+}
 
 # Set the environment variables
 [System.Environment]::SetEnvironmentVariable("ANDROID_SDK_ROOT", $existingSdkRoot, [System.EnvironmentVariableTarget]::User)
@@ -38,10 +61,9 @@ Write-Host "Setting environment variables..."
 $env:PATH = "$env:ANDROID_HOME\cmdline-tools\latest\bin;$env:ANDROID_HOME\platform-tools;$env:ANDROID_HOME\emulator;$env:PATH"
 
 # Set the PATH environment variable permanently (for future sessions)
-$currentPath = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User)
-$newPath = "$env:ANDROID_HOME\cmdline-tools\latest\bin;$env:ANDROID_HOME\platform-tools;$env:ANDROID_HOME\emulator"
-if ($currentPath -notlike "*$newPath*") {
-    [System.Environment]::SetEnvironmentVariable("Path", "$newPath;$currentPath", [System.EnvironmentVariableTarget]::User)
+if ($currentPath -notlike "*$env:ANDROID_HOME\cmdline-tools\latest\bin*") {
+    $newPath = "$env:ANDROID_HOME\cmdline-tools\latest\bin;$env:ANDROID_HOME\platform-tools;$env:ANDROID_HOME\emulator;$currentPath"
+    [System.Environment]::SetEnvironmentVariable("Path", $newPath, [System.EnvironmentVariableTarget]::User)
     Write-Host "Updated system PATH."
 } else {
     Write-Host "PATH already includes Android tools."
