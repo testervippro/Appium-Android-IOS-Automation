@@ -32,25 +32,29 @@ fi
 
 # Set environment variables in current shell
 echo "Setting environment variables..."
-export ANDROID_SDK_ROOT
+export ANDROID_SDK_ROOT="$ANDROID_SDK_ROOT"
 export ANDROID_HOME="$ANDROID_SDK_ROOT"
 
-# Remove any previous Android paths from PATH (for this session only)
-CLEANED_PATH=$(echo "$PATH" | awk -v RS=: -v ORS=: '!/android_sdk/ && !/cmdline-tools/ && !/platform-tools/ && !/emulator/' | sed 's/:$//')
 
-# Add new Android tools paths
-export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$CLEANED_PATH"
+echo "Cleaning old Android PATH from ~/.zshrc..."
+sed -i '' '/ANDROID_HOME/d' ~/.zshrc
+sed -i '' '/ANDROID_SDK_ROOT/d' ~/.zshrc
+sed -i '' '/cmdline-tools/d' ~/.zshrc
+sed -i '' '/platform-tools/d' ~/.zshrc
+sed -i '' '/emulator/d' ~/.zshrc
 
-# Optionally, add to .zshrc or .bashrc for persistence
-echo "Updating ~/.zshrc for persistent environment variables..."
-{
-    echo "# Android SDK Environment"
-    echo "export ANDROID_SDK_ROOT=\"$ANDROID_SDK_ROOT\""
-    echo "export ANDROID_HOME=\"$ANDROID_SDK_ROOT\""
-    echo "export PATH=\"\$ANDROID_HOME/cmdline-tools/latest/bin:\$ANDROID_HOME/platform-tools:\$ANDROID_HOME/emulator:\$PATH\""
-} >> ~/.zshrc
+# Add Android tools to PATH only if not already added
+case ":$PATH:" in
+  *":$ANDROID_HOME/platform-tools:"*) ;;
+  *) export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH" ;;
+esac
 
-echo "Reloading shell configuration..."
-source ~/.zshrc
+# Persist environment variables to .zshrc
+
+grep -q ANDROID_SDK_ROOT ~/.zshrc || echo "export ANDROID_SDK_ROOT=\"$ANDROID_SDK_ROOT\"" >> ~/.zshrc
+grep -q ANDROID_HOME ~/.zshrc || echo "export ANDROID_HOME=\"$ANDROID_SDK_ROOT\"" >> ~/.zshrc
+grep -q "cmdline-tools/latest/bin" ~/.zshrc || echo "export PATH=\"\$ANDROID_HOME/cmdline-tools/latest/bin:\$ANDROID_HOME/platform-tools:\$ANDROID_HOME/emulator:\$PATH\"" >> ~/.zshrc
 
 echo "Android SDK setup complete."
+source ~/.zshrc
+
