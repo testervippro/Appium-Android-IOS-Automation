@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Set environment variables
 ANDROID_SDK_ROOT="$HOME/.android_sdk"
 ZIP_PATH="android_sdk.zip"  # Assuming the zip file is in the current directory
@@ -14,5 +16,8 @@ export ANDROID_SDK_ROOT
 export ANDROID_HOME="$ANDROID_SDK_ROOT"
 export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
 
-# Reload Shell Configuration
+# Reload shell configuration
+echo "Reloading shell configuration..."
 source ~/.zshrc
+
+echo "Android SDK setup complete."
