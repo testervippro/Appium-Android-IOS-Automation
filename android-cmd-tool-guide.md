@@ -1,7 +1,7 @@
 
 ## Configuration and Setup
 
-### 📦 Download the Android SDK
+### 📦 Way 1: Download the Android SDK
 
 Download the Android SDK zip file from one of the following links:
 
@@ -10,10 +10,20 @@ Download the Android SDK zip file from one of the following links:
 
 After downloading, **move the `android_sdk.zip` file to your project directory**, then run the following commands:
 
-```bash
-chmod +x install_android_cmd_tool_mac.sh && ./install_android_cmd_tool_mac.sh
+#### MacOS
 
+```bash
+chmod +x install_android_cmd_tool_mac_v1.sh && ./install_android_cmd_tool_mac_v1.sh
 ````
+
+#### Windows
+
+```bash
+Set-ExecutionPolicy Bypass -Scope Process -Force
+.\install_android_sdk_win_v1.ps1
+```
+
+Then, launch the emulator:
 
 ### 🖥️ Create Device and Launch Emulator
 
@@ -35,5 +45,31 @@ After the setup completes, you can safely remove the `android_sdk.zip` file if i
 rm android_sdk.zip
 ```
 
+---
+
+### Way 2: Clone the Repository
+
+Run the following command to clone the repository:
+
+```bash
+git clone https://github.com/testervippro/appium-base-setup.git
 ```
 
+After the clone finishes, follow these instructions:
+
+#### MacOS
+
+```bash
+chmod +x install_android_cmd_tool_mac_v2.sh && ./install_android_cmd_tool_mac_v2.sh
+```
+
+#### Windows
+
+```bash
+Set-ExecutionPolicy Bypass -Scope Process -Force
+.\install_android_sdk_win_v2.ps1
+```
+
+It will automatically launch a device named "iphone."
+
+```
