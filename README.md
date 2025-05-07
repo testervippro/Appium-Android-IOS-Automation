@@ -27,31 +27,49 @@ echo $JAVA_HOME
 
 ---
 
-### Windows Setup Before Running: Make Sure to Remove Old Java Version ( Run by admin)
-You can check the location of your existing Java version by running the `where` command in Command Prompt.
+Here's your formatted Markdown (`.md`) version of the instructions and PowerShell script:
+
+---
+
+# ✅ Windows Setup Before Running Java Applications
+
+> ⚠️ **Make sure to remove any old Java versions first (Run as Administrator).**
+
+## 🔍 Check Existing Java Installation
+
+You can check the location of your current Java installation by running the following command in **Command Prompt**:
+
+```cmd
+where java
+```
+
+## ⬇️ Download Java JDK 17
+
+Download the installer from the official Oracle archive:
+
+👉 [Download JDK 17.0.12 for Windows x64 (.msi)](https://download.oracle.com/java/17/archive/jdk-17.0.12_windows-x64_bin.msi)
+
+## ⚙️ PowerShell Script to Set `JAVA_HOME` and Update `PATH`
+
+> Run the following PowerShell script **as a regular user** (not administrator) to update environment variables for the current user.
 
 ```powershell
-# 1. Download & Install Temurin JDK 17
-Invoke-WebRequest -Uri "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8%2B7/OpenJDK17U-jdk_x64_windows_hotspot_17.0.8_7.msi" -OutFile jdk17.msi
-Start-Process msiexec.exe -ArgumentList '/i jdk17.msi /quiet' -Wait
+# Set JAVA_HOME for current user
+[Environment]::SetEnvironmentVariable("JAVA_HOME", "C:\Program Files\Java\jdk-17", "User")
 
-# 2. Set JAVA_HOME for Current Session (TEMPORARY)
-$env:JAVA_HOME = "C:\Program Files\Eclipse Adoptium\jdk-17.0.8.7-hotspot"
-$env:Path += ";$env:JAVA_HOME\bin"
+# Get current PATH and append JDK bin if not already there
+$currentPath = [Environment]::GetEnvironmentVariable("Path", "User")
+$javaBin = "C:\Program Files\Java\jdk-17\bin"
 
-# 3. Make Environment Variables Permanent (PERSISTENT)
-[System.Environment]::SetEnvironmentVariable('JAVA_HOME', $env:JAVA_HOME, 'Machine')
-[System.Environment]::SetEnvironmentVariable('Path', "$([System.Environment]::GetEnvironmentVariable('Path','Machine'));$env:JAVA_HOME\bin", 'Machine')
-
-# 4. Verify That the Correct JAVA_HOME is Set
-$javaHome = [System.Environment]::GetEnvironmentVariable('JAVA_HOME', 'Machine')
-$path = [System.Environment]::GetEnvironmentVariable('Path', 'Machine')
-Write-Host "JAVA_HOME is set to: $javaHome"
-Write-Host "Path contains: $path"
-
-# 5. Verify Java Version
-java -version
+if ($currentPath -notlike "*$javaBin*") {
+    $newPath = "$currentPath;$javaBin"
+    [Environment]::SetEnvironmentVariable("Path", $newPath, "User")
+    Write-Host "JAVA_HOME and PATH updated."
+} else {
+    Write-Host "JAVA_HOME already set and bin already in PATH."
+}
 ```
+
 
 ## Recommended IDE
 
