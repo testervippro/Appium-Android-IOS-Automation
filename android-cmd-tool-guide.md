@@ -1,5 +1,12 @@
 
 ## Configuration and Setup
+Run the following command to clone the repository:
+
+```bash
+git clone https://github.com/testervippro/appium-base-setup.git
+```
+
+After the clone finishes, follow these instructions:
 
 ### 📦 Way 1: Download the Android SDK
 
@@ -60,13 +67,6 @@ rm android_sdk.zip
 
 ### Way 2: Clone the Repository
 
-Run the following command to clone the repository:
-
-```bash
-git clone https://github.com/testervippro/appium-base-setup.git
-```
-
-After the clone finishes, follow these instructions:
 
 #### MacOS
 
