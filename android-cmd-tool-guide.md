@@ -19,8 +19,7 @@ chmod +x install_android_cmd_tool_mac_v1.sh && ./install_android_cmd_tool_mac_v1
 #### Windows
 
 ```bash
-Set-ExecutionPolicy Bypass -Scope Process -Force
-.\install_android_sdk_win_v1.ps1
+node appium-base-setup/install_android_cmd_tool_win_v1.js
 ```
 
 Then, launch the emulator:
@@ -78,8 +77,7 @@ chmod +x install_android_cmd_tool_mac_v2.sh && ./install_android_cmd_tool_mac_v2
 #### Windows
 
 ```bash
-Set-ExecutionPolicy Bypass -Scope Process -Force
-.\install_android_sdk_win_v2.ps1
+node appium-base-setup/install_android_cmd_tool_win_v2.js
 ```
 
 It will automatically launch a device named "iphone."
