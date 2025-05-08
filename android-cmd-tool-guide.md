@@ -26,13 +26,25 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 Then, launch the emulator:
 
 ### 🖥️ Create Device and Launch Emulator
-
+MAc
 ```bash
 # Create a new AVD (Android Virtual Device) named 'iphone'
 avdmanager create avd -n iphone \
   --device pixel \
   -k "system-images;android-33;google_apis_playstore;x86_64"
+```
 
+```bash
+# Launch the emulator
+emulator -avd iphone
+```
+Win
+```bash
+# Launch the emulator
+avdmanager.bat create avd -n iphone --device "pixel" -k "system-images;android-33;google_apis_playstore;x86_64"
+```
+
+```bash
 # Launch the emulator
 emulator -avd iphone
 ```
