@@ -22,5 +22,3 @@ node appium-base-setup/install_android_cmd_tool_win_v2.js
 ```
 
 It will automatically launch a device named "iphone."
-
-```
