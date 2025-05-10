@@ -33,7 +33,9 @@ public final class AndroidDriverManager implements IDriver {
                     .setUdid(udid)
                     .setPlatformVersion(platformVersion)
                     .setAppPackage(configuration().androidAppPackage())
-                    .setAppActivity(configuration().androidAppActivity());
+                    .setAppActivity(configuration().androidAppActivity())
+                .setAvdLaunchTimeout(Duration.ofSeconds(60_000))
+                .setNewCommandTimeout(Duration.ofSeconds(60_000));
 
             if (configuration().isDockerRealDevice()) {
                 // In Docker, you might need a different path
@@ -50,8 +52,7 @@ public final class AndroidDriverManager implements IDriver {
                 options.setApp(appPath.toString());
                 }
 
-
-
+            
             driver = new AndroidDriver(new URL(configuration().gridUrl()), options);
 
             // Record video
