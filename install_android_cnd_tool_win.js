@@ -33,6 +33,7 @@ function runCommand(command, options = {}) {
     }
 }
 
+
 // Download zip file
 function downloadFile(url, destPath) {
     return new Promise((resolve, reject) => {
@@ -47,6 +48,14 @@ function downloadFile(url, destPath) {
             fs.unlink(destPath, () => reject(err));
         });
     });
+}
+
+
+if (platform === 'darwin') {
+    console.log('macOS detected. Running mac-specific install script...');
+    runCommand('chmod +x install_android_cmd_tool_mac.sh');
+    runCommand('./install_android_cmd_tool_mac.sh');
+    process.exit(0);
 }
 
 async function main() {
