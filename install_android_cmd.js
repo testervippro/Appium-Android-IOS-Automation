@@ -22,6 +22,9 @@ const emulatorPath = path.join(sdkPath, 'emulator', 'emulator.exe');
 const platformToolsPath = path.join(sdkPath, 'platform-tools');
 const systemImage = "system-images;android-33;google_apis_playstore;x86_64";
 
+const platform = os.platform(); // 'win32', 'darwin', 'linux'
+
+
 // Utility to run shell command
 function runCommand(command, options = {}) {
     try {
