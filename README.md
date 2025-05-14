@@ -87,51 +87,53 @@ npm install -g appium-doctor
 appium -v
 ```
 
----
 
 ## Android Setup
 
-### Install Android Studio
+###  Way 1: Install Android Studio
 
-Download: [https://developer.android.com/studio](https://developer.android.com/studio)
+**Download:** [https://developer.android.com/studio](https://developer.android.com/studio)
 
 ---
 
 ### Set Environment Variables
 
-#### Android SDK Paths:
+####  Android SDK Paths
 
-* macOS: `/Users/<your-username>/Library/Android/sdk`
-* Windows: `%LOCALAPPDATA%\Android\Sdk`
+- **macOS:** `/Users/<your-username>/Library/Android/sdk`  
+- **Windows:** `%LOCALAPPDATA%\Android\Sdk`
 
-#### Auto-Setup via Node Script:
+---
+
+### Auto-Setup via Node Script
 
 ```bash
 node nodejs/src/setup.js
-```
+````
 
-This script:
+This script will:
 
-* Detects OS
-* Sets `ANDROID_HOME`
-* Adds `platform-tools` to `PATH`
+* Detect your OS (Windows/macOS)
+* Set the `ANDROID_HOME` environment variable
+* Add `platform-tools` to your `PATH`
 
-#### Manual Setup (macOS/Linux):
+---
+
+###  Manual Setup
+
+#### macOS / Linux:
 
 ```bash
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH=$ANDROID_HOME/platform-tools:$PATH
 ```
 
-#### Manual Setup (Windows):
+#### Windows (PowerShell):
 
 ```powershell
 setx ANDROID_HOME "%LOCALAPPDATA%\Android\Sdk"
 setx PATH "%PATH%;%ANDROID_HOME%\platform-tools"
 ```
-
----
-
 ### Create Android Virtual Device (AVD)
 
 1. Open **Android Studio > Device Manager**
@@ -141,6 +143,28 @@ setx PATH "%PATH%;%ANDROID_HOME%\platform-tools"
 5. Start emulator using play icon
 
 #### Verify:
+
+```bash
+adb devices
+```
+
+---
+
+### Way 2: Without Android StudioNote(need close then reopen IDE after run this ) 
+
+You can install the Android Command Line Tools directly (no Android Studio needed).
+
+Run the following Node script to:
+
+* Install Android Command Line Tools
+* Set `ANDROID_HOME`
+* Set up `adb`, `emulator`, `sdkmanager` for Windows and macOS auto launch emulator name iphone
+  
+```bash
+node install_android_cmd.js
+```
+
+#### Also can verify after finish:
 
 ```bash
 adb devices
