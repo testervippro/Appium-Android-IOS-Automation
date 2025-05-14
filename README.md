@@ -150,7 +150,7 @@ adb devices
 
 ---
 
-### Way 2: Without Android StudioNote(need close then reopen IDE after run this ) 
+### Way 2: Without Android StudioNote(need close then reopen IDE after run this and run source ~/.zshrc in terminal) 
 
 You can install the Android Command Line Tools directly (no Android Studio needed).
 
