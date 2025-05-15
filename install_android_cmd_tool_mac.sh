@@ -62,11 +62,14 @@ export ANDROID_SDK_ROOT
 export ANDROID_HOME="$ANDROID_SDK_ROOT"
 export PATH="$CMDLINE_TOOLS_DIR/bin:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/emulator:$PATH"
 
+source ~/.zshrc
+
 # Persist environment variables in .zshrc
 echo "export ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT" >> ~/.zshrc
 echo "export ANDROID_HOME=$ANDROID_SDK_ROOT" >> ~/.zshrc
 echo "export PATH=$CMDLINE_TOOLS_DIR/bin:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/emulator:$PATH" >> ~/.zshrc
 
+source ~/.zshrc
 # Install SDK packages
 echo "Installing necessary SDK packages..."
 yes | sdkmanager --sdk_root="$ANDROID_SDK_ROOT" --licenses
@@ -91,12 +94,12 @@ if ! avdmanager list avd | grep -q "Name: pixel_android"; then
       --device pixel \
       -k "system-images;android-33;google_apis_playstore;x86_64"
 else
-    echo "AVD 'pixel_android' already exists. Skipping creation."
+    echo "AVD 'iphone' already exists. Skipping creation."
 fi
 
 # Step 4: Launch the emulator for the 'pixel_android' AVD
-echo "Launching emulator for 'pixel_android' AVD..."
-emulator -avd iphone
+echo "Launching emulator for 'iphone' AVD..."
+emulator -avd iphone &
 
 # Step 5: Verify adb is accessible
 echo "Verifying adb installation..."
