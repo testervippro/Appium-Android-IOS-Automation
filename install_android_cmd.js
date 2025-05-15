@@ -56,8 +56,8 @@ function downloadFile(url, destPath) {
 
 if (platform === 'darwin') {
     console.log('macOS detected. Running mac-specific install script...');
-    runCommand('chmod +x install_android_cmd_tool_mac.sh');
-    runCommand('./install_android_cmd_tool_mac.sh');
+    runCommand('chmod +x dowload_android_cmd.sh');
+    runCommand('./dowload_android_cmd.sh');
     process.exit(0);
 }
 
