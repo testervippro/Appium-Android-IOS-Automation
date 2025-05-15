@@ -189,6 +189,9 @@ After installation, verify that the tools are working by running:
 ```bash
 adb devices
 ```
+```bash
+echo $ANDROID_HOME
+```
 
 ### UI Inspector Tools
 
