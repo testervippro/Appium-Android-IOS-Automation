@@ -177,6 +177,10 @@ node install_android_cmd.js
 For **macOS**, after the script completes, run:
 
 ```bash
+chmod +x install_android_cmd_tool_mac.sh && ./install_android_cmd_tool_mac.sh
+```
+Then 
+```bash
 source ~/.zshrc
 ```
 
