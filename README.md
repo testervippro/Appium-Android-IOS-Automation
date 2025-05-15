@@ -148,29 +148,47 @@ setx PATH "%PATH%;%ANDROID_HOME%\platform-tools"
 adb devices
 ```
 
+
+Here's your content formatted as Markdown:
+
 ---
 
-### Way 2: Without Android StudioNote(need close then reopen IDE after run this and run source ~/.zshrc in terminal) 
+##  Way 2: Without Android Studio
 
-You can install the Android Command Line Tools directly (no Android Studio needed).
+ **Note:** You need to **close and reopen your IDE** after running this script.
 
-Run the following Node script to:
+You can install the **Android Command Line Tools** directly (without Android Studio).
+
+---
+
+### Steps
+
+Run the following Node.js script to:
 
 * Install Android Command Line Tools
 * Set `ANDROID_HOME`
-* Set up `adb`, `emulator`, `sdkmanager` for Windows and macOS auto launch emulator name iphone
-  
+* Set up `adb`, `emulator`, `sdkmanager`
+* Automatically create and launch an emulator named `iphone` (for both Windows and macOS)
+
 ```bash
 node install_android_cmd.js
 ```
 
-#### Also can verify after finish:
+For **macOS**, after the script completes, run:
+
+```bash
+source ~/.zshrc
+```
+
+---
+
+### Verification
+
+After installation, verify that the tools are working by running:
 
 ```bash
 adb devices
 ```
-
----
 
 ### UI Inspector Tools
 
