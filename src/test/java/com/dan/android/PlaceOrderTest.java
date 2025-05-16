@@ -3,7 +3,13 @@ package com.dan.android;
 import com.dan.base.BaseTest;
 import com.dan.utils.ExplicitWait;
 import io.appium.java_client.AppiumBy;
+import io.appium.java_client.AppiumDriver;
+import java.time.Duration;
+import java.util.Collections;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -35,6 +41,7 @@ public class LoginTest extends BaseTest {
 
         // Add to cart
         var addToCart = By.xpath("//android.widget.Button[@content-desc=\"Tap to add product to cart\"]");
+        scrollDown(driver);
         ExplicitWait.waitForElementClickable(wait, addToCart).click();
 
         // Go to cart
@@ -56,6 +63,9 @@ public class LoginTest extends BaseTest {
                 .sendKeys("Test City");
         ExplicitWait.waitForElementVisible(wait, By.xpath("//android.widget.EditText[@resource-id=\"com.saucelabs.mydemoapp.android:id/stateET\"]"))
                 .sendKeys("Test State");
+
+        scrollDown(driver);
+
         ExplicitWait.waitForElementVisible(wait, By.xpath("//android.widget.EditText[@resource-id=\"com.saucelabs.mydemoapp.android:id/zipET\"]"))
                 .sendKeys("12345");
         ExplicitWait.waitForElementVisible(wait, By.xpath("//android.widget.EditText[@resource-id=\"com.saucelabs.mydemoapp.android:id/countryET\"]"))
@@ -88,4 +98,24 @@ public class LoginTest extends BaseTest {
         String checkOutSuccess = ExplicitWait.waitForElementVisible(wait, successMessage).getText();
         Assert.assertEquals(checkOutSuccess, "Checkout Complete", "Checkout success message mismatch");
     }
+
+
+    public void scrollDown(AppiumDriver driver) {
+        Dimension size = driver.manage().window().getSize();
+
+        int startX = size.width / 2;
+        int startY = (int) (size.height * 0.7);
+        int endY = (int) (size.height * 0.3);
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(finger, 1);
+
+        swipe.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), startX, startY));
+        swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        swipe.addAction(finger.createPointerMove(Duration.ofMillis(600), PointerInput.Origin.viewport(), startX, endY));
+        swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        driver.perform(Collections.singletonList(swipe));
+    }
+
 }
