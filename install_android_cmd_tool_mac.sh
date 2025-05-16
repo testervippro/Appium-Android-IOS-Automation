@@ -89,15 +89,15 @@ fi
 
 # Step 3: Create AVD if it doesn't exist
 if ! avdmanager list avd | grep -q "Name: pixel_android"; then
-    echo "Creating AVD named 'pixel_android'..."
-    echo "no" | avdmanager create avd -n pixel_android \
+    echo "Creating AVD named 'iphone'..."
+    echo "no" | avdmanager create avd -n iphone \
       --device pixel \
       -k "system-images;android-33;google_apis_playstore;x86_64"
 else
     echo "AVD 'iphone' already exists. Skipping creation."
 fi
 
-# Step 4: Launch the emulator for the 'pixel_android' AVD
+# Step 4: Launch the emulator for the 'iphone' AVD
 echo "Launching emulator for 'iphone' AVD..."
 emulator -avd iphone &
 
