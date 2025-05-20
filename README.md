@@ -175,6 +175,8 @@ node install_android_cmd.js
 ```
 
 For **macOS**, after the script completes, run:
+Current meet issue :System UI Not Responding still not found solution when run on mac
+
 
 ```bash
 chmod +x install_android_cmd_tool_mac.sh && ./install_android_cmd_tool_mac.sh
