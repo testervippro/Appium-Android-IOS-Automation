@@ -297,6 +297,7 @@ This update to `BaseTest` will perform the following:
 ```java
 @BeforeSuite
 public void startGrid() throws IOException {
+    // Current not much device can hardcode fix values
     // Logic to update configuration.hubHost in android.json and ios.json
     // Kill All port 4444,9999,4723,4727
     // Start Grid on port 4444
@@ -309,12 +310,26 @@ public void startGrid() throws IOException {
 
 ## Run Your Tests
 
+Run emulator Android
+
+```bash
+emulator @iphone
+```
+
+On Mac 
+
 ```bash
 mvn clean test -Dsuites=android-ios
 ```
 
+```bash
+mvn clean test -Dsuites=android
+```
+On Window
+
+```bash
+mvn clean test -Dsuites=android
+```
 
 ## Demo Video
-
-https://www.youtube.com/watch?v=HCDSs9ilyXA
 https://www.youtube.com/watch?v=iLbGyufSC-A
