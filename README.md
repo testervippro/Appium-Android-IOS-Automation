@@ -319,16 +319,16 @@ emulator @iphone
 On Mac 
 
 ```bash
-mvn clean test -Dsuites=android-ios
+./mvnw clean test -Dsuites=android-ios
 ```
 
 ```bash
-mvn clean test -Dsuites=android
+./mvnw clean test -Dsuites=android
 ```
 On Window
 
 ```bash
-mvn clean test -Dsuites=android
+./mvnw.cmd clean test -Dsuites=android
 ```
 
 ## Demo Video

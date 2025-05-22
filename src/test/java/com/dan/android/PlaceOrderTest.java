@@ -2,21 +2,40 @@ package com.dan.android;
 
 import com.dan.base.BaseTest;
 import com.dan.utils.ExplicitWait;
+
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
+
+import java.io.IOException;
 import java.time.Duration;
 import java.util.Collections;
+
+import org.apache.commons.exec.CommandLine;
+import org.apache.commons.exec.DefaultExecutor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import com.dan.base.RetryAnalyzer;
 
-public class LoginTest extends BaseTest {
+import static com.dan.config.ConfigurationManager.configuration;
+import static com.dan.driver.DriverManager.getDriver;
+import static com.sun.jna.Platform.isMac;
+import static com.sun.jna.Platform.isWindows;
 
-    @Test
-    public void placeOrder() {
+
+public class PlaceOrderTest extends BaseTest {
+
+    @Test(retryAnalyzer =  RetryAnalyzer.class)
+    public void placeOrder() throws IOException {
+        if(isRetry){
+            String launchCmdStr = String.format("adb shell am start -n %s/%s", configuration().androidAppPackage(), configuration().androidAppActivity());
+            CommandLine launchCmd = CommandLine.parse(launchCmdStr);
+            new DefaultExecutor().execute(launchCmd);
+        }
+
         // Open menu
         var menuIV = By.id("com.saucelabs.mydemoapp.android:id/menuIV");
         ExplicitWait.waitForElementVisible(wait, menuIV).click();
@@ -41,7 +60,9 @@ public class LoginTest extends BaseTest {
 
         // Add to cart
         var addToCart = By.xpath("//android.widget.Button[@content-desc=\"Tap to add product to cart\"]");
-        scrollDown(driver);
+
+        scrollDown(getDriver());
+
         ExplicitWait.waitForElementClickable(wait, addToCart).click();
 
         // Go to cart
@@ -64,7 +85,7 @@ public class LoginTest extends BaseTest {
         ExplicitWait.waitForElementVisible(wait, By.xpath("//android.widget.EditText[@resource-id=\"com.saucelabs.mydemoapp.android:id/stateET\"]"))
                 .sendKeys("Test State");
 
-        scrollDown(driver);
+        scrollDown(getDriver());
 
         ExplicitWait.waitForElementVisible(wait, By.xpath("//android.widget.EditText[@resource-id=\"com.saucelabs.mydemoapp.android:id/zipET\"]"))
                 .sendKeys("12345");
@@ -117,5 +138,6 @@ public class LoginTest extends BaseTest {
 
         driver.perform(Collections.singletonList(swipe));
     }
+
 
 }
